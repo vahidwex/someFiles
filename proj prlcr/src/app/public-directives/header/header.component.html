@@ -1,0 +1,207 @@
+<header class="header">
+    <nav class="navbar container navbar-expand-md navbar-light fixed-top border-bottom" style="background-color: var(--dark-color); z-index: 990;" id="header-width">
+        <a title="Profile" class="navbar-brand" style="height: 50px;" *ngIf="user.role == 'freelancer'" routerLink="/panel/profile">
+            <img title="Perfectlancer" alt="Perfectlancer" src="/assets/images/logo.png" alt="Perfectlancer" style="width: 100%;
+            max-width: 170px;
+            min-width: 170px;
+            height: 50px;">
+        </a>
+        <a title="Dashboard" class="navbar-brand" style="height: 50px;" *ngIf="user.role == 'employer'" routerLink="/panel/dashboard">
+            <img title="Perfectlancer" alt="Perfectlancer" src="/assets/images/logo.png" alt="Perfectlancer" style="width: 100%;
+            max-width: 170px;
+            min-width: 170px;
+            height: 50px;">
+        </a>
+        <button class="navbar-toggler back-white" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon back-white"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav right-align">
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role !='freelancer'" style="display: flex;justify-content: center;">
+                    <a title="Post a Project" class="nav-link post-job justify-content-center" routerLink="/post-job" style="line-height: normal;border-radius: 10px;">Post a Project</a>
+                </li>
+                <li class="nav-item active mobile-size no-wrap" *ngIf="user && user.role=='employer'" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="My projects" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/my-project">
+                        <i style="font-size: var(--font-size-20);float:left;" class="fas ml-2 fa-briefcase d-block white d-md-none"></i>
+                        My projects
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" *ngIf="user && user.role=='freelancer'" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Bids" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/bids">
+                        <i style="font-size: var(--font-size-20); float: left;color: white !important;" class="fas ml-2 fa-briefcase d-block d-md-none"></i>
+                        Bids
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" *ngIf="user && user.role=='freelancer'" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Search" class="nav-link white w-100 lh-16 p-0" routerLink="search">
+                        <i style="font-size: var(--font-size-20); float: left;" class="fas ml-2 white fa-search d-block d-md-none"></i>
+                        search
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" *ngIf="user && user.role=='employer'" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Search" class="nav-link white w-100 lh-16 p-0" routerLink="freelancer">
+                        <i style="font-size: var(--font-size-20); float: left;" class="fas ml-2 white fa-search d-block d-md-none"></i>
+                        search
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user && user.role == 'freelancer'">
+                    <a title="Messages" class="nav-link white w-100 lh-6 p-0" routerLink="/panel/message">
+                        <i style="font-size: var(--font-size-20);float: left;" class="fas ml-2 white fa-envelope d-block d-md-none"></i>
+                        Messages
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user && user.role == 'freelancer'">
+                    <a title="Categories" class="nav-link white w-100 lh-6 p-0" routerLink="categories">
+                        <i style="font-size: var(--font-size-20);float: left;" class="fas ml-2 white fa-book-open d-block d-md-none"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size messages" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user && user.role == 'employer'">
+                    <a title="Messages" class="nav-link white w-100 lh-6 p-0" routerLink="/panel/message">
+                        <i style="font-size: var(--font-size-20);float: left;" class="fas ml-2 white fa-envelope d-block d-md-none"></i>
+                        Messages
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size categories" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user && user.role == 'employer'">
+                    <a title="Categories" class="nav-link white w-100 lh-6 p-0" routerLink="categories">
+                        <i style="font-size: var(--font-size-20);float: left;" class="fas ml-2 white fa-book-open d-block d-md-none"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size d-none d-md-block" style="margin-top: 7px;">
+                    <div class="divider-vertical" style="height: 70%;margin-top: 5px;"></div>
+                </li>
+                <li class="nav-item active d-none d-md-block mobile-size no-wrap" style="line-height: normal;">
+                    <div class="nav-link white" id="header-name">{{ user.first_name }}</div>
+                </li>
+                <li class="nav-item active mobile-size d-flex d-md-none" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'employer'">
+                    <a title="Dashboard" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/dashboard">
+                        <i style="font-size: var(--font-size-20); float: left;" class="ml-2 white fas fa-border-all d-flex d-md-none"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size d-flex d-md-none" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'employer'">
+                    <a title="Bookmarks" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/bookmarks">
+                        <i style="font-size: var(--font-size-20);float: left;" class="ml-2 white fas fa-briefcase d-flex d-md-none"></i>
+                        Bookmarks
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size d-flex d-md-none" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'employer'">
+                    <a title="Settings" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/profile" [queryParams]="{tabs: 'Setting'}">
+                        <i style="font-size: var(--font-size-20); float: left;" class="ml-2 white fas fa-cog d-flex d-md-none"></i>
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size d-flex d-md-none im" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'employer'">
+                    <a title="Log out" class="nav-link white im-pointer lh-16 p-0 w-100" (click)="onLogoutClick()" >
+                        <i style="font-size: var(--font-size-20); float: left;" class="ml-2 white fas fa-sign-out-alt d-flex d-md-none"></i>   
+                        Log out
+                    </a>
+                </li>
+                <li class="nav-item dropdown d-none d-md-block"  *ngIf="user.role == 'employer'">
+                    <a title="Menu" id="user" rel="nofollow" data-target="#" routerLink="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                        <img [title]="user.first_name" [src]="user.avatar" id="header-img" alt="avatar" class="avatar rounded-circle">
+                    </a>
+                    <ul aria-labelledby="user" class="user-size dropdown-menu" style="left: -150px;">
+                        <li>
+                            <h2 class="user-name" id="user-name-emp">{{ user.first_name }}</h2>
+                        </li>
+                        <li class="text-center show-in-mobile" *ngIf="userType == 'applicant'">
+                            <button type="button" class="btn btn-primary font-13" routerLink="/panel/profile/application/new">Post Application</button>
+                        </li>
+                        <li class="separator mt-2"></li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Dashboard" routerLink="/panel/dashboard" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-border-all orange"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="userType !== 'applicant'">
+                            <a title="Bookmarks" routerLink="/panel/bookmarks" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-briefcase orange"></i>
+                                Bookmarks
+                            </a>
+                        </li>
+                        <li class="separator"></li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Settings" routerLink="/panel/profile" [queryParams]="{tabs: 'Setting'}" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-cog orange"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Logout" (click)="onLogoutClick()" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-sign-out-alt orange"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item active d-flex d-md-none mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'freelancer'">
+                    <a title="Dashboard" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/profile">
+                        <i style="font-size: var(--font-size-20);float: left;" class="fas ml-2 fa-border-all white"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item active d-flex d-md-none mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'freelancer'">
+                    <a title="Bookmarks" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/bookmarks">
+                        <i style="font-size: var(--font-size-20); float: left;" class="fas ml-2 fa-briefcase white"></i>
+                        Bookmarks
+                    </a>
+                </li>
+                <li class="nav-item active d-flex d-md-none mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'freelancer'">
+                    <a title="Settings" class="nav-link white w-100 lh-16 p-0" routerLink="/panel/profile" [queryParams]="{tabs: 'Setting'}">
+                        <i style="font-size: var(--font-size-20); float:left;" class="fas ml-2 fa-cog white"></i>
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item active d-flex d-md-none mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="user.role == 'freelancer'">
+                    <a title="Logout" class="nav-link white w-100 lh-16 p-0" (click)="onLogoutClick()" >
+                        <i style="font-size: var(--font-size-20); float:left;" class="fas ml-2 fa-sign-out-alt white"></i>
+                        Logout
+                    </a>
+                </li>
+                <li class="nav-item dropdown d-none d-md-block" *ngIf="user.role == 'freelancer'">
+                    <a title="Menu" id="user" rel="nofollow" data-target="#" routerLink="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                        <img [title]="user.first_name" [alt]="user.first_name" [src]="user.avatar" id="header-img" [alt]="'../../../assets/images/default-' + user.user_id%12 + '.png'" class="avatar rounded-circle">
+                    </a>
+                    <ul aria-labelledby="user" class="user-size dropdown-menu" style="left: -150px;">
+                        <li>
+                            <h2 class="user-name" id="user-name-fl">{{ user.first_name }}</h2>
+                        </li>
+                        <li class="text-center show-in-mobile" *ngIf="userType == 'applicant'">
+                            <button type="button" class="btn btn-primary font-13" routerLink="/panel/profile/application/new">Post Application</button>
+                        </li>
+                        <li class="separator mt-2"></li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Dashboard" routerLink="/panel/profile" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-border-all orange"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="userType !== 'applicant'">
+                            <a title="Bookmarks" routerLink="/panel/bookmarks" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-briefcase orange"></i>
+                                Bookmarks
+                            </a>
+                        </li>
+                        <li class="separator"></li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Settings" routerLink="/panel/profile" [queryParams]="{tab: 'Setting'}" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-cog orange"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li class="action" data-toggle="collapse" data-target=".navbar-collapse.show">
+                            <a title="Log out" (click)="onLogoutClick()" class="dropdown-item im-pointer">
+                                <i style="font-size: var(--font-size-20);" class="fas ml-2 fa-sign-out-alt orange"></i>
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</header>

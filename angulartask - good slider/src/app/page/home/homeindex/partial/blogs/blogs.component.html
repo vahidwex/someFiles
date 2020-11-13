@@ -1,0 +1,26 @@
+<div class="blogs row justify-content-center">
+  <div class="header">
+    <p class="recent">Recent Story</p>
+    <p class="big-text">FROM THE BLOG</p>
+  </div>
+  <div class="container">
+
+    <owl-carousel-o [options]="customOptions">
+      <div class="item" *ngFor="let item of items">
+        <ng-template carouselSlide>
+          <div class="section">
+                <div class="image row justify-content-center">
+                        <img src="{{item.source}}" alt="">
+                    </div>
+                    <div class="content">
+                        <p class="time">{{item.time}}</p>
+                        <p class="main">{{item.content}}</p>
+                        <p class="author">By: {{item.author}} , {{item.commentcount}} Comment</p>
+                    </div>
+          </div>
+        </ng-template>
+      </div>
+    </owl-carousel-o>
+
+  </div>
+</div>

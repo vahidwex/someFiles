@@ -1,0 +1,13 @@
+<div class="print">
+  <div class="printable" id="printable">
+    <div class="section row" *ngFor="let order of orders" >
+      <div class="feild col-12">نام :{{order.client.name}}</div>
+      <div class="feild col-12">نام خانوادگی :{{order.client.family}}</div>
+      <div class="feild col-12">موبایل :{{order.client.mobile}}</div>
+      <div class="feild col-12">آدرس :{{order.client.address}}</div>
+      <div class="feild col-12">کد پستی :{{order.client.postalCode}}</div>
+    </div>
+  </div>
+  
+  <button type="button" [class.hidden]="printableStatus" class="btn btn-primary" (click)="print()">چاپ</button>
+</div>

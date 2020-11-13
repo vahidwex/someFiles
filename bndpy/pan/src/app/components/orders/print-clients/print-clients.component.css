@@ -1,0 +1,10 @@
+.section{
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    font-size: 1.4em;
+    padding: 10px;
+    margin: 10px;
+}
+.hidden{
+    display: none;
+}

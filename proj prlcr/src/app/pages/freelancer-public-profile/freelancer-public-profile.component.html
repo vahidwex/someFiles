@@ -1,0 +1,158 @@
+<div class="container mt-4" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="row mx-0">
+        <div class="col-md-4">
+            <div class="profile-card bg-dark-color br-5 position-sticky t-100 mb-100">
+                <div class="card-header fs-25 d-flex normal-txt color-white justify-content-between w-auto"></div>
+                <div class="card-body d-flex justify-content-center br-5 row m-0 w-auto h-auto">
+                    <img [src]="avatar" alt="Profile image" [title]="first_name" class="profile-image rounded-circle">
+                    <h1 class="profile-name fs-16 font-weight-bold normal-txt text-center color-white col-md-12">{{first_name}} {{last_name[0]}}.</h1>
+                    <div class="profile-name fs-16 font-weight-bold normal-txt text-center color-white col-md-12 d-flex justify-content-center">
+                        <i class="fa fa-star clickable-orange mr-1" aria-hidden="true"></i> 
+                        <div class="fs-13 d-inline-block">{{rate}}</div>
+                    </div>
+                    <div class="profile-location justify-content-center mb-2 col-md-12 row">
+                        <i class="fas fa-map-marker-alt location-icon fs-20 color-white mx-2" aria-hidden="true"></i>
+                        <h2 class="profile-location-name fs-16 p-0 normal-txt font-weight-bold text-center color-white">
+                            {{user_country ? this.countryName(user_country) : ''}} {{user_state ? '-' + user_state + ' |' : ''}}
+                        </h2>
+                        <i class="far fa-clock clock-icon fs-20 color-white mx-2"></i>
+                        <h3 class="profile-location-name fs-16 p-0 normal-txt font-weight-bold text-center color-white">
+                            {{time | date:'h:mm a'}}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="ml-2 mt-1 mb-1">
+                <ul class="nav nav-pills p-0 mb-3 col-12" id="pills-tab" role="tablist">
+                    <li class="nav-item p-0 col">
+                        <a title="General" (click)="changeTab('General');" class="my-tab no-op br-0 fs-24 normal-txt clickable overflow-hidden color-black nav-link normal-txt text-center fs-16 tab-color-dark"
+                           [ngClass]="{'active': tab == 'General'}" id="pills-home-tab" data-toggle="pill"
+                           id="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">General</a>
+                    </li>
+                    <li title="Work Sample" class="nav-item p-0 col">
+                        <a (click)="changeTab('Work Sample');" class="my-tab no-op br-0 fs-24 normal-txt clickable overflow-hidden color-black nav-link normal-txt text-center fs-16 tab-color-dark"
+                           [ngClass]="{'active': tab == 'Work Sample'}" id="pills-profile-tab" data-toggle="pill"
+                           id="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Work
+                            Sample</a>
+                    </li>
+                    <li class="nav-item p-0 col">
+                        <a title="Active Jobs" (click)="changeTab('Active Jobs');" class="my-tab no-op br-0 fs-24 normal-txt clickable overflow-hidden color-black nav-link normal-txt text-center fs-16 tab-color-dark"
+                           [ngClass]="{'active': tab == 'Active Jobs'}" id="pills-contact-tab" data-toggle="pill"
+                           id="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Active
+                            Jobs</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="tab=='General'">
+                <div class="general-card br-10 pb-30 pt-4 mb-4 bg-white px-3">
+                    <div class="col-md-12 fs-20 mt-2 mb-1 normal-txt text-left color-black font-weight-bold justify-content-between d-flex">
+                        Basic
+                    </div>
+                    <h3 class="col-md-12 general-card-desc fs-17 normal-txt text-left color-black mb-2" *ngIf="!generalEdit">
+                        {{user_description}}
+                    </h3>
+                    <div class="col-md-12 row mx-0 justify-content-start" *ngIf="!generalEdit">
+                        <h3 class="badge badge-pill my-skills m-1 fs-15 blacked"
+                              *ngFor="let skill of user_skills">{{skill.value}}</h3>
+                    </div>
+                </div>
+                <div class="general-card  br-10 pb-30 pt-4 mb-4 bg-white px-3">
+                    <h2 class="col-md-12 fs-20 mt-2 mb-1 normal-txt text-left color-black font-weight-bold justify-content-between d-flex">
+                        Education
+                    </h2>
+                    <div *ngFor="let education of user_education" class="col-md-12 py-1 px-0">
+                        <h3 class="general-card-desc fs-17 normal-txt text-left color-black col-md-12 mb-2">
+                            {{education.university}}
+                        </h3>
+                        <h3 class="col-md-12 general-card-desc fs-17 normal-txt text-left color-black">
+                            ({{education.title}})
+                        </h3>
+                        <h3 class="general-card-duration col-md-12">
+                            {{education.country}} {{education.start}} - {{education.end}} ({{education.end - education.start}} years)
+                        </h3>
+                    </div>
+                </div>
+                <div class="general-card br-10 pb-30 pt-4 mb-4 bg-white px-3">
+                    <h2 class="col-md-12 fs-20 mt-2 mb-1 normal-txt text-left color-black font-weight-bold justify-content-between d-flex">
+                        Work experience
+                    </h2>
+                    <div *ngFor="let experience of workexprience" class="col-md-12 py-1 px-0">
+                        <h3 class="general-card-desc fs-17 normal-txt text-left color-black col-md-12 mt-2">
+                            {{experience.title}}
+                        </h3>
+                        <h3 class="col-md-12 general-card-desc fs-17 normal-txt text-left color-black">
+                            ({{experience.company}})
+                        </h3>
+                        <h3 class="general-card-duration col-md-12">
+                            {{experience.country}} {{experience.start}} - {{experience.end}} ({{experience.end -
+                            experience.start}} years)
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab=='Work Sample'">
+                <div class="col-md-12" *ngIf="worksample == 0">
+                    No worksample.
+                </div>
+                <div class="row">
+                    <div class="col-md-4 w-100 h-100 mb-4 cards-sample" *ngFor="let work of worksample"
+                         (click)="openDialogView(work.url,work.title,work.description)">
+                        <img class="card-image w-100" alt="work.title" title="work.title" [src]="'https://node.perfectlancer.com/file/download?filename='+work.url" onError="this.src='../../assets/notimage.jpg'" alt="">
+                        <div class="card-image-footer w-100 d-none position-relative overflow-hidden py-3 bg-dark-color">
+                            <div class="card-footer-title fs-15 b-600 normal-txt text-left color-white lh-1-33">{{work.title}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab=='Active Jobs'">
+                <div class="col-md-12" *ngIf="projects.length == 0">
+                    No active jobs.
+                </div>
+                <div class="col-md-12" *ngIf="projects.length != 0">
+                    <div class="job-card bg-white br-10 row mb-3" *ngFor="let project of projects"
+                         (click)="collapseSection(project.project_id)">
+                        <div class="no-height w-100" [id]="project.project_id"></div>
+                        <div class="col-md-12">
+                            <div class="my-close-holder position-sticky justify-content-center d-flex align-self-center fs-20 color-white br-l-10 z-970 pb-30">
+                                <div *ngIf="isCollapsed(project.project_id)" class="my-close"
+                                     (click)="closeAllSection(project.project_id)">
+                                    <i class="fas fa-times text-center fs-20"
+                                       aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="row">
+                                    <div class="job-card bg-white br-10-title col-md-8">
+                                        {{project.title}}
+                                    </div>
+                                    <div class="job-title-duration col-md-3">
+                                        ${{project.min_budget}} - ${{project.max_budget}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 row mb-2">
+                                <div class="job-description fs-17 normal-txt text-left mt-2 color-black overflow-hidden">
+                                    {{project.project_description}}
+                                </div>
+                            </div>
+                            <div class="col-md-12 row mb-4 overflow-hidden skill-height">
+                                <div class="skills-job mt-2 d-flex flex-row br-7 b-400 fs-16 overflow-hidden" *ngFor="let projectskill of project.project_skills">
+                                    {{projectskill.value}}
+                                </div>
+                            </div>
+                            <div *ngIf="isCollapsed(project.project_id) && project.files.length != 0" class="row col-md-12 mb-5">
+                                <div *ngFor="let file of project.files" class="col-md-12 row filedownload fs-17 b-600 normal-txt text-left clickable"
+                                     (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+file.urlPath);">
+                                    <i class="fa fa-paperclip filedownload-clip fs-17 text-left mr-1 normal-txt b-600" aria-hidden="true"></i>
+                                    <div class="filedownload">{{file.filename}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

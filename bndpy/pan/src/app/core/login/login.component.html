@@ -1,0 +1,19 @@
+<div class="bslf">
+    <form  [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2 class="text-center">صفحه ورود</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="نام کاربری"  name='email' formControlName="email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="رمز عبور" name='pass'  formControlName="pass">
+      </div>
+      <div class="form-group clearfix">
+      	<label class="checkbox-inline pull-left"><input type="checkbox" name='remember'  formControlName="remember"  > مرا به خاطر بسپار </label>
+        <button type="submit" class="btn btn-primary pull-right">ورود</button>
+      </div>
+      <!-- <div class="clearfix">
+        <a href="#" class="pull-left">Forgot Password?</a>
+        <a href="#" class="pull-right">Create an Account</a>
+      </div> -->
+    </form>
+  </div>

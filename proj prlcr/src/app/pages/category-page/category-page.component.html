@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="row col-md-12 justify-content-center mx-0 px-0">
+            <div *ngIf="!user || (user && user.role=='employer')" class="col-md-12 row justify-content-center normal-txt b-600 text-center mt-4 mb-30 color-black fs-25">
+                <div (click)="categoryAction = categoryOptions[0]" class="options mr-3" [ngClass]="{'active': categoryAction == categoryOptions[0],'notactive': categoryAction != categoryOptions[0]}">
+                    {{ categoryOptions[0] }}
+                </div>
+                <div class="options mr-2 separator">/</div>
+                <div class="options mr-3" (click)="categoryAction = categoryOptions[1]" [ngClass]="{'active': categoryAction == categoryOptions[1],'notactive': categoryAction != categoryOptions[1]}">
+                    {{ categoryOptions[1] }}
+                </div> by category
+            </div>
+            <div *ngIf="user && user.role=='freelancer'" class="col-md-12 row justify-content-center normal-txt b-600 text-center mt-4 mb-30 color-black fs-25">
+                <div class="mr-3 options" (click)="categoryAction = categoryOptions[1]" [ngClass]="{'active': categoryAction == categoryOptions[1],'notactive': categoryAction != categoryOptions[1]}">
+                    Browse
+                </div> by category
+            </div>
+        </h1>
+
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div *ngFor="let card of titles" class="h-auto mb-30 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="card-content-container w-100 h-100 br-5 o-hidden">
+                        <div class="w-100 bg-lighter cat-border m-0 d-flex justify-content-center" [id]="card.title">
+                            <img class="card-icon my-3 text-center clickable-orange" [src]="'../assets/images/'+card.icon" [alt]="card.title">
+                        </div>
+                        <div class="py-2 px-4 h-100">
+                            <h2 class="color-black normal-txt b-600 lh-1-76 text-left fs-20">
+                                {{ card.title }}
+                            </h2>
+                            <h3 *ngIf="categoryAction == 'Browse'">
+                                <a [title]="'Browse ' + subtitle + ' projects'" class="fs-14 normal-txt clickable lh-1-76 sub-title d-flex text-left semi-dark-color text-decoration-none" *ngFor="let subtitle of card.subtitle" [queryParams]="{title: subtitle}" routerLink="/freelancer">
+                                    {{ subtitle }}
+                                </a>
+                            </h3>
+                            <h3 *ngIf="categoryAction == 'Post a project'">
+                                <a [title]="'Post a ' +  subtitle + ' project'" class="fs-14 normal-txt clickable lh-1-76 sub-title  d-flex text-left semi-dark-color text-decoration-none" *ngFor="let subtitle of card.subtitle" [queryParams]="{skills: subtitle,title: card.title}" routerLink="/post-job">
+                                    {{ subtitle }}
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

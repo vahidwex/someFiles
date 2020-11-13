@@ -1,0 +1,13 @@
+.mainstyle{
+    height: 200px;
+            align-self: center;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            background-color: var(--dark-color);
+            color:
+            white;
+            line-height: 200px !important;
+            background-image: linear-gradient(to left, var(--dark-color),
+#f09a18);
+}

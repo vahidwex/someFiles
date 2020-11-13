@@ -1,0 +1,116 @@
+.trend .container .section .bottomSect .drawer {
+  border-radius: 20px;
+}
+
+.trend .container .section .bottomSect .drawer {
+  box-shadow: rgba(34, 34, 34, 0.3) 0 0 7px 0;
+}
+
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.trend {
+  padding: 70px 0;
+  background-color: #fff;
+}
+.trend .bigtext {
+  color: #222;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0 0 30px 0;
+}
+.trend .container .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.trend .container .section:hover .bottomSect .drawer {
+  opacity: 1;
+}
+.trend .container .section .images {
+  height: 400px;
+  max-width: 300px;
+}
+.trend .container .section .images image {
+  height: 100%;
+}
+.trend .container .section .bottomSect .drawer {
+  margin: 0 auto;
+  width: 60%;
+  height: 40px;
+  display: block;
+  opacity: 0;
+  position: relative;
+}
+.trend .container .section .bottomSect .drawer .items {
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.trend .container .section .bottomSect .drawer .items .link {
+  font-size: 18px;
+  display: inline-block;
+  padding: 10px 8px 10px 8px;
+  color: #666666;
+}
+.trend .container .section .bottomSect .drawer .items .link:hover {
+  color: #1565C0;
+}
+.trend .container .section .bottomSect .content {
+  display: flex;
+  flex-direction: column;
+  color: #1565C0;
+  text-align: center;
+}
+.trend .container .section .bottomSect .content .para {
+  text-align: center;
+}
+.trend .container .section .bottomSect .content .stars {
+  font-size: 12px;
+  padding: 5px;
+  color: #1565C0;
+}
+.trend .container .section .bottomSect .content .stars .star .item {
+  padding: 2px;
+}
+.trend .container .section .bottomSect .content .title {
+  color: #666666;
+  font-size: 14px;
+}
+.trend .container .section .bottomSect .content .price {
+  font-weight: 600;
+  font-size: 18px;
+  color: #222;
+}
+
+.figure-2 {
+  border: solid 1px #8080808c;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 11px 2px rgba(0, 0, 0, 0.11);
+}
+
+.figure {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  border: solid 1px #cfcfcf;
+}
+
+@media only screen and (max-width: 1200px) {
+  .trend .container .section .bottomSect .drawer {
+    top: 350px;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .trend .container .section .bottomSect .drawer {
+    opacity: 1;
+  }
+}

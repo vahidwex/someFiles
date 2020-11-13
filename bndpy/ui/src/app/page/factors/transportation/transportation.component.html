@@ -1,0 +1,11 @@
+
+
+  <div class="container figure h-fit">
+    <form>
+      <label (click)="updateTransport(item._id)" *ngFor="let item of list">
+        <input type="radio"   name="radio" checked/>
+        <span>{{item.title+" مبلغ "+ item.price}}</span>
+      </label>
+      
+    </form>
+  </div>

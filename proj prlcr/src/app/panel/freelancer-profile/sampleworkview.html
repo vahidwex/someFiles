@@ -1,0 +1,79 @@
+<div mat-dialog-title class="row" style="height: 51.5px; border-bottom: grey solid 1px; font-size: var(--font-size-20);
+font-weight: bold;
+font-style: normal;
+font-stretch: normal;
+letter-spacing: normal;
+text-align: center;
+color: #000000;">
+    <div class="col-md-12" style="
+    font-size: var(--font-size-17);
+    font-weight: bold;
+    margin-top: -22px;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    height: 20px;
+    color: #000000;">
+        {{data.title}}
+    </div>
+    <div class="col-md-12" style="
+    font-size: var(--font-size-15);
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    height: 20px;
+    margin-bottom: 5px;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c3c3c3;">
+        <!-- June 16, 2019 -->
+    </div>
+</div>
+<div class="row justify-content-center" style="display: flex;">
+  <div class="col-md-6 justify-content-center" style="display: flex; flex-direction: column">
+    <img [src]="'https://node.perfectlancer.com/file/download?filename='+data.url" alt="" onError="this.src='../../assets/notimage.jpg'" style="width: 118.6px;
+    height: 521px;
+    width: 692px;
+    align-self: center;
+    object-fit: contain;">
+  </div>
+  <div class="col-md-12 mt-3" *ngIf="data.description.length > 0" style="
+  font-size: var(--font-size-20);
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;">
+        Description
+  </div>
+  <div class="col-md-12" style="font-size: var(--font-size-17);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;">
+       {{data.description}}
+  </div>
+
+</div>
+<div class="row justify-content-end" style="padding: 0 24px;">
+  <div class="col-md-4" (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+data.url);" style="
+  height: 49px;
+  border-radius: 10px;
+  background-color: var(--clickable-orange);
+  font-size: var(--font-size-17);
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  line-height: 2.75;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 10px 0px;" cdkFocusInitial>
+  Download
+  </div>
+</div>

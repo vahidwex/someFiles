@@ -1,0 +1,118 @@
+<div class="basket animated fadeIn w-100 m-0">
+
+    <div class="header row justify-content-center align-items-center">
+      <div class="container row">
+        <div class="HoverShadow name col-6 fw-600 default">
+          سبد خرید
+        </div>
+        <div class="address col-6">
+          <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+              class="HoverShadow pointer" [routerLink]="['/products']">محصولات</span></h5>
+        </div>
+      </div>
+    </div>
+    <div class="content container py-5">
+
+        <div class="d-flex item flex-column flex-md-row figure p-2 my-2 my-4 rtl w-100" [class.my-4]="i%2==0" [class.rtl]="i%2==0" *ngFor="let product of products;let i =index">
+
+            <div class="image col-12 col-md-3 h-100 row justify-content-center h-100 justify-content-around">
+
+                <img id="selectedImage " class="selectedImage img animated" [src]="env.port+'/images/'+product.logo" alt="">
+
+            </div>
+
+            <div class="details col-12 col-md-6 h-100 d-flex flex-column" [class.rtl]="i%2!=0">
+                
+                    <h3 class="darken-primary text-start w-90">{{product.title}}</h3>
+
+                    <p class="text-start unique-line pb-4 mb-2 ellips color-default fw-600">{{product.shortDesc}}</p>
+                      
+                    <div class="productKind w-100">
+                        <div class="w-100 text-start fw-600 darken-primary">
+                            دسته بندی :
+                            <span class="mx-2" *ngFor="let kind of product.productKind">
+                                <a class="link" href="#">{{"#" +kind.title}}</a>
+                            </span>
+                        </div>
+                    </div>
+                    
+                   
+                    <div class="features my-3 w-100 d-flex flex-column">
+
+                      <h5 class="describe-head col-12 fw-600 color-primary p-0 text-start">توضیحات</h5>
+
+                      <p class=" text-start paragraph ellips fw-600">{{product.LongDesc}}</p>
+
+                    </div>
+            </div>
+
+            <div class="buttons col-12 col-md-3 row justify-content-around h-100">
+
+                
+
+                <div class="plusminus d-flex flex-column h-50 text-center ">
+
+                    <div class="plus  pointer" (click)="plusBasket(product._id)">
+                        <i class="fas fa-chevron-circle-up"></i>
+                    </div>
+
+                    <div class="count mx-3">
+                        +<span class="darken-primary text-number">{{product.count}}</span>
+                    </div>
+
+                    <div class="minus pointer" (click)="minuseBasket(product._id)">
+                        <i class="fas fa-chevron-circle-down"></i>
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="prices d-flex flex-column justify-content-around align-items-around">
+
+                    <div class="realPrice text-center mb-4 ">
+                    
+                        <del class="fs-19 text-number fw-700">
+                            {{product.price}} <span class="fs-16"> تومان</span>
+                        </del>
+    
+                    </div>
+
+                    <div class="text-center ">
+                  
+                        <span class="fs-19 text-number fw-700 color-primary">
+                          {{product.offPrice}} <span class="fs-16"> تومان</span>
+      
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="btns row justify-content-around w-100 m-x-2 my-4">
+
+                    <button class="h-100 col-4 button-prime px-4"  (click)="like(product._id)" ><i class="fas fa-heart"></i></button>
+
+                    <button [routerLink]="['/product/' + product.titleEnglish]" class="h-100 col-7 button-prime"> بازدید کالا <i class="far fa-eye"></i></button>
+
+                      
+                </div>
+
+                
+              </div>
+        </div>
+    </div>
+
+    <div class="operators row text-center py-3 w-100">
+
+        
+        <div class="discount row col-12" include="form-input-select()">
+
+            <button (click)="next()" class="h-75 col-2 button-prime">ادامه خرید</button>
+            <input  type="text" [(ngModel)]="discount" class="col-5 col-md-3 h-75 select mx-3 text-end" placeholder=" اعمال کد تخفیف " >
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,79 @@
+<header class="header">
+    <nav class="navbar container navbar-expand-md navbar-light fixed-top" [ngClass]="{'nottrans': backgroundHeader,'border-bottom': backgroundHeader,'trans': !backgroundHeader}" id="my-public-header" style="z-index: 980 !important;">
+        <a title="Home" class="navbar-brand" style="height: 50px" routerLink="/">
+            <img title="Perfectlancer" src="/assets/images/logo.png" alt="Perfectlancer" style="width: 100%;
+            max-width: 170px;
+            min-width: 170px;
+            height: 50px;">
+        </a>
+        <button class="navbar-toggler back-white" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse" id="sw-example-navbar-collapse-3">
+          </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav right-align">
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show" style="display: flex;justify-content: center;">
+                    <a title="Post a Project" class="nav-link post-job" data-toggle="collapse" routerLink="/post-job" style="line-height: normal;border-radius: 10px;">Post a Project</a>
+                </li>
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Blog" class="nav-link white w-100 lh-16 white p-0" href="/blog">
+                        <i style="font-size: var(--font-size-20);color:white !important; align-self: center;float: left;" class="fas fa-blog white d-block d-md-none"></i>
+                        Blog
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size categories" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Categories" class="nav-link white w-100 lh-16 white p-0" routerLink="categories">
+                        <i style="font-size: var(--font-size-20);color:white !important; align-self: center;float: left;" class="fas fa-book-open d-block d-md-none"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="How it works?" class="nav-link white w-100 lh-16 white p-0" routerLink="how-it-works">
+                        <i style="font-size: var(--font-size-20);color:white !important; align-self: center;float: left;" class="fas fa-question-circle d-block d-md-none"></i>
+                        How it works
+                    </a>
+                </li>
+                
+                <li class="nav-item active mobile-size d-none d-md-block" style="margin-top: 7px;">
+                    <div class="divider-vertical" style="height: 70%;margin-top: 5px;"></div>
+                </li>
+                <!-- <li class="nav-item active d-none d-md-block mobile-size" style="line-height: normal;">
+                    <div class="nav-link white" id="header-name">Log in</div>
+                </li>
+                <li class="nav-item active d-none d-md-block mobile-size" style="line-height: normal;">
+                    <div class="nav-link white" id="header-name">Register</div>
+                </li> -->
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Log in" class="nav-link white w-100 lh-16 white p-0" routerLink="login">
+                        <i style="font-size: var(--font-size-20);color:white !important; align-self: center;float: left;" class="fas fa-sign-in-alt d-block d-md-none"></i>
+                        Log in
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Register" class="nav-link white w-100 lh-16 white" routerLink="register">
+                        <i style="font-size: var(--font-size-20);color:white !important; align-self: center;float: left;" class="fas fa-user-plus d-block d-md-none"></i>
+                        <span style="color:white !important;border-radius: 7px;border: solid 1px #ffffff;padding: 15px;padding-top: 10px;padding-bottom: 10px;">
+                            Register
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item active mobile-size d-none d-md-block freelancer-key">
+                    <div class="divider-vertical" style="height: 70%;margin-top: 5px;"></div>
+                </li>
+                <li class="nav-item active mobile-size freelancer-key" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a title="Freelancer?" class="nav-link white w-100 lh-16" routerLink="/welcome/freelancer" style="
+                    font-size: var(--font-size-17);
+                    font-weight: 600;
+                    font-style: normal;
+                    font-stretch: normal;
+                    letter-spacing: normal;
+                    color: var(--clickable-orange) !important;">
+                        <i style="align-self: center;float:left;color:white !important;" class="fas fa-user d-block d-md-none"></i>
+                        Freelancer?
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

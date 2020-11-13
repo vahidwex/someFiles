@@ -1,0 +1,22 @@
+<div mat-dialog-title class="row fs-20 normal-txt font-weight-bold text-center color-black header">
+    <div class="col-md-12 fs-17 normal-txt font-weight-bold text-left color-black title">
+        {{data.title}}
+    </div>
+</div>
+<div class="row justify-content-center d-flex">
+  <div class="col-md-10 justify-content-center d-flex flex-column">
+    <img class="align-self-center my-img" [src]="'https://node.perfectlancer.com/file/download?filename='+data.url" onError="this.src='../../assets/notimage.jpg'" alt="">
+  </div>
+  <div *ngIf="data.description.length > 0" class="col-md-12 mt-3 fs-12 normal-txt font-weight-bold text-left color-black">
+        Description
+  </div>
+  <div class="col-md-12 fs-17 normal-txt text-left color-black">
+       {{data.description}}
+  </div>
+
+</div>
+<div class="row justify-content-end px-0 py-4">
+  <div class="download col-md-4 br-10 bg-clickable-orange normal-txt fs-17 b-600 color-white clickable my-2 mx-0 text-center" (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+data.url);" cdkFocusInitial>
+  Download
+  </div>
+</div>

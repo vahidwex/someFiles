@@ -1,0 +1,241 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+
+.best{
+    background-color: $color-light;
+    .container{
+        padding :0 0 50px 0;
+        .header{
+            padding: 50px;
+            .head{
+                text-align: center;
+            }
+        }
+        .body{
+            .col1{
+                max-width: 31.333%;
+                .item{
+                    &:nth-child(1){
+                        border-bottom: lighten($color: $color-dark, $amount: 70) solid 1px;
+                    }
+                }
+                
+            }
+            .col2{
+                max-width: 31.333%;
+                border-left: lighten($color: $color-dark, $amount: 70) solid 1px;
+                border-right: lighten($color: $color-dark, $amount: 70) solid 1px;
+                &:hover{
+                    .item-unique{
+                        .drawer{
+                            opacity: 1;
+                        }
+                    }
+                }
+                .item-unique{
+                    position: relative;
+                    .topright{
+                        position: absolute;
+                        right: 0;
+                        top: 20px;
+                        font-size: 1.1em;
+                        transform: rotate(-90deg);
+                        z-index: 2;
+                    }
+                    .topleft{
+                        background-color: $color-theme-primary;
+                        @extend %circle;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        z-index: 2;
+                        color: $color-light;
+                        font-size: .9em;
+                        height: 46px;
+                        padding: 12px 8px 8px 8px;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .drawer{
+                        display: block;
+                        position: absolute;
+                        top: 71%;
+                        left: 31%;
+                        opacity: 0;
+                        margin-bottom: 10px;
+                        @extend %shadow;
+                        @extend %radius;
+                        width: 150px;
+                        height: 45px;
+                        transition: 1s ease all;
+                        .items{
+                            .link{
+                                font-size: 18px;
+                                display: inline-block;
+                                padding: 10px 8px 10px 8px;
+                                color: darken($color-light, 60);
+                                &:hover {
+                                    color: $color-theme-primary;
+                                  }
+                            }
+                        }
+                    }
+                    .content{
+                        display: flex;
+                        flex-direction: column;
+                        height: fit-content;
+                        text-align: center;
+                        .stars {
+                            font-size: 12px;
+                            padding: 5px;
+                            color: $color-stars;
+                            .star{
+                                .items{
+                                    padding: 2px;
+                                }
+                            }
+                          }
+                          .title {
+                            color: darken($color-light, 60);
+                            font-size: 14px;
+                          }
+                      
+                          .price {
+                            font-weight: 600;
+                            font-size: 18px;
+                            color: $color-dark;
+                          }
+                    }
+                }
+                
+            }
+            .col3{
+                max-width: 31.333%;
+                .item{
+                    &:nth-child(1){
+                        border-bottom: lighten($color: $color-dark, $amount: 70) solid 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+.item{
+    overflow: hidden;
+    &:hover{
+        .pic{
+            animation: ScaleUp 1s ease ;
+        }
+    }
+    .pic{
+
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        text-align: center;
+        .stars {
+            font-size: 12px;
+            padding: 5px;
+            color: $color-stars;
+            .star{
+                .items{
+                    padding: 2px;
+                }
+            }
+          }
+          .title {
+            color: darken($color-light, 60);
+            font-size: 14px;
+          }
+      
+          .price {
+            font-weight: 600;
+            font-size: 18px;
+            color: $color-dark;
+          }
+    }
+}
+@keyframes ScaleUp {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@media only screen and (max-width: 770px){
+.best{
+    .container{
+        .body{
+            .col1{
+                .item{
+                    &:nth-child(1){
+                        border: none;
+                    }
+                }
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                max-width: 100%;
+            }
+            .col2{
+                width: 100%;
+                max-width: 100%;
+                border: none;
+                .item-unique{
+                    .drawer{
+                        opacity: 1;
+                        top: 71% !important; 
+                        left: 31% !important;
+                    }
+                }
+            }
+            .col3{
+                .item{
+                    &:nth-child(1){
+                        border: none;
+                    }
+                }
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                max-width: 100%;
+            }
+        }
+    }
+}
+}
+@media only screen and (max-width: 994px){
+.best{
+    .container{
+        .body{
+            .col1,.col3{
+                .item{
+                    .content{
+                        .stars{
+                            .star{
+                                .items{
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .col2{
+                .item-unique{
+                    .drawer{
+                        top:64%;
+                        left:25%
+                    }
+                }
+            }
+        }
+    }
+}
+}

@@ -1,0 +1,38 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+.links{
+    background-color: $color-light;
+    .container{
+        .section{
+            text-align: center;
+            border-bottom: 1px solid darken($color-light, 20);
+            margin: 20px 0;
+            padding: 90px 0;
+            .svg {
+                height: 60px;
+                font-size: 14px;
+                &:hover{
+                  animation: ScaleUp 1s ease 1;
+                }
+              }
+              .bigtext {
+                padding: 10px 0;
+                font-weight: 600;
+                font-size: 20px;
+              }
+              .smalltext {
+                color: darken($color-light, 45);
+              }
+        }
+    }
+}
+@keyframes ScaleUp {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+  }

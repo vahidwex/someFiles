@@ -1,0 +1,127 @@
+<h1 mat-dialog-title class="b-800">place a bid on project</h1>
+<form (submit)="submitBid($event)">
+    <div class="p-4">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="bid-amount">Bid Amount</label>
+                <input name="bid_amount" id="bid-amount"
+                       [(ngModel)]="bidForm.budget" type="number"
+                       (keypress)="bidError.budget = ''"
+                       class="form-control"  placeholder="$." />
+                <div *ngIf="bidError.budget">
+                    <div class="color-red fs-12">
+                        {{ bidError.budget }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="duration">Duration</label>
+                <input name="bidDuration" type="number"
+                       class="form-control" id="duration"
+                       [(ngModel)]="bidForm.bidDuration"
+                       (keypress)="bidError.bidDuration = ''"
+                       placeholder="number of Days" />
+                <div *ngIf="bidError.bidDuration">
+                    <div class="color-red fs-12">
+                        {{ bidError.bidDuration }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="duration">Bid cost</label>
+                <input name="bidDuration" type="text"
+                       class="form-control" id="duration"
+                       disabled
+                       value="2 bids"
+                       (keypress)="bidError.bidDuration = ''"
+                       placeholder="number of Days" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="bid-description">Description</label>
+                <textarea class="my-input mh-120"
+                          [(ngModel)]="bidForm.bidDescription"
+                          (keypress)="bidError.bidDescription = ''"
+                          id="bid-description" name="bid_description"
+                          [minlength]="50" [maxlength]="5000"></textarea>
+                <div *ngIf="bidError.bidDescription">
+                    <div class="color-red fs-12">
+                        {{ bidError.bidDescription }}
+                    </div>
+                </div>
+                <small id="bid-amount-help" class="form-text text-muted">
+                    {{ bidForm.bidDescription?.length || "0" }} / 5000
+                </small>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 b-800">
+                Suggest a Milestone
+            </div>
+        </div>
+        <div class="row" *ngFor="let item of bidForm.milestones; let i = index"
+             [attr.id]="'milestoneRow-' + i">
+            <div class="col-md-5 form-group">
+                <label>Description</label>
+                <textarea name="ml_description_{{i}}"
+                          id="ml-description-{{i}}"
+                          class="form-control milestone-item-desc"
+                          placeholder=""
+                          [(ngModel)]="item.description"
+                          rows="1"></textarea>
+            </div>
+            <div class="col-md-3 form-group">
+                <label>Amount</label>
+                <input name="ml_amount_{{i}}"
+                       id="ml-amount-{{i}}" type="text"
+                       [(ngModel)]="item.amount"
+                       class="form-control milestone-item-amount"
+                       placeholder="$." />
+            </div>
+            <div class="col-md-3 col-10 form-group">
+                <label>Duration</label>
+                <input name="ml_duration_{{i}}"
+                       id="ml-duration-{{i}}"
+                       [(ngModel)]="item.duration"
+                       type="text" class="form-control milestone-item-duration"
+                       placeholder="Days" />
+            </div>
+            <div class="col-md-1 col-2">
+                <button type="button" class="btn btn-danger mt-32"
+                        (click)="removeMilestone(i)">
+                    <i class="fa fa-times clickable-orange" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="bidError.milestones">
+            <div class="col-12">
+                <div class="color-red fs-12">
+                    {{ bidError.milestones }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a (click)="addMilestone()">
+                <span class="clickable-orange">
+                    <i class="fa fa-plus-square fs-20" aria-hidden="true"></i>
+                    &nbsp; add milestone
+                </span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <small class="text-muted form-text"> When the client accept you will receive an offer for find
+                    confirmation
+                </small>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <button class="btn bg-clickable-orange color-white fs-17 br-10 justify-content-end d-flex mr-3" type="submit">submit bid</button>
+        </div>
+    </div>
+</form>

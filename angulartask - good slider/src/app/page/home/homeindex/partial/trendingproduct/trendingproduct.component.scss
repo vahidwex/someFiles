@@ -1,0 +1,98 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+.trend{
+    padding: 70px 0;
+    .bigtext{
+        color: $color-dark;
+        font-size: 30px;
+        font-weight: 900;
+    }
+    background-color: $color-light;
+    .container{
+        .section{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            &:hover{
+                .drawer{
+                    opacity: 1;
+                }
+            }
+            .image{
+
+            }
+            .drawer{
+                display: block;
+                position: absolute;
+                top: 290px;
+                right: 80px;
+                opacity: 0;
+                margin-bottom: 10px;
+                @extend %shadow;
+                @extend %radius;
+                width: 150px;
+                height: 45px;
+                transition: 1s ease all;
+                .items{
+                    .link{
+                        font-size: 18px;
+                        display: inline-block;
+                        padding: 10px 8px 10px 8px;
+                        color: darken($color-light, 60);
+                        &:hover {
+                            color: $color-theme-primary;
+                          }
+                    }
+                }
+            }
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .stars {
+                    font-size: 12px;
+                    padding: 5px;
+                    color: $color-stars;
+                    .star{
+                        .item{
+                            padding: 2px;
+                        }
+                    }
+                  }
+                  .title {
+                    color: darken($color-light, 60);
+                    font-size: 14px;
+                  }
+              
+                  .price {
+                    font-weight: 600;
+                    font-size: 18px;
+                    color: $color-dark;
+                  }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .trend{
+        .container{
+            .section{
+                .drawer{
+                    top: 350px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 990px){
+    .trend{
+        .container{
+            .section{
+                .drawer{
+                    top: 280px;
+                }
+            }
+        }
+    }
+}

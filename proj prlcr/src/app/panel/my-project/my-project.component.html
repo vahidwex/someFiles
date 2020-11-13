@@ -1,0 +1,173 @@
+<div class="container">
+    <div id="top" style="height: 0px; margin-bottom: 36px"></div>
+    <div class="row bt-portlet">
+        <div class="col-md-4" style="margin-bottom: 36px;">
+            <div class="p-lancer-color col-md-12">
+                <div class="row"
+                     [ngClass]="{
+                            'default-color': !allSelected,
+                            'selected-color': allSelected
+                            }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="getprojects('all'); allSelected=true; inProgressSelected=false; draftSelected=false; completedSelected=false;canceledSelected = false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">All</div>
+                    </div>
+                    <div *ngIf="allSelected">
+                        <i class="fa fa-chevron-right align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                            'default-color': !inProgressSelected,
+                            'selected-color': inProgressSelected
+                            }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="getprojects('created'); allSelected=false; inProgressSelected=true; draftSelected=false; completedSelected=false;canceledSelected = false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Created</div>
+                    </div>
+                    <div *ngIf="inProgressSelected">
+                        <i class="fa fa-chevron-right align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                            'default-color': !draftSelected,
+                            'selected-color': draftSelected
+                            }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="getprojects('in progress'); allSelected=false; inProgressSelected=false; draftSelected=true; completedSelected=false;canceledSelected = false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">In progress</div>
+                    </div>
+                    <div *ngIf="draftSelected">
+                        <i class="fa fa-chevron-right align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                            'default-color': !completedSelected,
+                            'selected-color': completedSelected
+                            }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="getprojects('completed'); allSelected=false; inProgressSelected=false; draftSelected=false; completedSelected=true;canceledSelected = false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Completed</div>
+                    </div>
+                    <div *ngIf="completedSelected">
+                        <i class="fa fa-chevron-right align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                            'default-color': !canceledSelected,
+                            'selected-color': canceledSelected
+                            }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="getprojects('canceled'); allSelected=false; inProgressSelected=false; draftSelected=false; completedSelected=false; canceledSelected = true;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Canceled</div>
+                    </div>
+                    <div *ngIf="canceledSelected">
+                        <i class="fa fa-chevron-right align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="job-card row" [ngClass]="{'hover_hint': firstTime}" (click)="job-card-select"
+                 style="margin-bottom: 15px" *ngIf="(projects && (projects.length == 0))">
+                <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
+                    <!-- <div class="my-close-holder" style="padding-bottom: 170px;">
+                        <i class="fa fa-ellipsis-h my-bookmark" aria-hidden="true" (click)="$event.stopPropagation();" data-toggle="dropdown"></i>
+                    </div> -->
+                    <div class="col-md-12" style="margin-bottom: 10px">
+                        <div class="row">
+                            <div class="job-card-title col-md-8" style="padding: 0px;">
+                                No projects here !
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="job-card row" [ngClass]="{'hover_hint': firstTime}" (click)="job-card-select"
+                 style="margin-bottom: 15px" *ngFor="let project of projects" (click)="collapse(project.project_id)">
+                <div style="height:0px; width:100%" [id]="project.project_id"></div>
+                <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
+                    <div class="my-close-holder" style="padding-bottom: 170px;">
+                        <div class="dropdown"
+                             style="position: sticky;top: 120px;right: 0px;width: 45px;height: 39px;cursor: pointer;z-index: 982;">
+                            <div class="my-bookmark" (document:click)="closeDropDown(project.project_id)"
+                                 aria-hidden="true"
+                                 (click)="$event.stopPropagation(); openDropDown(project.project_id);"
+                                 data-toggle="dropdown">
+                                <i class="fa fa-ellipsis-h"
+                                   style="font-size: var(--font-size-20);align-self:center;"></i>
+                            </div>
+                            <div class="dropdown-content" [id]="'dropdown-content' + project.project_id">
+                                <a *ngIf="project.status !='created'"
+                                   [routerLink]="'/panel/workdiary/'+project.project_id">Workdiary</a>
+                                <a [routerLink]="'/projects/'+project.project_id">View project</a>
+                                <a *ngIf="project.status == 'created'" (click)="editProject(project)">Edit project</a>
+                                <a *ngIf="project.status != 'in progress'" (click)="viewProjectBids(project.project_id)">View bids</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-close-holder" style="padding-top:48px">
+                        <div class="my-close" *ngIf="isCollapsed(project.project_id)"
+                             (click)="closeAll(project.project_id);$event.stopPropagation();">
+                            <i class="fa fa-times" style="font-size: var(--font-size-20); align-self:center;"
+                               aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: 10px">
+                        <div class="row">
+                            <div class="job-card-title col-md-8" style="padding: 0px;">
+                                {{project.title}}
+                            </div>
+                            <div class="job-title-duration col-md-3" style="padding: 0px;">
+                                ${{project.min_budget}} - ${{project.max_budget}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row" style="margin-bottom: 10px">
+                        <div class="job-description"
+                             [ngClass]="{'description_full': collapsed[project.project_id],'description_hide': !collapsed[project.project_id]}">
+                            {{project.project_description}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 row skill-margin"
+                         [ngClass]="{'skills_full': collapsed[project.project_id],'skills_hide': !collapsed[project.project_id]}">
+                        <div class="skills" *ngFor="let projectskill of project.project_skills">
+                            {{projectskill.value}}
+                        </div>
+                    </div>
+                    <div *ngIf="isCollapsed(project.project_id)" class="row col-md-12">
+                        <div *ngFor="let file of project.files" style="margin-bottom: 25px"
+                             class="col-md-12 row filedownload"
+                             (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+file.urlPath);"
+                             style="cursor: pointer">
+                            <i class="fa fa-paperclip filedownload-clip" aria-hidden="true"></i>
+                            <div class="filedownload">{{file.filename}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-add-card #addCard (changes)="onOpenBidsClick($event)"
+              [initData]="{projectId: selectedProject}"
+              title="Add Card"></app-add-card>

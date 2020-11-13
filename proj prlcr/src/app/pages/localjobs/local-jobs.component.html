@@ -1,0 +1,20 @@
+<div class="my-3 fs-30 container mainstyle" style="height: 200px;
+            align-self: center;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            background-color: var(--dark-color);
+            color:
+            white;
+            line-height: 200px !important;
+            background-image: linear-gradient(to left, var(--dark-color),
+#f09a18);"><h1>Local Jobs</h1></div>
+<div class="container terms-page">
+    <div class="row terms-item align-items-center justify-content-start">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-1" *ngFor="let country of countries;let i = index;">
+            <span class="position-absolute" *ngIf="i == 0 || countries[i-1].name[0] != countries[i].name[0]" style="margin-left: -15px;margin-top: -7.5px;
+            color: var(--dark-color);">{{countries[i].name[0]}}</span>
+            <a class="text-decoration-none color-black" [routerLink]="'/search/country/' + country.code" [title]="'Projects in '+ country.name + ' | perfectlancer'">{{country.name}}</a>
+        </div>
+    </div>
+</div>

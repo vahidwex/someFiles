@@ -1,0 +1,76 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.products{
+  background-color: rgba($color: $color-light, $alpha: 0.84);
+}
+.header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .text-end{
+    text-align: end;
+  }
+  .imagez{
+      max-width: 50px;
+      max-height: 50px;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .descriptionSk{
+      width: 600px;
+      line-height: 30px;
+      font-size: 15px;
+  }
+  .fw-600{
+    font-weight: 600;
+  }
+  .HoverShadow{
+      &:hover{
+          text-shadow: 0px 0px 1px $color-theme-primary;
+
+      }
+  }
+  .image{
+    height: 70%;
+  }
+  .content{
+    height: 30%;;
+  }
+  .pointer{
+    cursor: pointer;
+  }
+  .img{
+    max-width: 100%;
+  }
+  .default{
+    cursor: default;
+}
+.wrapper{
+  max-height: 390px;
+}
+.card{
+    height: 100%;
+    padding: 10px;
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+    border: solid 1px darken($color-theme-secondary,15);
+    box-shadow: 0px 0px 21px -9px rgba($color: $color-dark, $alpha: .6)
+  }
+  .stars {
+    font-size: 12px;
+    padding: 5px;
+    color: $color-stars;
+
+    .star {
+      .item {
+        
+        font-size: 11px;
+        padding: 2px;
+      }
+    }
+  }

@@ -1,0 +1,88 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+
+.trend {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .bigtext {
+    color: $color-dark;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .header {
+    .buttons {
+      margin-bottom: 20px;
+
+      .button {
+        padding: 10px 20px;
+        font-size: 19px;
+        color: $color-dark;
+        cursor: pointer;
+
+        &.clicked {
+          color: $color-theme-primary;
+        }
+      }
+    }
+  }
+
+  .container {
+
+    .section {
+      background-color: $color-light;
+
+      .image {}
+
+      .content {
+        height: fit-content;
+
+        .stars {
+          font-size: 12px;
+          padding: 5px;
+          color: $color-stars;
+
+          .star {
+            .item {
+              font-size: .9em;
+              padding: 2px;
+            }
+          }
+        }
+
+        .title {
+          color: darken($color-light, 60);
+          font-size: 14px;
+        }
+
+        .price {
+          font-weight: 600;
+          font-size: 18px;
+          color: $color-dark;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .trend {
+    .container {
+      .section {
+        .content {
+          .stars {
+            .star {
+              .item {
+                font-size: .8em;
+                padding: 0;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

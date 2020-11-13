@@ -1,0 +1,171 @@
+<div class="container">
+    <div id="top" class="mb-4 no-height"></div>
+    <div class="row mb-1 mx-0">
+
+        <div class="col-md-4">
+            <div class="back-white br-10 bg-white mb-4 col-md-12">
+                <div class="col-md-12 mx-0 px-0">
+                    <h2 class="search-button br-10 bg-clickable-orange d-flex justify-content-center align-self-center lh-2-3 fs-20 normal-txt color-white clickable b-600 fs-100 b-600 lh-2-7 my-4 clickable text-center" *ngIf="user?.role == 'employer'" (click)="postProjectLikeThis()">
+                        Post a project like this
+                    </h2>
+                    <div class="text-center" *ngIf="!user">
+                        <div class="text-center my-3 font-weight-bold">
+                            Sign up to bid on this project
+                        </div>
+                        <form (submit)="onSignUpClick($event)">
+                            <input type="email" class="second" name="email"
+                                [(ngModel)]="registerModel.email"
+                                (keypress)="registerError.email = ''"
+                                placeholder="Email" id="email" />
+                            <div class="errors-holder" *ngIf="registerError.email">
+                                <div class="errors">{{ registerError.email }}</div>
+                            </div>
+                            <input type="password" id="password" class="third"
+                                [(ngModel)]="registerModel.password"
+                                (keypress)="registerError.password = ''"
+                                name="password" placeholder="Password" />
+                            <div class="errors-holder" *ngIf="registerError.password">
+                                <div class="errors">{{ registerError.password }}</div>
+                            </div>
+                            <div class="create fs-12 my-2 px-3">
+                                Creating an account means that you accept our <a title="Terms of Services" class="terms" target="_blank" href="/terms">Terms of Services,</a><a title="Privacy Policy" class="terms-2" target="_blank" href="/terms"> Privacy Policy</a>, and our Default Notification Settings.
+                            </div>
+                            <input type="submit" style="width: 80%;padding-top: 15px !important;padding-bottom: 15px !important;" class="fourth btn-size mb-3 mt-1 px-0" value="Register">
+                            <div id="formFooter fs-16 b-400">
+                                Already a member?
+                                <a title="Login now!" routerLink="/login" class="clickable-orange text-decoration-none">Login Now</a>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+                <div class="row mx-3">
+                    <hr class="col-md-12 p-0 mt-0 w-100" *ngIf="otherProjects && otherProjects.length > 1">
+                </div>
+                <div class="col-md-12 mb-3" *ngIf="otherProjects && otherProjects.length > 1">
+                    <h3 class="fs-17 font-weight-bold normal-txt text-left color-black lh-1-29 ">
+                        Other projects from this employer
+                    </h3>
+                </div>
+                <div *ngIf="otherProjects && otherProjects.length > 1">
+                    <h3 class="col-md-12" *ngFor="let otherproject of otherProjects">
+                        <a [title]="otherproject.title" class="fs-17 normal-txt lh-2-3 text-left clickable color-black mb-3"
+                           *ngIf="otherProjects.length != 1 && (otherproject.project_id != projects[0].project_id)"
+                           [routerLink]="'/projects/'+otherproject.project_id">
+                            {{otherproject.title}} ${{otherproject.min_budget}} - ${{otherproject.max_budget}}
+                        </a>
+                    </h3>
+                </div>
+                <hr *ngIf="(otherProjects && otherProjects.length > 1) || !user"/>
+                <div class="text-center my-3 shares">
+                    <share-button [theme]="'modern-dark'"
+                                  [button]="'facebook'"
+                                  [size]="1"
+                                  [url]="site_url + router.url"
+                    ></share-button>
+                    <share-button [theme]="'modern-dark'"
+                                  [button]="'twitter'"
+                                  [size]="1"
+                                  [url]="site_url + router.url"
+                    ></share-button>
+                    <share-button [theme]="'modern-dark'"
+                                  [button]="'email'"
+                                  [size]="1"
+                                  [url]="site_url + router.url"
+                    ></share-button>
+                    <share-button [theme]="'modern-dark'"
+                                  [button]="'linkedin'"
+                                  [size]="1"
+                                  [url]="site_url + router.url"
+                    ></share-button>
+                    <share-button [theme]="'modern-dark'"
+                                  [button]="'copy'"
+                                  [size]="1"
+                                  [url]="site_url + router.url"
+                    ></share-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="job-card br-10 bg-white row mb-3"
+                 *ngFor="let project of projects">
+                <div class="no-height w-100" [id]="project.project_id"></div>
+                <div class="col-md-12 px-6">
+                    <div class="my-close-holder position-absolute h-100 pb-100">
+                        <div class="my-bookmark lh-2 bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable fs-20 color-white br-l-10 z-970" *ngIf="bookmarks.includes(project.project_id)"
+                            (click)="unbookmarkProject(project.project_id);$event.stopPropagation();">
+                           <i class="fas fa-bookmark fs-20 align-self-center"></i>
+                       </div>
+                       <div class="my-bookmark lh-2 bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable fs-20 color-white br-l-10 z-970" *ngIf="!bookmarks.includes(project.project_id)"
+                            (click)="bookmarkProject(project.project_id);$event.stopPropagation();">
+                           <i class="far fa-bookmark fs-20 align-self-center"></i>
+                       </div>
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <div class="row">
+                            <h1 class="fs-17 normal-txt text-left color-black h-auto overflow-hidden mt-4 font-weight-bold col-md-8 p-0">
+                                {{project.title}}
+                            </h1>
+                            <h3 class="job-title-duration mt-4 fs-17 normal-txt text-left ml-2 color-70 col-md-3 p-0">
+                                ${{project.min_budget}} - ${{project.max_budget}}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row mb-2">
+                        <h2 class="job-description fs-17 normal-txt mt-2 text-left color-black h-auto overflow-hidden">
+                            {{project.project_description}}
+                        </h2>
+                    </div>
+                    <div class="col-md-12 row skill-margin mb-4 overflow-hidden">
+                        <h3 class="skills mt-2 d-flex flex-row br-7 b-400 fs-16 h-auto lh-27 overflow-hidden" *ngFor="let skill of project.project_skills">
+                            {{ skill.value }}
+                        </h3>
+                    </div>
+                    <div class="row col-md-12 mb-5">
+                        <div *ngFor="let file of project.files" class="col-md-12 row filedownload fs-17 normal-txt b-600 text-left lh-1-5 mr-1 clickable"
+                             (click)="newWindowOpen(fileBaseAddress + file.urlPath);">
+                            <i class="fa fa-paperclip filedownload-clip" aria-hidden="true"></i>
+                            <div class="filedownload">{{ file.filename }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 justify-content-end mt-20">
+                        <div class="row">
+                            <div class="col-md-12 mt-45 mb-2" class="fs-17 normal-txt b-600 w-100 text-left color-black">
+                                About Employer:
+                            </div>
+                            <div class="col-md-2">
+                                <div class="rate normal-txt fs-17 text-left color-black"><i class="fa fa-star fs-17 normal-txt text-left clickable-orange lh-1-46 mr-1" aria-hidden="true"></i>{{project.rate ? project.rate : 'N/A'}}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="rate normal-txt fs-17 text-left"><i class="fa fa-flag normal-txt fs-17 lh-1-46 text-center color-black mr-1" aria-hidden="true"></i>{{project.country}}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                    <div *ngIf="project.payment_status == 1" class="rate fs-17 normal-txt text-left clickable-orange">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1"
+                                            aria-hidden="true"></i>Verified
+                                    </div>
+                                    <div *ngIf="project.payment_status == 0" class="rate fs-17 normal-txt text-left color-black color-0f">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1 color-black"
+                                            aria-hidden="true"></i>Not verified
+                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="search-button br-10 bg-clickable-orange d-flex justify-content-center align-self-center fs-100 normal-txt color-white clickable b-600 bid-small-btn lh-1-5 fs-16 text-center mt-0 mb-4 mw-120 overflow-hidden" *ngIf="user?.role == 'freelancer'"
+                                     (click)="openDialog(project)">
+                                    Bid on this project
+                                </div>
+                                <div class="search-button br-10 bg-clickable-orange d-flex justify-content-center align-self-center fs-100 normal-txt color-white clickable b-600 post-small-btn lh-1-5 fs-16 text-center mt-0 mb-4 mw-120 overflow-hidden" *ngIf="user?.role != 'freelancer'"
+                                     (click)="postProjectLikeThis()">
+                                    Post project like this
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

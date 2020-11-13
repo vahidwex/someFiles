@@ -1,0 +1,195 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+
+.navigation{
+        box-shadow: 0 31px 35px -43px black;
+        height: 100px;
+        background-color:darken($color-light,5);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.advance-list-item{
+    font-size:25px;
+    color: darken($color-theme-secondary,50);
+}
+.image-logo{
+    height: 100px;
+}
+
+.hover-primary{
+    transition: 0.8s ease all;
+    &:hover{
+        color: $color-theme-primary;
+    }
+}
+.example-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background-color: #0000007d;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+  .hide{
+      visibility: hidden;
+  }
+  .list{
+    margin-left: 130px;
+    width: 400px;
+    .items{
+        padding-top: 5px;
+        font-weight: 600;
+        .item{
+            .link{
+                color: darken( $color-light,50);
+                &:hover{
+                    color: $color-theme-primary;
+                    text-decoration: none;
+                }
+            }
+            .wrapper {
+                direction: rtl;
+                 .line-anim {
+                   height: 2px;
+                   width: 0;
+                   background-color: $color-theme-primary;
+                   transition: .7s ease all;
+                 }
+       
+               }
+       
+            &:hover {
+                .wrapper {
+                    .line-anim {
+                        width: 100%;
+                        transition: .7s ease all;
+                    }
+                }
+            }
+        }
+    }
+}
+.button{
+    font-size: 22px;
+    cursor: pointer;
+    color: $color-theme-primary;
+}
+.badgeHolder{
+    position: relative;
+    
+    .badge{
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+        background-color: #1596b6;
+        position: absolute;
+        top: -5px;
+        right: -9px;
+        line-height: 14px;
+        color: white;
+    }
+}
+.itemsz{
+        padding-top: 5px;
+        font-weight: 600;
+        .item{
+            cursor: pointer;
+            width: fit-content;
+            margin: 10px;
+            .link{
+                color: darken( $color-light,10);
+                &:hover{
+                    color:darken($color-theme-secondary,30);
+                    text-decoration: none;
+                }
+            }
+            .wrapper {
+                direction: rtl;
+                 .line-anim {
+                   height: 2px;
+                   width: 0;
+                   background-color: darken($color-theme-secondary,30);
+                   transition: .7s ease all;
+                 }
+       
+               }
+       
+            &:hover {
+                .wrapper {
+                    .line-anim {
+                        width: 100%;
+                        transition: .7s ease all;
+                    }
+                }
+            }
+        }
+    }
+    .example-sidenav{
+                        
+        width: 300px;
+        box-shadow: 0 0 19px 10px;
+        background: linear-gradient(78deg, #29478c 29%, #3a5f8a 52%, #011a35 100%);
+    }
+   .text{
+       color:$color-light;
+   }
+   .text-center{
+       text-align: center;
+   }
+   .pointer{
+       cursor:pointer;
+   }
+   .icon-list{
+        color: $color-light;
+        padding: 5px;
+        margin: 5px;
+   }
+@media only screen and (max-width: 1400px){
+    .drawer-button{
+        display:none;
+    }
+}
+
+@media only screen and (max-width: 970px){
+    .advance-list-item{
+        font-size: 15px;
+    }
+    .link{
+        font-size:14px;
+    }
+    
+}
+
+@media  only screen and (max-width: 770px){
+    .advance-list{
+        display:none;
+    }
+    .list{
+        display:none;
+    }
+    .drawer-button{
+        display:block;
+    }
+    
+}
+
+.fw-900{
+    font-weight: 900;
+}
+

@@ -1,0 +1,415 @@
+@import "../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.stars {
+    font-size: 12px;
+    padding: 5px;
+    color: $color-stars;
+    .star{
+        .item{
+            padding: 2px;
+        }
+    }
+  }
+.head{
+  .title{
+    border-bottom: 2px solid #666666;
+    padding-bottom: 3px;
+  }
+}
+.productdetails{
+    background-color: $color-light;
+}
+.fw-900{
+    font-weight: 900
+}
+.color-gray{
+  color: #666666;
+}
+.comment{
+  background: $color-light;
+  border-radius: 4px;
+}
+.svg {
+    height: 60px;
+    font-size: 14px;
+    &:hover{
+      animation: ScaleUp 1s ease 1;
+    }
+  }
+
+  .leftSectionStyle{
+      
+      border-radius: 6px;
+      box-shadow: 0px 0px 7px -2px #001b39;
+  }
+
+  .section{
+    border-bottom: solid 0.5px #d9d8d8;
+    width: 100%;
+    
+    
+    &:last-child{
+        border: none;
+    }
+  }
+  .bord{
+    border-top: 1px solid #e7dfdf;
+  }
+  .svg2{
+    height: 60px;
+    font-size: 14px;
+  }
+  .dots{
+    padding: 20px 0;
+  }
+  .header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+  }
+  .text-end{
+    text-align: end;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .fw-600{
+    font-weight: 600;
+  }
+  .HoverShadow{
+      &:hover{
+          text-shadow: 0px 0px 1px $color-theme-primary;
+
+      }
+  }
+  .pointer{
+    text-decoration:none;
+    cursor: pointer;
+  }
+  .plus,.minus{
+
+    color: darken($color-theme-secondary,45);
+    transition: .8 ease all;
+    &:hover{
+      color: $color-theme-primary;
+    }
+  }
+  .darken-primary{
+    color:darken($color-theme-primary,15)
+  }
+  .img{
+    max-width: 100%;
+  }
+  .describe-head{
+    height: 20px;
+  }
+  .educationalSources{
+    box-shadow: 0px 0px 7px -2px #001b39;
+    border-radius: 7px;
+  }
+
+  .featureimg{
+    width: 100%;
+
+  }
+  .left{
+    border-right: 1.5px solid #f0f0f0;
+    height: fit-content;
+    position: relative;
+    min-height: 500px;
+  }
+  .color-like{
+    color:$color-pink;
+  }
+  .vl{
+    align-self: center;
+  }
+  .fsNorm{
+    font-size: 0.9em !important;
+  }
+  .fsButtonBuy{
+    font-size: 0.8em;
+  }
+  .color-default{
+    color:darken($color: $color-theme-secondary, $amount: 50)
+  }
+  .fs-13{
+    font-size:13px;
+  }
+  .oprators{
+    flex-wrap: nowrapS;
+  }
+  .height-fit{
+    height: fit-content;
+  }
+  .link{
+    text-decoration: none;
+    color: #767676;
+    font-weight: 200;
+  }
+  .fs-19{
+    font-size: 19px;
+  }
+  .icon-symbol{
+    font-size: 2em;
+    color: #506f8f;
+  }
+  .colorBuySection{
+    color: #506f8f;
+  }
+  .w-90{
+    width: 90%;
+  }
+  .back-light{
+    background-color:$color-light;
+  }
+  .offPrice{
+    position: relative;
+
+    &::after{
+      content: "";
+      position: absolute;
+      top:50%;
+      left: 15%;
+      height: 0;
+      width: 70%;
+      border: solid 0.5px black;
+    }
+  }
+  .buyed{
+    opacity: 50%;
+    cursor: not-allowed;
+  }
+  .button-basket{
+    position: relative;
+  }
+  
+  .countedProd{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    background-color: #5aa8a4;
+    color: #ffffff;
+    line-height: 21px;
+  }
+  .color-title{
+    color:darken($color-light,55)
+  }
+  .fsFeature{
+    font-size: 0.9em;
+  }
+  line{
+    font-weight: 600;
+    color: $color-theme-primary;
+  }
+
+  .featureimgs{
+    max-width: 30px;
+    max-height: 30px;
+  }
+  .w-fit{
+    width: fit-content;
+  }
+  .unique-line{
+    border-bottom: 1px solid #dddddd;
+    &:last-child{
+      border: none;
+    }
+  }
+  .figure-2{
+    border: solid 1px #8080808c;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 11px 2px rgba(0, 0, 0, 0.11);
+  }
+  .viewLike{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .view,.likes{
+    align-self: center;
+  }
+  .figure{
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+    border: solid 1px darken($color-theme-secondary,15);
+  }
+  .fw-500{
+    font-weight: 500;
+  }
+  .color-primary{
+    color: $color-theme-primary;
+  }
+  .descriptiontext{
+    color: darken($color-theme-primary,10);
+  }
+  .default{
+    cursor: default;
+}
+.dirLtr{
+  direction: ltr;
+}
+.disable{
+  opacity: 0.30;
+  cursor: not-allowed;
+}
+.formedImage{
+    box-shadow: 0 0 27px -12px $color-dark;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+}
+.paragraph{
+  line-height: 30px;
+  font-size: 15px;
+}
+.fs-13{
+  font-size: 13px;
+}
+.offperx{
+  direction: ltr;
+  align-self: center;
+  font-size: 20px;
+  letter-spacing: 0px;
+
+}
+.offletter{
+  color: $color-pink;
+  font-size: 13px;
+}
+.color-pink{
+  color: $color-pink;
+}
+.fs-16{
+  font-size:16px;
+}
+.darken-color-primary{
+  color: darken($color-theme-primary,10);
+  font-weight: 700;
+}
+.active{
+  transition:0.4s ease all ;
+  transform: scale(1.1);;
+  color: $color-theme-primary;
+  // font-weight: 600;
+}
+.template{
+  transition: 0.4s ease all;
+  .wrapper {
+    direction: rtl;
+     .line-anim {
+       height: 2px;
+       width: 0;
+       background-color: $color-theme-primary;
+       transition: .7s ease all;
+     }
+
+   }
+
+&:hover {
+    .wrapper {
+        .line-anim {
+            width: 100%;
+            transition: .7s ease all;
+        }
+    }
+} 
+}
+@media only screen and (max-width: 960px) {
+  .textz{
+    font-size: 13px;;
+    font-weight: 600;
+  }
+
+}
+
+$demo-blue: #005BA6;
+$demo-gray: #D6D6D6;
+$demo-placeholder: #C7C7C7;
+$demo-border: #E6E6E6;
+
+$border-width: 3px;
+@mixin form-input-select(){
+  
+    color: $demo-blue;
+    display: block;
+    border-radius:7px;
+    box-shadow: none;
+    font-size: 16px;
+    margin-top: 9px;
+    margin-bottom: 15px;
+    width: 100%;
+    
+    @-moz-document url-prefix() {
+      border-right: $border-width solid $demo-border;
+      
+      &:hover {
+        border-right: $border-width solid $demo-blue;
+      }
+    }
+  
+    &:hover {
+  
+      .select {
+        box-shadow: 0 2px 3px rgba($demo-blue, 0.1) inset;
+        border-color: $demo-blue;
+  
+        // outline is critical but when we are hovering the div has the border already.
+        &:focus {
+          outline-color: transparent;
+        }
+        
+      }
+  
+    }
+  
+    // Make sure you set all padding, borders on this select and not the parent div.
+    // this is mainly for :focus and tabbing.
+  
+    .select {
+      width: 100%;
+      border: $border-width solid $demo-border;
+      border-radius:7px;
+      font-weight: 400;
+      color: inherit;
+      padding: 11px 15px;
+      line-height: normal;
+      transition: border-color 0.2s ease,
+                  outline 0.2s ease;
+  
+  
+      // we really need this for the tabbers
+      // causes double borders though
+      &:focus {
+        box-shadow: 0 3px 4px rgba($demo-blue, 0.3) inset;
+        // outline is critical for usability
+        outline: $border-width solid $demo-blue;
+        outline-offset: -#{$border-width}; //offset vs width
+      }
+  
+      &[disabled], &:disabled{
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+  
+      // we use invalid like a placeholder
+      // 2019-03-05 added not selector for firefox and ie
+      &:not(:focus):invalid {
+        color: $demo-placeholder;
+      }
+  
+    }
+  }
+  
+  // Show the function
+  [include*="form-input-select()"] {
+    @include form-input-select();
+  }

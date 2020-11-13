@@ -1,0 +1,97 @@
+  .nav-link{
+      border-bottom: var(--dark-color) 2px solid;
+      opacity: 0.56;
+      height: 46px;
+  }
+  .right-card-body{
+    width: 177px;
+    min-height: 50.1px;
+    border-radius: 10px;
+  }
+  .help{
+    margin-top: 56px;
+    margin-bottom: 35px;
+  }
+  .how-img{
+    height:525.5px;
+  }
+  a.active{
+      background-color: transparent !important;
+      border-bottom: var(--clickable-orange) 2px solid;
+      color:var(--clickable-orange) !important;
+      border-radius: 0px !important;
+      font-weight: bold;
+  }
+.desc{
+  white-space: pre-line;
+}
+/* FAQ */
+
+p {
+    color: #868585;
+    font-size : 1rem;
+    text-align: justify;
+}
+
+.terms-header {
+    text-transform: uppercase;
+    font-size: var(--font-size-16);
+    margin-bottom: 24px;
+    margin-top: 16px;
+}
+a:hover{
+  color:var(--clickable-orange);
+}
+.active{
+  background-color:var(--clickable-orange);
+}
+.badge{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.border-bottom{
+  border-bottom: grey 1px solid;
+}
+.panel-title:hover{
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+p {
+  display: block;
+  white-space: pre-line !important;
+}
+.collapsed{
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.notcollapsed{
+  background-color: white;
+}
+.panel-body{
+  background-color: rgba(0, 0, 0, 0.02) !important;
+  white-space: pre-line !important;
+  font-family: roboto !important;
+}
+.lh-20{
+  line-height: 20px !important;
+}
+
+.card-body {
+    padding: 68px 40px;
+}
+
+.terms-element {
+    border-left: 4px solid;
+    border-radius: 6px;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.signup-banner{
+  background-color: #8079cc;
+  border-radius: 10px;
+  height: 150px;
+  background-image: url('../../../assets/images/banner-country.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+  justify-content: space-evenly !important;
+}

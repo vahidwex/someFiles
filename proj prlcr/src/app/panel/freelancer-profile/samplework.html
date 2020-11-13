@@ -1,0 +1,101 @@
+<div mat-dialog-title style="height: 46.5px; border-bottom: grey solid 1px; font-size: var(--font-size-20);
+font-weight: bold;
+font-style: normal;
+font-stretch: normal;
+letter-spacing: normal;
+text-align: center;
+color: #000000;">What are you working on?
+</div>
+<div mat-dialog-content class="row justify-content-center" style="display: flex;">
+    <input type="file" #file style="display: none" (change)="onFilesAdded()"/>
+    <div class="row justify-content-center">
+        <div class="col-md-6 justify-content-center" style="display: flex; flex-direction: column; cursor: pointer;"
+             (click)="addFiles()">
+            <img src="../../../assets/cloud-storage-uploading-option@3x.png" alt="" style="width: 118.6px;
+          height: 87px;
+          align-self: center;
+          object-fit: contain;">
+            <div style="font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          letter-spacing: normal;
+          text-align: center;
+          color: #707070;">
+                Browse to upload file
+                (up to 25 Mb)
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div *ngFor="let file of files">
+                <h4 class="inline-middle">{{file.name}}</h4>
+                <div class="inline-middle">
+                    <mat-progress-bar *ngIf="progress && !uploadedFile" mode="determinate"
+                                      [value]="progress[file.name].progress | async"></mat-progress-bar>
+                </div>
+                <div class="inline-middle float-right">
+                    <div class="inline-middle" *ngIf="uploadedFile">Completed</div>
+                    <span (click)="removeFile()"><i class="fa fa-times" aria-hidden="true"
+                                                    style="margin-left: 10px; cursor: pointer;"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        Title
+    </div>
+    <div class="col-md-12">
+        <input
+                (blur)="blurtitle = true"
+                style="
+      border-radius: 10px;
+      border: solid 1px #c3c3c3;
+      background-color: #ffffff;
+      width: 100%;
+      padding-left: 22px;
+      padding-right: 22px;
+      margin-top: 10px;
+      height: 49px;
+      margin-bottom: 10px;"
+                [(ngModel)]="newsampletitle" />
+    </div>
+    <div class="col-md-12" *ngIf="newsampletitle.length < 9 && blurtitle" style="color: red;
+  font-size: var(--font-size-12) !important;">
+        Title must be atleast 10 characters.
+    </div>
+    <div class="col-md-12">
+        Description
+    </div>
+    <div class="col-md-12">
+        <textarea
+                (blur)="blurdesc = true"
+                style="
+        border-radius: 10px;
+        border: solid 1px #c3c3c3;
+        background-color: #ffffff;
+        width: 100%;
+        padding-left: 22px;
+        padding-right: 22px;
+        margin-top: 10px;
+        height: 115px;"
+                [(ngModel)]="newsampledescription"></textarea>
+    </div>
+</div>
+<div mat-dialog-actions class="row justify-content-end" style="padding: 0 24px;">
+    <div class="col-md-4" style="
+  height: 49px;
+  border-radius: 10px;
+  background-color: var(--clickable-orange);
+  font-size: var(--font-size-17);
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  line-height: 2.75;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 10px 0px;" (click)="uploadWorkSample($event)">
+        Upload
+    </div>
+</div>

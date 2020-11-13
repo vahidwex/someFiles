@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;overflow-x: hidden };
+
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css";
+@import './assets/css/normalize.css';
+@import './assets/css/fontawesome.css';
+@import './assets/scss/basic.scss';
+@import './assets/scss/style.scss';

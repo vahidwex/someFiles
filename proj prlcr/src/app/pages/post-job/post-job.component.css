@@ -1,0 +1,52 @@
+.post-job-card{
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.16);
+}
+.mw-163{
+    min-width: 163px;
+}
+.my-input{
+    border: 1px solid #EEEEEE;
+    outline: 0;
+    -webkit-appearance: none;
+    height: 49px;
+}
+.small-description{
+    white-space: pre-line;   
+}
+.dotted-border{
+    border: #EEEEEE 1px dotted;
+}
+.upload-btn{
+    border: 1px solid var(--clickable-orange);
+	outline: 0;
+}
+.my-btn{
+    white-space: nowrap;
+}
+.next-btn{
+    white-space: nowrap;
+    height: 49px;
+}
+.suggested-result{
+    text-decoration: underline;
+}
+.my-dropdown{
+  border: solid 1px var(--clickable-orange);
+  height: 49px;
+}
+.budget-title{
+    align-self: center;
+    text-align: left;
+}
+tag-input{
+    border: 1px solid #EEEEEE;
+    outline: 0;
+    -webkit-appearance: none;
+}
+::ng-deep #tag-input-input {
+    border-color: white !important;
+    box-shadow: none !important;
+}
+::ng-deep .ng-tns-c5-0.ng-trigger.ng-trigger-animation.ng-star-inserted{
+    border-radius: 7px !important;
+}

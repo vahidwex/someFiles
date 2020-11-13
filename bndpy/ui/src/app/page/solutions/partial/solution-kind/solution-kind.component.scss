@@ -1,0 +1,152 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.stars {
+    font-size: 12px;
+    padding: 5px;
+    color: $color-stars;
+    .star{
+        .item{
+            padding: 2px;
+        }
+    }
+  }
+
+.productdetails{
+    background-color: $color-light;
+}
+.fw-900{
+    font-weight: 900
+}
+.svg {
+    height: 60px;
+    font-size: 14px;
+    &:hover{
+      animation: ScaleUp 1s ease 1;
+    }
+  }
+
+  .leftSectionStyle{
+      
+      border-radius: 6px;
+      box-shadow: 0px 0px 7px -2px #001b39;
+  }
+
+  .section{
+    border-bottom: solid 0.5px #d9d8d8;
+    width: 100%;
+    
+    
+    &:last-child{
+        border: none;
+    }
+  }
+
+  .dots{
+    padding: 20px 0;
+  }
+  .header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+  }
+  .text-end{
+    text-align: end;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .fw-600{
+    font-weight: 600;
+  }
+  .HoverShadow{
+      &:hover{
+          text-shadow: 0px 0px 1px $color-theme-primary;
+
+      }
+  }
+  .pointer{
+    cursor: pointer;
+  }
+  .img{
+    max-width: 100%;
+  }
+  .educationalSources{
+    box-shadow: 0px 0px 7px -2px #001b39;
+    border-radius: 7px;
+  }
+
+  .featureimg{
+    max-width :30px;
+    max-height:30px ;
+  }
+  .featuresperOne{
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+  }
+  .figure{
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+    border: solid 1px darken($color-theme-secondary,15);
+  }
+  .fw-500{
+    font-weight: 500;
+  }
+  .color-primary{
+    color: $color-theme-primary;
+  }
+  .descriptiontext{
+    color: darken($color-theme-primary,10);
+  }
+  .default{
+    cursor: default;
+}
+.paragraph{
+  line-height: 30px;
+  font-size: 15px;
+}
+.darken-color-primary{
+  color: darken($color-theme-primary,10);
+  font-weight: 700;
+}
+.img{
+  border-radius: 5px;
+}
+.paragraph{
+  line-height: 30px;
+  font-size: 15px;
+}
+
+@media only screen and (min-width : 480px) {
+  .section{
+    border-bottom: none;
+  }
+  .heading{
+    font-size: 20px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .section{
+    border-bottom: none;
+  }
+  .heading{
+    font-size: 27px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .section{
+    border-bottom: solid 0.5px #d9d8d8;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .section{
+    border-bottom: solid 0.5px #d9d8d8;
+  }
+}

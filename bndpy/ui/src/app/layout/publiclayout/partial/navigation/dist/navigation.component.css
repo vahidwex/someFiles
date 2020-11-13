@@ -1,0 +1,160 @@
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.navigation {
+  height: 100px;
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-logo {
+  height: 100px;
+}
+
+.example-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000007d;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.list {
+  margin-left: 130px;
+  width: 400px;
+}
+.list .items {
+  padding-top: 5px;
+  font-weight: 600;
+}
+.list .items .item .link {
+  color: gray;
+}
+.list .items .item .link:hover {
+  color: #1565C0;
+  text-decoration: none;
+}
+.list .items .item .wrapper {
+  direction: rtl;
+}
+.list .items .item .wrapper .line-anim {
+  height: 2px;
+  width: 0;
+  background-color: #1565C0;
+  transition: 0.7s ease all;
+}
+.list .items .item:hover .wrapper .line-anim {
+  width: 100%;
+  transition: 0.7s ease all;
+}
+
+.button {
+  font-size: 22px;
+  cursor: pointer;
+  color: #1565C0;
+}
+
+.itemsz {
+  padding-top: 5px;
+  font-weight: 600;
+}
+.itemsz .item {
+  cursor: pointer;
+  width: fit-content;
+  margin: 10px;
+}
+.itemsz .item .link {
+  color: #e6e6e6;
+}
+.itemsz .item .link:hover {
+  color: darkgray;
+  text-decoration: none;
+}
+.itemsz .item .wrapper {
+  direction: rtl;
+}
+.itemsz .item .wrapper .line-anim {
+  height: 2px;
+  width: 0;
+  background-color: darkgray;
+  transition: 0.7s ease all;
+}
+.itemsz .item:hover .wrapper .line-anim {
+  width: 100%;
+  transition: 0.7s ease all;
+}
+
+.example-sidenav {
+  width: 300px;
+  box-shadow: 0 0 19px 10px;
+  background: linear-gradient(78deg, #29478c 29%, #3a5f8a 52%, #011a35 100%);
+}
+
+.text {
+  color: #fff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.icon-list {
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .drawer-button {
+    display: none;
+  }
+}
+@media only screen and (max-width: 970px) {
+  .link {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .list {
+    display: none;
+  }
+
+  .drawer-button {
+    display: block;
+  }
+}
+.fw-900 {
+  font-weight: 900;
+}

@@ -1,0 +1,74 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+
+.vision{
+    background-color: $color-light;
+    .container{
+        flex-wrap: nowrap;
+        .child{
+            height: 100%;
+            padding: 20px;
+            position: relative;
+            .wrapper{
+                overflow: hidden;
+                width: 100%;
+                margin: 0;
+                &:hover{
+                    .image{
+                        animation: ScaleUp 1s ease 1;
+                    }
+                }
+            }
+            .section{
+                position: absolute;
+                right: 100px;
+                top: 180px;
+                text-align: right;
+                .offerpercent{
+                    color: $color-theme-primary;
+                    font-size: 18px;
+                    font-weight: 600;
+                    letter-spacing: 2px;
+                }
+                .maincontent{
+                    font-size: 50px;
+                    letter-spacing: 4px;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+}
+@keyframes ScaleUp {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@media only screen and (max-width: 800px){
+    .vision{
+        .container{
+            flex-direction: column;
+            .child{
+                width: 100%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1000px){
+    .vision{
+        .container{
+            .child{
+                .section{
+                .maincontent{
+                    font-size: 25px;
+                }
+                }
+            }
+        }
+    }
+}

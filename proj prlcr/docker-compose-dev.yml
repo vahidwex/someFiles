@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+
+  torobche_front:
+    container_name: ssr_torobche_front
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    command: "torobche_front"
+    volumes:
+          - ./logs:/var/www/dist/logs/
+    ports:
+      - $DOCKER_PORT
+

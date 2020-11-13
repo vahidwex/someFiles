@@ -1,0 +1,139 @@
+<div class="container">
+    <div id="top" class="no-height"></div>
+    <div class="row mx-0 mb-1 justify-content-center">
+        <div class="row col-md-10 justify-content-start p-0">
+            <div class="col-md-4 p-0 mt-3" *ngIf="user && user.role == 'freelancer'">
+                <div class="filter-holder h-100 position-sticky px-3">
+                    <div class="back-white br-10 bg-white col-md-12 position-sticky t-100">
+                        <div (click)="openBuyBidDialog($event)" class="bid-remaining my-2 align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable" *ngIf="(remain_bid) > 2" >
+                            {{remain_bid}} bids remaining
+                        </div>
+                        <div (click)="openBuyBidDialog($event)" class="bid-remaining my-2 align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable bg-red" *ngIf="(remain_bid) < 2">
+                            Buy bid
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="row justify-content-end m-0">
+                <div class="col-md-3 p-0 mw-143">
+
+                </div>
+            </div>
+            <div>
+                <div class="row mx-0 mb-3 mt-35 mh-264" *ngIf="projects && projects.length == 0">
+                    No bookmarks yet. <a class="clickable-orange clickable h-25 ml-3" routerLink="/search">Explore projects ?</a>
+                </div>
+                <div class="job-card br-10 bg-white row mx-0 mb-3 mt-29" [ngClass]="{'hover_hint': firstTime}" (click)="job-card-select" *ngFor="let project of projects"
+                     (click)="collapse(project.project_id)">
+                    <div  class="no-height w-100" [id]="project.project_id"></div>
+                    <div class="col-md-12">
+                        <div *ngIf="firstTime" class="custom-width no-height no-width lh-2-45 my-bookmark bg-clickable-orange position-absolute text-center overflow-hidden justify-content-center d-flex align-self-center clickable fs-15 color-white br-l-10 z-970"
+                             aria-hidden="true">
+                            Click card to see details
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-30">
+                        <div class="my-close-holder position-absolute h-100 pb-170">
+                            <div class="my-bookmark lh-2 bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable fs-20 color-white br-l-10 z-970"
+                                 (click)="unbookmarkProject(project.project_id);$event.stopPropagation();">
+                                <i class="fas fa-bookmark fs-20 align-self-center"></i>
+                            </div>
+                        </div>
+                        <div class="my-close-holder position-absolute h-100 pt-48">
+                            <a target="_blank" rel="noopener" [routerLink]="'/projects/' + project.project_id" *ngIf="!isCollapsed(project.project_id)" class="my-close position-sticky d-flex justify-content-center align-self-center clickable fs-20 color-white br-l-10 z-970 bg-dark-color" (click)="$event.stopPropagation();">
+                                <i class="fa fa-eye fs-20 align-self-center color-white"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="my-close-holder position-absolute h-100 pt-48">
+                            <div *ngIf="isCollapsed(project.project_id)" class="my-close position-sticky d-flex justify-content-center align-self-center clickable fs-20 color-white br-l-10 z-970"
+                                 (click)="closeAll(project.project_id); $event.stopPropagation();">
+                                <i class="fa fa-times fs-20 align-self-center"
+                                   aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <div class="row">
+                                <div class="job-card-title fs-17 normal-txt font-weight-bold text-left color-black overflow-hidden col-md-8 p-0">
+                                    {{project.title}}
+                                </div>
+                                <div class="job-title-duration fs-17 normal-txt text-left color-70 ml-2 col-md-3 p-0">
+                                    ${{project.min_budget}} - ${{project.max_budget}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 row mb-2">
+                            <div class="job-description fs-17 normal-txt mt-2 text-left overflow-hidden color-black"
+                                 [ngClass]="{'description_full': collapsed[project.project_id],'description_hide':!collapsed[project.project_id]}">
+                                {{project.project_description}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 row skill-margin mb-4 overflow-hidden"
+                             [ngClass]="{'skills-full': collapsed[project.project_id],'skills-hide':!collapsed[project.project_id]}">
+                            <div [ngClass]="{'single-skill-full': collapsed[project.project_id],'single-skill-hide':!collapsed[project.project_id]}" class="skills mt-2 d-flex flex-row br-7 fs-16 b-400 lh-27 overflow-hidden" *ngFor="let projectskill of project.project_skills">
+                                {{projectskill.value}}
+                            </div>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id) && project.files?.length != 0"
+                             class="row col-md-12 mb-5">
+                            <div *ngFor="let file of project.files" class="clickable col-md-12 row filedownload fs-17 normal-txt b-600 text-left"
+                                 (click)="newWindowOpen(uploadUrl + file.urlPath);">
+                                <i class="fa fa-paperclip filedownload-clip fs-17 normal-txt b-600 text-left mr-1" aria-hidden="true"></i>
+                                <div class="filedownload fs-17 normal-txt b-600 text-left">{{file.filename}}</div>
+                            </div>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id)"
+                             class="col-md-12 justify-content-end mb-4">
+                            <div class="row">
+                                <div class="col-md-12" class="aboutem fs-17 normal-txt w-100 color-black text-left mb-1">
+                                    About Employer:
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="rate fs-17 normal-txt text-left color-black"><i class="fa fa-star rate-star fs-17 normal-txt text-left clickable-orange lh-1-46 mr-1"
+                                                         aria-hidden="true"></i>{{project.rate ? project.rate : 'N/A'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="rate fs-17 normal-txt text-left color-black"><i class="fa fa-flag my-flag fs-17 normal-txt lh-1-46 color-black text-center mr-1"
+                                                         aria-hidden="true"></i>
+                                        {{project.country}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div *ngIf="project.payment_status == 1" class="rate fs-17 normal-txt text-left clickable-orange">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1"
+                                           aria-hidden="true"></i>Verified
+                                    </div>
+                                    <div *ngIf="project.payment_status == 0" class="rate fs-17 normal-txt text-left color-black color-0f">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1 color-black"
+                                           aria-hidden="true"></i>Not verified
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="user && user.role == 'freelancer'">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="bidOnProject(project)">
+                                        Bid on this project
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="user && user.role == 'employer'">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="postProjectLikeThis(project)">
+                                        Post project like this
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="!user">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="postProjectLikeThis(project)">
+                                        Post project like this
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

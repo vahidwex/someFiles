@@ -1,0 +1,187 @@
+<div class="container">
+
+  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+  </div>
+
+  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-success" [disabled]="!productForm.valid  || !productForm.dirty  ">ذخیره</button>&nbsp;
+              <!--   <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+              <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="title">عنوان</label>
+                <input type="text" id="title" formControlName="title" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="titleEnglish">  عنوان انگلیسی</label>
+                <input type="text" id="titleEnglish" formControlName="titleEnglish" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="productCode">  کد محصول</label>
+                <input type="text" id="productCode" formControlName="productCode" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="productPoint">  امتیاز</label>
+                <input type="text" id="productPoint" formControlName="productPoint" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="priority">اولویت</label>
+                <input type="text" id="priority" formControlName="priority" class="form-control">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="exist">موجودی</label>
+
+                <select name="exist" id="exist" class="form-control" formControlName="exist">
+                  <option  [value]="false">ندارد</option>
+                  <option  [value]="true">دارد</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="like">  لایک</label>
+                <input type="text" id="like" formControlName="like" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="bazdid">  بازدید</label>
+                <input type="text" id="bazdid" formControlName="bazdid" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="price"> قیمت اصلی</label>
+                <input type="text" id="price" formControlName="price" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="discountPercent">  درصد تخفیف</label>
+                <input type="text" id="discountPercent" formControlName="discountPercent" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="sellCount"> تعداد فروخته</label>
+                <input type="text" id="sellCount" formControlName="sellCount" class="form-control">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="LongDesc">شرح</label>
+                <textarea type="text" id="LongDesc" class="form-control" formControlName="LongDesc" rows="6"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="shortDesc">توضیحات</label>
+                <input type="text" id="shortDesc" class="form-control" formControlName="shortDesc">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="productKind">نوع محصول</label>
+
+                <select name="productKind" id="productKind" class="form-control" formControlName="productKind">
+
+                  <option *ngFor="let k of kinds" value="{{k._id}}">{{k.title}}</option>
+                </select>
+              </div>
+              <table class="table  ">
+                <thead>
+                  <tr>
+                    <th style="width: 5%">ردیف</th>
+                    <th style="width: 85%">عنوان</th>
+                    <th></th>
+      
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let k of  kindz;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{k.title}}</td>
+                    <td>  <a (click)="removeProducts(k._id)"  class="close" data-dismiss="alert" aria-label="close">&times;</a> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="logo">انتخاب لوگو</label>
+                <input type="file" class="form-control" (change)="onUpload($event.target.files)" accept='image/*'>
+                <input type="text" name="logo" formControlName="logo" hidden>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <img [src]="product.logo || imgURL" style="width: auto;height: 300px;" class="img-responsive"
+                *ngIf="product.logo || imgURL">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

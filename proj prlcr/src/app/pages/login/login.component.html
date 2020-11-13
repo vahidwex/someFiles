@@ -1,0 +1,49 @@
+<div class="w-100 h-100 bg-light">
+    <div class="container">
+        <div class="wrapper align-items-center d-flex flex-column justify-content-center w-100 vp-height bg-light">
+            <div class="row bg-light br-10 position-relative p-0 text-center bg-fa w-90-p" id="formContent">
+
+                <div class="col-md-6 align-self-center">
+                    <h1 class="row justify-content-center normal-txt fs-22 b-900 font-italic text-center semi-dark-color">
+                        PERFECTLANCER
+                    </h1>
+                    <h2 class="row justify-content-center fs-20 normal-txt text-center mb-37 semi-dark-color">
+                        Discover the worlds top freelancer & projects
+                    </h2>
+                    <div *ngIf="logged" class="fs-16 row justify-content-center text-center">
+                        Logging into <div class="clickable-orange mx-2">{{ user && user.emails[0].value }}</div> ...
+                    </div>
+                    <form *ngIf="!logged" (submit)="onLoginClick($event)">
+                        <input type="text" class="second" name="username"
+                            [(ngModel)]="loginModel.username"
+                            (keyup)="loginError.username = ''"
+                            placeholder="Email" id="name" >
+                        <div class="errors-holder btn-width m-1 d-inline-block" *ngIf="loginError.username">
+                            <div class="color-red text-left fs-12">{{ loginError.username | titlecase }}</div>
+                        </div>
+                        <input type="password" id="password" class="third"
+                            [(ngModel)]="loginModel.password"
+                            (keyup)="loginError.password = ''"
+                            name="password" placeholder="Password">
+                        <div class="errors-holder btn-width m-1 d-inline-block" *ngIf="loginError.password">
+                            <div class="color-red text-left fs-12">{{ loginError.password | titlecase }}</div>
+                        </div>
+
+                        <div class="m-1 text-right btn-width d-inline-block fs-16">
+                            <a title="Forgot Password?" routerLink="/forgot-password" [queryParams]="{email: loginModel.username}" class="clickable-orange d-inline-block b-400 text-decoration-none underlineHover">Forgot Password?</a>
+                        </div>
+                        <input type="submit" class="fourth btn-width" value="Log In">
+                    </form>
+
+                    <h3 *ngIf="!logged" class="bg-light" id="formFooter">
+                        Not a member yet?
+                        <a title="Register now!" routerLink="/register" class="clickable-orange d-inline-block b-400 text-decoration-none">Join Now</a>
+                    </h3>
+                </div>
+                <div class="col-md-6 d-none d-lg-block d-md-block align-self-center">
+                    <img src="../../assets/login.png" alt="Login" title="Login" class="w-100 vp-height side-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

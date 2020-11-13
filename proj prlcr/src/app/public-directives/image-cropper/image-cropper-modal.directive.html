@@ -1,0 +1,54 @@
+<a class="opener full-block" data-toggle="modal"
+   (click)="renewForm()"
+   [attr.data-target]="'#image-cropper-' + elementId">
+   <ng-content></ng-content>
+</a>
+<div class="modal fade advertise-modal" id="image-cropper-{{elementId}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center justify-content-left">
+                <button type="button" class="close btn btn-flat-gray font-24 close-btn"
+                        #closeModal data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="custom-file custom-height" [class.hide]="!showImage">
+                    <input type="file" class="custom-file-input pointer custom-height"
+                        [class.hide]="imageChangedEvent?.length > 0"
+                        #addFile
+                        id="upload-new-file" name="upload_photo"
+                        (change)="fileChangeEvent($event)" />
+                    <label class="custom-file-label custom-height"
+                        [class.required]="isRequired"
+                        [class.border-green]="imageChangedEvent.length == 0"
+                        [class.has-error]="imageChangedEvent.length != 0"
+                        for="upload-new-file">
+                        <div>
+                            Drag and drop your file here OR
+                            <br >
+                            <button class="btn btn-primary btn-choose-file mt-2">Select File</button>
+                        </div>
+                    </label>
+                </div>
+                <div class="text-center" *ngIf="!showImage">
+                    <image-cropper
+                            [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true"
+                            [aspectRatio]="4 / 4"
+                            [cropperMinHeight]="resizeWidth"
+                            [cropperMinWidth]="resizeWidth"
+                            [resizeToWidth]="resizeWidth"
+                            format="jpeg"
+                            (imageCropped)="imageCropped($event)"
+                            (loadImageFailed)="loadImageFailed()"
+                    ></image-cropper>
+                </div>
+                <div class="mt-3 text-left" *ngIf="croppedImage">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="onSelectNewFile()">New File</button>
+                    <button type="button" class="btn btn-primary" #submitBtn (click)="onSubmitImageClick()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,395 @@
+<div class="productdetails animated fadeIn">
+
+  <div class="header row justify-content-center align-items-center">
+    <div class="container row">
+      <div class="HoverShadow name col-6 fw-600 default">
+        {{product.title}}
+      </div>
+      <div class="address col-6">
+        <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+            class="HoverShadow pointer" [routerLink]="['/products']">محصولات</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="top row my-5 pr-4 pl-2 p-md-0">
+      <div class="leftstatic col-4 d-lg-block d-none">
+
+        <div class="solutionKinds figure m-2 p-2 d-flex flex-column align-items-center">
+          <div class="buyoradd row justify-content-start  w-100  ">
+            <!-- <h6 class="col-12 fw-600 color-primary p-0 text-start">عملیات</h6> -->
+
+            <div class="vl row justify-content-around w-100 m-0 unique-line py-3">
+                <div class="main row justify-content-around col-10">
+                  
+                  <div class="likes text-number">
+                    <span>
+                      {{product.like}}
+                    </span>
+                    <i class="color-like fas fa-heart"></i>
+                  </div>
+
+                  <div class="view text-number">
+                    <span>
+                      {{product.bazdid}}
+                    </span>
+                    <i class="color-default far fa-eye"></i>
+                  </div>
+                  <button class="h-100 button-prime pt-3" [class.disable]="likedThis==true" (click)="like()" ><i class="fas fa-heart"></i></button>
+
+                </div>
+                <!-- <i class="fas fa-info-circle"></i> -->
+                <div class="icon col">
+                  <i class="fas fa-info-circle icon-symbol"></i>
+                </div>
+                
+            </div>
+
+            <hr>
+
+            
+            <div class="w-100 row m-0 unique-line py-3 ">
+              <div class="main row justify-content-around col-10">
+                <div class="exist">
+                  <p class="color-pink" *ngIf="product.exist!=true">ناموجود در انبار</p>
+                  <p class="colorBuySection" *ngIf="product.exist==true">موجود در انبار</p>
+                </div>
+  
+                <h6 *ngIf="product.discountPercent>0">{{product.discountPercent}}<span class="fs-13">%</span> <span class="offletter">OFF</span></h6>                
+  
+              </div>
+              <div class="icon col">
+                <i class="fas fa-percent icon-symbol"></i>
+              </div>
+            </div>
+
+            <div class="price w-100 row justify-content-between m-0 unique-line py-3">
+
+             <div class="main row justify-content-between col-10">
+              <span class="fw-600 fsNorm col-12 colorBuySection">
+                قیمت :
+               </span>
+                <div class=" col-6 text-center  ">
+                  
+                  <span class="text-number colorBuySection fw-600 fsNorm">
+                    {{product.offPrice}} <span class="fsNorm">تومان</span>
+  
+                  </span>
+                </div>
+  
+                <div class="realPrice col-6 text-center  ">
+                  
+                  <del class="text-number color-like fsNorm">
+                    {{product.price}}  <span class="fsNorm">تومان</span>
+                  </del>
+  
+                </div>
+             </div>
+
+              <div class="icon col">
+                <i class="fas fa-dollar-sign icon-symbol"></i>
+              </div>
+            </div>
+
+            <hr>
+
+
+            <div class="buttons w-100 row justify-content-around my-2 m-0 unique-line py-3 ">
+
+              <div class="main row justify-content-around col-10">
+                  <div class="oprators row">
+                    <div class="count mx-3">
+                        +<span class="darken-primary text-number">{{count}}</span>
+                    </div>
+
+                    <div class="plusminus d-flex flex-column h-100">
+
+                      <div class="plus h-50 pointer" (click)="plusBasket(product._id)">
+                        <i class="fas fa-chevron-circle-up"></i>
+                      </div>
+                      
+                      <div class="minus h-50 pointer" (click)="minuseBasket(product._id)">
+                        <i class="fas fa-chevron-circle-down"></i>
+                      </div>
+
+                    </div>
+                </div>
+
+
+                <div class="btnz ">
+                  <button class="button-basket button-prime fsButtonBuy" (click)="addToBasket(product._id)" [class.buyed]="checkCookie(product._id) ||!product.exist" >
+                    <i class="fas fa-shopping-basket"></i> افزودن به سبد
+                    <!-- <p class="text-number countedProd">{{buyedCount}}</p> -->
+                  </button>
+                  <!-- <button class="h-100 button-prime pt-3" (click)="like(product._id)" ><i class="fas fa-heart"></i></button> -->
+                </div>
+              </div>
+              <div class="icon col">
+                <i class="fas fa-shopping-basket icon-symbol"></i>
+              </div>
+              
+            </div>
+
+            
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="content col-12 col-md-8">
+        <div class="topside row figure my-2 p-3">
+          
+          <div class="left order-lg-1  order-md-1 order-3 col-12 col-md-6 d-flex flex-column rtl">
+            <h4 class="darken-color-primary text-start w-90">{{product.title }} </h4>
+            <p class="text-start unique-line pb-2 mb-2">
+              {{product.shortDesc}}
+            </p>
+
+            
+            <div class="points row">
+            
+              
+              
+              
+              <div class="productKind w-100">
+                <div class="col-12 text-start fw-600">
+                  دسته بندی :
+                  <span class="mx-2" *ngFor="let kind of kinds">
+                      <a class="link" href="#">{{"#" +kind.title}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+           
+            <div class="features my-3 w-100">
+              <h5 class="describe-head col-12 color-primary p-0 text-start">توضیحات</h5>
+              <p class=" text-start paragraph ">
+                {{product.LongDesc}}
+              </p>
+            </div>
+            <div class="features directors w-100 py-2 unique-line">
+              
+              <h5 class="describe-head col-12 color-primary p-0 text-start">ویژگی ها</h5>
+              
+              <div class="items">
+                <div class="item row p-2 fsFeature" *ngFor="let featur of product.productFeature">
+                  <!-- <p class="text-start fsNorm" *ngIf="featur.isFeature"> - {{featur.title}}</p> -->
+                  - <p class="px-2" > {{featur.productDetail.desc}}</p> : <p class="px-2 " > {{featur.featureValue }}</p>
+              
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+
+          <div class="right order-2  col-12 col-md-6 d-flex flex-column align-items-center justify-content-between">
+            <div class="myImage w-100">
+
+              <img id="selectedImage" class="img animated" [src]="env.port+'/images/'+SelectedImg" alt="">
+            </div>
+            <div class="banners my-2 rtl row align-items-center">
+              <div class="col-4 pointer height-fit{" *ngFor="let banner of banners" (click)="changeBanner(banner.image)" >
+                <div class="imagez" *ngIf="banner.fileType==1">
+                  <img *ngIf="banner.image" class="img" [src]="env.port+'/images/'+banner.image" alt="">
+                  <img *ngIf="banner.file" class="img" [src]="env.port+'/images/'+banner.file" alt="">
+                </div>
+                <div class="imagez" *ngIf="banner.fileType>1">
+                  
+                 <a (click)="routeToDonwloadFile(banner.file)" target="_blank">
+                  <img class="img pointer" [src]="env.port+'/images/'+banner.icon" alt="">
+                 </a>
+                </div>
+
+                <p class="text-center color-title fsButtonBuy">{{banner.title}}</p>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+        <div class="capabilityes row figure align-items-center justify-content-center p-4 my-3">
+          <div class="d-flex flex-column justify-content-center align-items-center col-3 ng-star-inserted" *ngFor="let item of capabilities">
+            <img class="svg2" [src]="env.port+'/images/'+item.logo" alt="">
+            <div class="content w-100 mt-2">
+              <p class="bigtext fw-600 color-primary text-center">{{item.title}}</p>
+              <p class="smalltext text-center">{{item.tags}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottomside d-flex flex-column rtl my-4 figure">
+      <mat-tab-group (selectedTabChange)="tabChanged($event)" mat-align-tabs="start" [disableRipple]="true" [color]="backgroundColor">
+
+        <mat-tab  >
+
+          <ng-template mat-tab-label  >
+            <div [class.active]="tabIndex==0" class="template row">
+
+                <i class=" color-primary m-1 fas fa-info-circle"></i>
+                <p >مشخصات</p>
+                <div class="wrapper w-100">
+                  <div class="line-anim"></div>
+                </div>
+            </div>
+            
+          </ng-template>
+          <div class="row m-0 bord p-2 text-start">
+          <h5>مشخصات فنی {{product.title}}</h5>
+
+            <div class="feature m-2 col-12 row justify-content-around" *ngFor="let feature of product.productFeature">
+              <!-- <img class="w-100" [src]="env.port+'/images/'+feature.icon" alt=""> -->
+              <p class="p-2 col-3 back-light" > {{feature.productDetail.desc}}</p>
+              <p class="p-2 col-8 back-light" > {{feature.featureValue }}</p>
+
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab  >
+
+          <ng-template mat-tab-label  >
+            <div [class.active]="tabIndex==1" class="template row">
+                <i class=" color-primary m-1 fas fa-search"></i>
+                <p >نقد و بررسی</p>
+                <div class="wrapper w-100">
+                  <div class="line-anim"></div>
+                </div>
+            </div>
+            
+          </ng-template>
+
+          <div class="row mx-0 my-3 bord">
+            <h5 class="m-2">{{revision.mainTitle}}</h5>
+            <p class="fsFeature m-2 text-start">
+              {{revision.description}}
+            </p>
+            <div [class.dirLtr]="i%2==0"  class="feature col-12 row justify-content-around m-0" *ngFor="let revisionz of revision.deatils;let i =index">
+
+              <div class="deatils text-start col-6">
+                <p class="p-2 col-12 " [class.text-end]="i%2==0"   > {{revisionz.title}}</p>
+                <p class="p-2 col-12 " [class.text-end]="i%2==0"   > {{revisionz.desc }}</p>
+              </div>
+              <div class="formedImage col-6">
+
+                <img class="" [src]="env.port+'/images/'+revisionz.image" alt="">
+              </div>
+              
+            </div>
+          </div>
+
+        </mat-tab>
+        
+       
+        <mat-tab  >
+
+          <ng-template mat-tab-label  >
+            <div [class.active]="tabIndex==2" class="template row">
+                <i class=" color-primary m-1 fas fa-comments"></i>
+                <p >نظر کاربران</p>
+                <div class="wrapper w-100">
+                  <div class="line-anim"></div>
+                </div>
+            </div>
+            
+          </ng-template>
+
+          <div class="row m-0 bord p-3">
+
+            <div class="comments w-100 ">
+              <div class="comment mt-3 p-2" *ngFor="let comment of comments">
+                <div class="head row m-0 ">
+                    <h5 class="title color-gray">
+                      {{comment.title}}
+                    </h5>
+                    &nbsp;
+                    &nbsp;
+
+                    <div class="time color-gray">
+                      {{comment.time |commentTimePipe}}
+                    </div>
+                </div>
+                <div class="body text-start">
+                  {{comment.desc}}
+                </div>
+              </div>
+            </div>
+
+            <div class="setComment w-100" *ngIf="loggedUser">
+
+              <form class="row" [formGroup]="commentForm">
+                <div class="col-6 col-md-12 " include="form-input-select()">
+                    <input formControlName="title"  type="text" class="select  text-start" placeholder="سرفصل" >
+                </div>
+                <div class="col-6 col-md-12 " include="form-input-select()">
+                  <textarea formControlName="desc"  type="text" class="select  text-start" placeholder="نظر خود را در باره این کالا وارد کنید" ></textarea>
+                </div>
+                <button class=" button-prime " (click)="addComment()"><i class="fas fa-comment"></i> ثبت نظر </button>
+    
+            </form>
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab  >
+
+          <ng-template mat-tab-label  >
+            <div [class.active]="tabIndex==3" class="template row">
+                <i class=" color-primary m-1 fas fa-question-circle"></i>
+                <p >پرسش پاسخ</p>
+                <div class="wrapper w-100">
+                  <div class="line-anim"></div>
+                </div>
+            </div>
+            
+          </ng-template>
+
+          <div class="row m-0 bord">
+            <div class="feature m-2 d-flex flex-column col-3" *ngFor="let feature of features">
+              <img class="w-100" [src]="env.port+'/images/'+feature.icon" alt="">
+              <p class="mx-2 ">{{feature.title}}</p>
+            </div>
+          </div>
+
+        </mat-tab>
+
+      </mat-tab-group>
+     
+
+      
+    </div>
+    
+    <div class="bottom relatedProducts figure w-100 p-4 my-3">
+      <h3 class="headers fw-900 text-center ">کالا های مرتبط</h3>
+      <hr>
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let item of products">
+          <div class="section text-center row">
+            <div class="images col-12">
+              <img class="image" [src]="env.port+'/images/'+item.logo" alt="">
+            </div>
+
+            <div class="content col-12">
+
+  
+              <div class="content">
+                <p style="font-size: 12px;">{{item.title}}</p>
+                <!-- <p class="price">{{item.price}}</p> -->
+              </div>
+            </div>
+
+
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+  </div>
+</div>

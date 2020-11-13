@@ -1,0 +1,26 @@
+.inactive{
+    background-color: #a8a6a6 !important;
+    color: white !important;
+}
+
+.next,.previous {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: var(--clickable-orange);
+    color: white;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.next:hover,.previous:hover {
+    background-color: var(--clickable-orange);
+    color: white;
+}
+
+.inactive:hover{
+    background-color: #a8a6a6 !important;
+    color: white !important;
+}

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="ProductDetailsKindForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!ProductDetailsKindForm.valid || !ProductDetailsKindForm.dirty ">ذخیره</button>&nbsp;
+          <!-- <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+          <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="title">عنوان</label>
+            <input type="text" id="title" formControlName="title" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row margin-c">
+        <div class="col-xs-12">
+
+          <div class="form-group">
+            <label for="productKind">نوع محصولات غرفه</label>
+
+            <select name="productKind" id="productKind" class="form-control" formControlName="productKind">
+
+              <option *ngFor="let k of productKinds" value="{{k._id}}">{{k.title}}</option>
+            </select>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">توضیحات</label>
+            <input type="text" id="description" formControlName="description" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="fileType"> انتخاب لوگو</label>
+            <input type="file" id="fileType" class="form-control"  (change)="onUploadFile($event.target.files)" >
+            <input type="text" name="logo" formControlName="logo" hidden>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+
+    </form>
+  </div>
+</div>
+

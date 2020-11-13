@@ -1,0 +1,148 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+
+.navigation{
+    height: 100px;
+    background-color:$color-light;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .internal{
+        .left{
+            height: 100%;
+            .drawer{
+                position: relative;
+                width: 100px;
+                .open-drawer{
+                    font-size: 1.5em;
+                    cursor: pointer;
+                }
+                .mat-sidenav-container{
+                    position: absolute;
+                    height: 100vh;
+                    width: 1295px;
+                    left :-70px;
+                    top:-32px;
+                    visibility: hidden;
+                    .visible{
+                        visibility: visible;
+                    }
+                    .mat-sidenav{
+                        padding: 16px;
+                        width: 200px;
+                    }
+                    .mat-sidenav-content{
+                        padding: 16px;
+                    }
+    
+                }
+            }
+        }
+        .right{
+            .drawertwo{
+                display: none;
+                .open-drawer{
+                    font-size: 1.5em;
+                    cursor: pointer;
+                    color: $color-theme-primary
+                }
+                .mat-sidenav-container{
+                    position: absolute;
+                    height: 100vh;
+                    width: 1295px;
+                    right :-80px;
+                    top:-32px;
+                    bottom: 0;
+                    visibility: hidden;
+                    .visible{
+                        visibility: visible;
+                    }
+                    .mat-sidenav{
+                        padding: 16px;
+                        width: 200px;
+                    }
+                    .mat-sidenav-content{
+                        padding: 16px;
+                    }
+    
+                }
+            }
+            .list{
+                margin-left: 130px;
+                width: 400px;
+                .items{
+                    padding-top: 5px;
+                    .item{
+                        .link{
+                            color: darken( $color-light,50);
+                            &:hover{
+                                color: $color-theme-primary;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .advanced-list{
+                .item{
+
+                    font-size: 1.5em;
+                    .link{
+                        color: darken( $color-light,50);
+                        &:hover{
+                            color: $color-theme-primary;
+                                text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1201px){
+    .navigation{
+        .internal{
+            .right{
+                .drawertwo{
+                    display: block;
+                }
+                .list{
+                    display: none;
+                }
+            }
+            .left{
+                .drawer{
+                    .mat-sidenav-container{
+                        left: -30px;
+                    }   
+                }
+            }
+        }
+        
+    }
+}
+@media  only screen and (max-width: 770px){
+    .navigation{
+        .internal{
+            .right{
+                .advanced-list{
+                    display: none;
+                }
+            }
+        }
+        
+    }
+}
+@media  only screen and (max-width: 510px){
+    .navigation{
+        .internal{
+            .left{
+                .drawer{
+                    width: 50px;
+                }
+            }
+        }
+    }
+}

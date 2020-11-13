@@ -1,0 +1,71 @@
+<div class="footer w-100 m-0">
+  
+  <div class="bottomside row justify-content-between w-100 m-0">
+
+    <div  class="about col-lg-5 col-md-6 d-flex flex-column">
+      <img class="image pointer" [routerLink]="['/aboutUs']"  [src]="env.port+'/images/'+logo" alt="">
+      <p class="about-company ellips">{{abutUsFooter}}</p>
+      <div  class="socialmedia">
+        <a *ngFor="let social of socialNetworks" [href]="'http://'+social.link" target="_blank" class="items">
+          <img class="imagesocial" [src]="env.port+'/images/'+social.socialLogo" alt="">
+        </a>
+        
+      </div>
+    </div>
+
+
+    <div class="categorys list-items col-lg-2 col-md-6 col-sm-3 col-xs-3">
+      <p class="header">محصولات</p>
+      <div class=" list-item row" *ngFor="let Product of Products; let i=index">
+        <div class="links ellips rtl">
+          <a *ngIf="i<5" class="link" [routerLink]="['/product/' + Product.titleEnglish]">{{Product.title}}</a>
+        </div>
+        <div class="images mx-1">
+          <img *ngIf="i<5" class="image " [src]="env.port+'/images/'+Product.logo" alt="">
+        </div>
+        
+        <div class="wrapper w-100">
+          <div *ngIf="i<5" class="line-anim"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- 
+    <div class="whywechoose list-items col-lg-2 col-md-6 col-sm-3 col-xs-3">
+      <p class="header"> انواع راه کارها </p>
+      <div class=" list-item row" *ngFor="let SolutionKind of SolutionKinds; let i=index">
+        <div class="links">
+          <a *ngIf="i<5" class="link" [routerLink]="['/solution/' + SolutionKind.titleEnglish]">{{SolutionKind.title}}</a>
+        </div>
+        <div class="images mx-1">
+          <img *ngIf="i<5" class="image " [src]="env.port+'/images/'+SolutionKind.logo" alt="">
+        </div>
+
+        <div class="wrapper w-100">
+          <div *ngIf="i<5" class="line-anim"></div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="storeinformation list-items col-lg-3 col-md-6 col-sm-6 col-xs-6">
+      <p class="header">ارتباط با ما</p>
+      <div class=" list-item revert row">
+          <div class=" symbol"><i class="fas fa-map-marker-alt"></i></div> 
+        <div class="text">{{location}}</div>
+      </div>
+      <div class=" list-item revert row">
+          <div class=" symbol"><i class="fas fa-phone-volume"></i></div>
+        <div class="text">تماس با ما: {{call}}</div>
+      </div>
+      <div class=" list-item revert row">
+        <div class=" symbol"><i class="far fa-envelope"></i></div>
+        <div class="text">ایمیل:{{mail}}</div>
+      </div>
+      <div class=" list-item revert row">
+        <div class=" symbol"><i class="fas fa-fax"></i></div>
+        <div class="text">فکس:{{fax}}</div>
+      </div>
+    </div>
+  </div>
+</div>

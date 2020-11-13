@@ -1,0 +1,40 @@
+ *{
+   direction: rtl
+ }
+ @font-face{
+  font-family: "Sahel";
+  src: url("assets/fonts/sahel.woff"),
+  url("assets/fonts/sahel.woff");
+}
+
+*{
+  font-family:"Sahel";
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid saddlebrown
+}
+
+textarea.ng-invalid.ng-touched{
+  border: 1px solid saddlebrown
+}
+
+th,td{
+  text-align: center
+}
+tr:hover  {
+  background-color: rgb(196, 233, 255) !important
+}
+
+tr:hover td {
+  cursor: pointer;
+  background: transparent;
+}
+
+th{
+  background-color: cornflowerblue
+}
+
+span{
+  padding: 5px;
+}

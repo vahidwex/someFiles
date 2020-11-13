@@ -1,0 +1,307 @@
+<div class="container">
+    <div id="top" class="no-height"></div>
+    <div *ngIf="showBanner" class="row search-header banner m-0 px-0 bg-white py-3 mb-0">
+        <img class="banner-flag h-100 w-auto ml-3" [title]="onlyCountry" [src]="'https://www.countryflags.io/' + onlyCountry + '/shiny/64.png'" [alt]="onlyCountry">
+        <div class="d-flex flex-column justify-content-center ml-3">
+            <div class="title-banner fs-20 normal-txt text-left color-white font-weight-bold">Hire freelancers in the {{countryName}}</div>
+            <div class="subtitle-banner fs-20 normal-txt text-left color-white">Work with the world’s best talent on Perfectlancer.</div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="row search-header mx-15 mx-0 px-0 bg-white py-3 br-10">
+        <div class="col-md-7">
+                <input type="text" placeholder="&#xf002;   Search keyword" (ngModelChange)="isEmpty($event)"  (keydown.enter)="offset = 0;getProjects('titleseardch');" [(ngModel)]="titlesearch" class="my-input br-10 fs-17 py-1 px-3 w-100 mt-2 bg-white text-left normal-txt lh-1-29 text-left color-70 font-awesome mb-1">
+                <div *ngIf="titlesearch.length > 0" class="clickable clickable-orange position-absolute search-icon" (click)="offset = 0;getProjects('titleseardch');">
+                    <i class="fas fa-search"></i>
+                </div>
+        </div>
+        <div class="col-md-1 col-sm-4 mt-1 col-4 d-flex justify-content-center clickable">
+            <span [ngClass]="{'active-filter': filtersVisiblity,'inactive-filter':!filtersVisiblity}"
+             (click)="toggleFilters()" style="border-radius: 10px;
+            height: 49px;
+            width: 100%;
+            display: flex;
+            min-width: 50px;
+            max-width: 50px;
+            justify-content: center;" class="align-self-center">
+                    <i class="fas fa-filter align-self-center fs-35"></i>
+                    <div class="filter ml-2">Filter</div>
+            </span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-4 mt-2 d-flex justify-content-around p-0 text-nowrap">
+            <label *ngIf="onlyCountry == null" class="switch position-relative d-inline-block"><input class="my-d-none" type="checkbox" [(ngModel)]="usonly" (change)="offset = 0;getProjects('country');" id="us-only"><div class="slider position-absolute clickable round"><span class="on normal-txt text-center font-weight-bold color-white position-absolute fs-10 my-d-none">ON</span><span class="off normal-txt text-center font-weight-bold color-white position-absolute fs-10">OFF</span></div></label>
+            <label *ngIf="onlyCountry == null" for="us-only" class="position-absolute b-32 no-wrap">US Only</label>
+            <img *ngIf="onlyCountry != null" class="flag" [title]="onlyCountry" [src]="'https://www.countryflags.io/' + onlyCountry + '/flat/64.png'" alt="onlyCountry">
+            <label *ngIf="onlyCountry != null"  class="position-absolute b-32 no-wrap" for="us-only">{{onlyCountry}} Only</label>
+        </div>
+        <div class="col-md-2 py-0 mt-2">
+            <div class="dropdown position-relative d-inline-block w-100">
+                <button type="button" class="btn my-dropdown br-10 bg-white fs-16 normal-txt text-center color-black w-100 dropdown-toggle my-toggle d-flex justify-content-around color-70" data-toggle="dropdown">
+                    <i class="fas fa-sort-amount-down align-self-center" ></i>
+                    <div class="align-self-center sort-by">Sort by</div>
+                    <i class="fas fa-chevron-down align-self-center z-975"></i>
+                </button>
+                <div class="dropdown-menu my-dropdown-menu w-100 text-center z-975 br-b-10">
+                    <option (click)="changeOrder('default')" class="dropdown-item" value="Default">Default</option>
+                    <option (click)="changeOrder('recommended')" class="dropdown-item" value="Recommended">Recommended</option>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-0 mb-1 justify-content-center">
+        <div class="col-md-4 p-0 mh-610" id="filters">
+            <div class="filter-holder h-100 position-sticky px-3">
+                <div class="back-white br-10 bg-white mb-4 col-md-12 position-sticky t-100">
+                    <div class="filterby fs-20 normal-txt b-600 text-left color-black">
+                        Filter by:
+                    </div>
+                    <div class="Budget fs-17 normal-txt font-weight-bold text-left color-black mt-3">
+                        Budget
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-12">
+                            <input type="text" (input)="filterMin($event)" [(ngModel)]="minbudget"
+                                   (keydown.enter)="offset = 0;getProjects('minbg');" placeholder="min"
+                                   class="my-input br-10 fs-12 px-3 py-1 w-100 mt-2 bg-white min-max fs-17 normal-txt text-center color-70 mb-0">
+                        </div>
+                        <div class="col-lg-2 col-md-12 to fs-20 normal-txt text-center color-black mt-2 align-self-center mb-0">
+                            to
+                        </div>
+                        <div class="col-lg-5 col-md-12">
+                            <input type="text" (input)="filterMax($event)" [(ngModel)]="maxbudget"
+                                   (keydown.enter)="offset = 0;getProjects('maxbg');" placeholder="max"
+                                   class="my-input br-10 fs-12 px-3 py-1 w-100 mt-2 bg-white min-max fs-17 normal-txt text-center color-70 mb-0">
+                        </div>
+                        <div class="col-md-12 color-red fs-12 min-error"
+                             *ngIf="minbudget != '' && maxbudget != '' && minbudget > maxbudget">
+                            min budget can't be higher than max budget.
+                        </div>
+                    </div>
+
+                    <div class="divider no-height"></div>
+
+                    <h2 class="fs-17 normal-txt font-weight-bold text-left color-black my-3">
+                        Skills
+                    </h2>
+                    <h3 class="row mx-0 overflow-hidden" *ngFor="let skill of skills; let i = index">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input"
+                                   name="check_skill_{{i}}"
+                                   (change)="checkboxClick(skill)"
+                                   [checked]="skill.check"
+                                   id="check-skill-{{i}}">
+                            <label class="custom-control-label" for="check-skill-{{i}}">{{skill.title}}</label>
+                        </div>
+                    </h3>
+                    <div class="inner-addon position-relative right-addon">
+                        <div (click)="addSkill()" class="glyphicon position-absolute p-6 clickable">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <input type="text" class="form-control my-input br-10 fs-12 px-3 py-1 w-100 mt-2 bg-white  search normal-txt lh-1-29 text-left color-70" [(ngModel)]="newSkill"
+                               (keydown.enter)="addSkill()"
+                               placeholder="Enter other skills"/>
+                    </div>
+                    <div *ngIf="(remain_bid) >= 0" class="divider no-height mb-3 mt-0"></div>
+                    <div (click)="openBuyBidDialog($event)" class="bid-remaining mb-2 align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable" *ngIf="(remain_bid) > 2" >
+                        {{remain_bid}} bids remaining
+                    <span class="rounded-circle" *ngIf="remain_bid_extra != 0" style="width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        color: var(--clickable-orange);
+                        background-color:gold;">+{{remain_bid_extra}}</span>
+                    </div>
+                    <div (click)="openBuyBidDialog($event)" class="bid-remaining mb-2 align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable bg-red" *ngIf="(remain_bid) < 2">
+                        Buy bid
+                        <span class="rounded-circle" *ngIf="remain_bid_extra != 0" style="width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        color: var(--clickable-orange);
+                        background-color:gold;">+{{remain_bid_extra}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="bid-remaining-holder pb-4 w-100 px-3">
+                <div class="bid-remaining position-sticky align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable" *ngIf="(remain_bid) > 2" (click)="openBuyBidDialog($event)">
+                    {{(remain_bid)}} bids remaining
+                </div>
+                <div class="bid-remaining position-sticky align-self-center d-flex justify-content-center bg-clickable-orange color-white br-10 clickable bg-red" *ngIf="(remain_bid) < 2" (click)="openBuyBidDialog($event)">
+                    Buy bid
+                </div>
+            </div> -->
+        </div>
+        <div class="col-md-8" id="jobs">
+            <div>
+                <div (click)="resetFilters()" class="text-center fs-16 clickable-orange clickable mb-3" *ngIf="(projects && projects.length < 1) && (!onlyCountry)">
+                    <i class="fas fa-redo mr-3"></i>Reset filters ?
+                </div>
+                <div class="text-center fs-16 clickable-orange mb-3" *ngIf="(projects && projects.length < 1) && (onlyCountry)">
+                    No project found
+                </div>
+                <div class="job-card br-10 bg-white row mx-0 mb-3" [ngClass]="{'hover_hint': firstTime}" *ngFor="let project of projects"
+                     (click)="collapse(project.project_id)" [id]="'jobcard' + project.project_id">
+                    <div  class="no-height w-100" [id]="project.project_id"></div>
+                    <div class="col-md-12">
+                        <div *ngIf="firstTime" class="custom-width no-width bg-black lh-2-45 my-bookmark color-white position-absolute no-height text-center overflow-hidden justify-content-center d-flex align-self-center clickable fs-15 br-t-10 z-970"
+                             aria-hidden="true">
+                            Click card to see details
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-30">
+                        <div class="my-close-holder position-absolute h-100 pb-170">
+                            <div class="my-bookmark lh-2 bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable fs-20 color-white br-l-10 z-970" *ngIf="bookmarks.includes(project.project_id)"
+                                 (click)="unbookmarkProject(project.project_id);$event.stopPropagation();">
+                                <i class="fas fa-bookmark fs-20 align-self-center"></i>
+                            </div>
+                            <div class="my-bookmark lh-2 bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable fs-20 color-white br-l-10 z-970" *ngIf="!bookmarks.includes(project.project_id)"
+                                 (click)="bookmarkProject(project.project_id);$event.stopPropagation();">
+                                <i class="far fa-bookmark fs-20 align-self-center"></i>
+                            </div>
+                        </div>
+                        <div class="my-close-holder position-absolute h-100 pt-48">
+                            <a [title]="project.title" target="_blank" rel="noopener" [routerLink]="'/projects/' + project.project_id" *ngIf="!isCollapsed(project.project_id)" class="my-close position-sticky d-flex justify-content-center align-self-center clickable fs-20 color-white br-l-10 z-970 bg-dark-color text-decoration-none" (click)="$event.stopPropagation();">
+                                <i class="fa fa-eye fs-20 align-self-center color-white"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="my-close-holder position-absolute h-100 pt-48">
+                            <div *ngIf="isCollapsed(project.project_id)" class="my-close position-sticky d-flex justify-content-center align-self-center clickable fs-20 color-white br-l-10 z-970"
+                                 (click)="closeAll(project.project_id); $event.stopPropagation();">
+                                <i class="fa fa-times fs-20 align-self-center"
+                                   aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <div class="row">
+                                <h2 [ngClass]="{'auto-height': collapsed[project.project_id],'title-height':!collapsed[project.project_id]}" class="job-card-title fs-17 normal-txt font-weight-bold text-left color-black overflow-hidden col-md-8 p-0">
+                                    {{project.title}}
+                                </h2>
+                                <div class="job-title-duration fs-17 normal-txt text-left color-70 ml-2 col-md-3 p-0">
+                                    ${{project.min_budget}} - ${{project.max_budget}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 row mb-2">
+                            <h3 class="job-description fs-17 normal-txt mt-2 text-left overflow-hidden color-black"
+                                 [ngClass]="{'description_full': collapsed[project.project_id],'description_hide':!collapsed[project.project_id]}">
+                                {{project.project_description}}
+                            </h3>
+                        </div>
+                        <div class="col-md-12 row skill-margin mb-4 overflow-hidden"
+                             [ngClass]="{'skills-full': collapsed[project.project_id],'skills-hide':!collapsed[project.project_id]}">
+                            <h3 [ngClass]="{'single-skill-full': collapsed[project.project_id],'single-skill-hide':!collapsed[project.project_id]}" class="skills mt-2 d-flex flex-row br-7 fs-16 b-400 lh-27 overflow-hidden" *ngFor="let projectskill of project.project_skills">
+                                {{projectskill.value}}
+                            </h3>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id) && project.files?.length != 0"
+                             class="row col-md-12 mb-5">
+                            <div *ngFor="let file of project.files" class="clickable col-md-12 row filedownload fs-17 normal-txt b-600 text-left"
+                                 (click)="newWindowOpen(uploadUrl + file.urlPath);">
+                                <i class="fa fa-paperclip filedownload-clip fs-17 normal-txt b-600 text-left mr-1" aria-hidden="true"></i>
+                                <div class="filedownload fs-17 normal-txt b-600 text-left">{{file.filename}}</div>
+                            </div>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id)"
+                             class="col-md-12 justify-content-end mb-2">
+                            <div class="row">
+                                <div class="col-md-12" class="aboutem fs-17 normal-txt w-100 color-black text-left mb-1">
+                                    About Employer:
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="rate fs-17 normal-txt text-left color-black"><i class="fa fa-star rate-star fs-17 normal-txt text-left clickable-orange lh-1-46 mr-1"
+                                                         aria-hidden="true"></i>{{project.rate ? project.rate : 'N/A'}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <h3 class="rate fs-17 normal-txt text-left color-black"><i class="fa fa-flag my-flag fs-17 normal-txt lh-1-46 color-black text-center mr-1"
+                                                         aria-hidden="true"></i>
+                                        {{project.country}}
+                                    </h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <div *ngIf="project.payment_status == 1" class="rate fs-17 normal-txt text-left clickable-orange">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1"
+                                           aria-hidden="true"></i>Verified
+                                    </div>
+                                    <div *ngIf="project.payment_status == 0" class="rate fs-17 normal-txt text-left color-black color-0f">
+                                        <i class="fa fa-credit-card my-credit-card fs-17 normal-txt b-600 text-left lh-1-29 mr-1 color-black"
+                                           aria-hidden="true"></i>Not verified
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="user && user.role == 'freelancer'">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="bidOnProject(project)">
+                                        Bid on this project
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="user && user.role == 'employer'">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="postProjectLikeThis(project)">
+                                        Post project like this
+                                    </div>
+                                </div>
+                                <div class="col-md-4" *ngIf="!user">
+                                    <div class="overflow-hidden search-button br-10 mb-4 text-center mt-0 bg-clickable-orange d-flex justify-content-center mw-120 align-self-center h-25-5 lh-1-5 fs-16 normal-txt b-600 color-white clickable"
+                                         (click)="postProjectLikeThis(project)">
+                                        Post project like this
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id)">
+                            <hr class="mt-0"/>
+                        </div>
+                        <div *ngIf="isCollapsed(project.project_id)">
+                            <div class="text-center mb-3 shares">
+                                <div class="d-inline-flex align-items-center mr-2 mb-2">
+                                    Share project with your friends :
+                                </div>
+                                <share-button [theme]="'modern-dark'"
+                                              [button]="'facebook'"
+                                              [size]="1"
+                                              [url]="site_url + '/projects/' + project.project_id"
+                                ></share-button>
+                                <share-button [theme]="'modern-dark'"
+                                              [button]="'twitter'"
+                                              [size]="1"
+                                              [url]="site_url + '/projects/' + project.project_id"
+                                ></share-button>
+                                <share-button [theme]="'modern-dark'"
+                                              [button]="'email'"
+                                              [size]="1"
+                                              [url]="site_url + '/projects/' + project.project_id"
+                                ></share-button>
+                                <share-button [theme]="'modern-dark'"
+                                              [button]="'linkedin'"
+                                              [size]="1"
+                                              [url]="site_url + '/projects/' + project.project_id"
+                                ></share-button>
+                                <share-button [theme]="'modern-dark'"
+                                              [button]="'copy'"
+                                              [size]="1"
+                                              [url]="site_url + '/projects/' + project.project_id"
+                                ></share-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!bookmarkMode" class="row m-0 br-t-10 bg-transparent">
+                <app-pagination class="w-100"
+                [pageSize]="10"
+                [pageIndex]="offset"
+                [length]="projectsLenght"
+                (changes)="offset = $event.data;getProjects('pag');"></app-pagination>
+            </div>
+        </div>
+    </div>
+</div>

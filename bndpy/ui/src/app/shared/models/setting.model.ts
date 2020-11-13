@@ -1,0 +1,22 @@
+export class settingModel{
+    logo:string
+    backGround:string
+    companyName:string
+    email:string
+    tel:string
+    fax:string
+    HeaderMessage:string
+    solutionHeader:string
+    productHeader:string
+    educationalSources:string
+    subeducationalSources:string
+    customers:string
+    abutUsFooter:string
+    footerFirstCoumn:string
+    footersecoundColumn:string
+    footerthirdColumn:string
+    addresses:string
+    socialNetworks:string
+    location:string
+    downFooterText:string
+}

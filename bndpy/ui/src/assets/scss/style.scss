@@ -1,0 +1,16 @@
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import './utility/utility.scss';
+@import './font.scss';
+@import './basic.scss';
+body{
+    background-image: url('/assets/img/bg2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+* {
+    font-family: 'IRSANS';
+}

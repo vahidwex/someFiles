@@ -1,0 +1,6 @@
+{
+    "Level": "development",
+    "PORT": 27017,
+    "DATABASE": "BP_PORTAL",
+    "HOST" : "mongodb://localhost"
+}

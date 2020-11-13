@@ -1,0 +1,843 @@
+<div class="container">    
+    <h1 class="help normal-txt fs-30 font-weight-bold text-center color-black">
+        How can we help?
+    </h1>
+
+    <div class="ml-2 mt-1 mr-0 mb-3 row justify-content-center">
+        <ul class="nav nav-pills mb-3 col-md-6 tabbar px-3" id="pills-tab" role="tablist">
+            <li class="nav-item p-0 col">
+                <a title="How does it works | Employer" (click)="changeTab('Employer');" class="nav-link normal-txt b-600 text-center align-self-center color-black overflow-hidden fs-24 br-0 text-center no-op" [ngClass]="{'active': tab == 'Employer'}" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Employer</a>
+            </li>
+            <li class="nav-item p-0 col">
+                <a title="How does it works | Freelancer" (click)="changeTab('Freelancer');" class="nav-link normal-txt b-600 text-center align-self-center color-black overflow-hidden fs-24 br-0 text-center no-op" [ngClass]="{'active': tab == 'Freelancer'}" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Freelancer</a>
+            </li>
+            <li class="nav-item p-0 col">
+                <a title="How does it works | FAQ" (click)="changeTab('FAQ');" class="nav-link normal-txt b-600 text-center align-self-center color-black overflow-hidden fs-24 br-0 text-center no-op" [ngClass]="{'active': tab == 'FAQ'}" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">FAQ</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="tab == 'FAQ'" class="mb-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(1)" [ngClass]="{'collapsed': expanded[1],'notcollapsed': !expanded[1]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse1">
+                    <span *ngIf="!expanded[1]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse1">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[1]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse1">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How many accounts can I have as a freelancer?</a>
+                </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">Each freelancer can only have one account on perfectlancer.com. Having more than one account violates the Terms and Conditions and results in the suspension of both accounts.</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(2)" [ngClass]="{'collapsed': expanded[2],'notcollapsed': !expanded[2]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse2">
+                    <span *ngIf="!expanded[2]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse2">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[2]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse2">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How can I edit my account information?</a>
+                </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">Log in to your account and click on your profile picture at the top right corner of the website to enter your profile page. There, click on the edit profile and add or modify the incomplete fields.
+                    
+                        The more complete your profile is, the higher your chances are at finding jobs.
+                </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(3)" [ngClass]="{'collapsed': expanded[3],'notcollapsed': !expanded[3]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse3">
+                    <span *ngIf="!expanded[3]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse3">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[3]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse3">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    When can I add or edit milestones?</a>
+                </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">When you are bidding for a job, you can add milestones depending on the job you are bidding for.
+                        Once you are accepted to work as a freelancer in a project, you can request to edit milestones as well.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(4)" [ngClass]="{'collapsed': expanded[4],'notcollapsed': !expanded[4]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse4">
+                    <span *ngIf="!expanded[4]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse4">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[4]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse4">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What is an escrow?</a>
+                </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Escrow is an arrangement where you use a “third party” (somebody who is neither the buyer or seller) to hold something of value. That third party helps to make the transaction safer by ensuring that both the buyer and the seller meet their obligations.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(5)" [ngClass]="{'collapsed': expanded[5],'notcollapsed': !expanded[5]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse5">
+                    <span *ngIf="!expanded[5]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse5">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[5]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse5">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How do I submit a bid?</a>
+                </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        On the project page, first read the details and descriptions of the project thoroughly. If you find yourself suitable for the job, then place a bid by clicking on the button in the project’s card. Then a page will pop up where you can enter the amount you want to bid on the project, enter the duration of the project (which should be as long as you can deliver the project), a description of your proposal and a list of milestones along with each of the milestones durations and amounts.
+                        In order to be able to bid on a project, you need to have at least one of its required skills in your profile, and for that, it’s advised that you complete your profile before starting bidding.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(6)" [ngClass]="{'collapsed': expanded[6],'notcollapsed': !expanded[6]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse6">
+                    <span *ngIf="!expanded[6]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse6">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[6]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse6">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Is there a fee for bidding?</a>
+                </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Bidding is free for freelancers. However, there are a limited number of bids (20 bids in the first edition of the site) available for each user per month. 
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(7)" [ngClass]="{'collapsed': expanded[7],'notcollapsed': !expanded[7]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse7">
+                    <span *ngIf="!expanded[7]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse7">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[7]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse7">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Can a freelancer edit bids?</a>
+                </h4>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Yes. Freelancers can edit bids that they have placed on the projects before their project is accepted. However, after the project is accepted, too, either party (both the freelancer and the employer) can edit the bid (the milestones) with the permission of the other party.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(9)" [ngClass]="{'collapsed': expanded[9],'notcollapsed': !expanded[9]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse9">
+                    <span *ngIf="!expanded[9]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse9">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[9]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse9">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How do I withdraw money from my account?</a>
+                </h4>
+                </div>
+                <div id="collapse9" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        To withdraw money that you earned from the site, follow these steps:
+                        &emsp;1. Log in to your Perfectlancer.com.
+                        &emsp;2. Click on your account photo on top right of the website, and select Settings.
+                        &emsp;3.In the Settings, choose your preferred withdrawal method (some are not available in some countries).
+                        &emsp;4.Fill out the details of the withdrawal which will be specific to the chosen method.
+                        &emsp;5.Click Withdraw Funds.
+                            
+                        You will receive an email notification for your submitted withdrawal request.
+                        
+                        Note: The minimum withdrawal amount is $30 USD and all first withdrawal requests are delayed for 15 days for security reasons.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(10)" [ngClass]="{'collapsed': expanded[10],'notcollapsed': !expanded[10]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse10">
+                    <span *ngIf="!expanded[10]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse10">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[10]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse10">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    When will my withdrawal be processed?</a>
+                </h4>
+                </div>
+                <div id="collapse10" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Withdrawals are processed twice a week, as long as the requests are lodged before:
+                        &emsp;- 9pm on Sunday, UTC time - This will be processed on Monday, UTC time.
+                        &emsp;- 9pm on Wednesday, UTC time - This will be processed on Thursday, UTC time.
+
+                        If you miss either cut-off time, your withdrawal will be processed at the next available opportunity.
+                        When you lodge a withdrawal request, its status is Pending. When it gets withdrawn, the status changes to Verified and if there is an issue and there is a delay, the status changes to Delayed.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(11)" [ngClass]="{'collapsed': expanded[11],'notcollapsed': !expanded[11]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse11">
+                    <span *ngIf="!expanded[11]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse11">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[11]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse11">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How do I add work samples to my account?</a>
+                </h4>
+                </div>
+                <div id="collapse11" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Log in to your account. Click on your profile picture on top right corner of the website and go to your profile. In your profile, go into the second tab which is work sample and add New Sample. There you can enter the title and the description of the sample work and upload an image file to create the sample.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(12)" [ngClass]="{'collapsed': expanded[12],'notcollapsed': !expanded[12]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse12">
+                    <span *ngIf="!expanded[12]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse12">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[12]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse12">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How to select a freelancer?</a>
+                </h4>
+                </div>
+                <div id="collapse12" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        After posting a project, you should wait for freelancers to bid on your project. Depending on the rate of bidding on your project, it might take a few hours to a few days after you have posted the project for the bidding to slow down and you have plenty of freelancers from whom you can choose.
+Simply check out their profile, their previous work samples, their reviews and ratings and their bidding fee on your project and based on that, narrow down the list to a few freelancers. Then you can start a conversation with that few number and after interviewing with them, pick the one you find most suitable for the job.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(13)" [ngClass]="{'collapsed': expanded[13],'notcollapsed': !expanded[13]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse13">
+                    <span *ngIf="!expanded[13]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse13">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[13]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse13">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    As a client, what fees will I pay?</a>
+                </h4>
+                </div>
+                <div id="collapse13" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Posting jobs in Perfectlancer is free. Also there’s no charges for the transaction fee on Perfectlancer either.
+You only pay the fee of the freelancer for performing the job.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(14)" [ngClass]="{'collapsed': expanded[14],'notcollapsed': !expanded[14]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse14">
+                    <span *ngIf="!expanded[14]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse14">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[14]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse14">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What is the commission fee of every project for freelancers?</a>
+                </h4>
+                </div>
+                <div id="collapse14" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        The commission fee structure in Perfectlancer is like this: freelancers pay 14% commission fee for every project they complete.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(15)" [ngClass]="{'collapsed': expanded[15],'notcollapsed': !expanded[15]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse15">
+                    <span *ngIf="!expanded[15]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse15">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[15]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse15">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Why is my project rejected?</a>
+                </h4>
+                </div>
+                <div id="collapse15" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        We do not allow projects with content that may harm the business operation or reputation of Perfectlancer.com or cause a possible loss of the services of its suppliers. The fees incurred from these projects are non-refundable. 
+                        
+                        Below is a list of some of the content that are not allowed:
+                        &emsp;1.Post content in irrelevant areas on our Websites and services
+                        &emsp;2.Violate any laws, third party rights or our policies
+                        &emsp;3.Fail to pay the freelancer whom work you have received and are using
+                        &emsp;4.Fail to deliver the project you are hired to do
+                        &emsp;5.Manipulate the billing process, or fees owed to Perfectlancer
+                        &emsp;6.Collect information about Users, including email addresses, without their consent
+                        &emsp;7.Post incorrect, inaccurate, deceptive or offensive content (including personal information)
+                        &emsp;8.Take any action that may subvert the feedback systems (such as displaying, importing or exporting feedback information or using it for purposes unrelated to the Website)
+                        &emsp;9.Handover your Perfectlancer account (including feedback) and Username to another party
+                        &emsp;10.Distribute or post spam, unsolicited, or bulk messages, or pyramid schemes
+                        &emsp;11.Publish viruses or any other harmful data that may damage Perfectlancer or the interests or property of its users (including their Intellectual Property Rights, privacy and publicity rights) or is unlawful, threatening, abusive, defamatory, invasive of privacy, vulgar, obscene, profane or which may harass or cause distress or inconvenience to, or incite hatred of, any person
+                        &emsp;12.Use listings from our website with listings from other websites without our express written permission.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(16)" [ngClass]="{'collapsed': expanded[16],'notcollapsed': !expanded[16]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse16">
+                    <span *ngIf="!expanded[16]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse16">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[16]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse16">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How do I rate and write a review for freelancers?</a>
+                </h4>
+                </div>
+                <div id="collapse16" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        After the project you have assigned to the freelancer is completed, and you have finalized the payment, the feedback system for the project becomes available for you and you will be redirected to the feedback form once you mark the project as finished.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(17)" [ngClass]="{'collapsed': expanded[17],'notcollapsed': !expanded[17]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse17">
+                    <span *ngIf="!expanded[17]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse17">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[17]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse17">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What if the freelancer fails to complete the project or the results are not satisfying for the employer?</a>
+                </h4>
+                </div>
+                <div id="collapse17" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Employers can:
+                            &emsp;-Repost the project
+                            &emsp;-Cancel the project
+                            &emsp;-Mark the project as incomplete
+                        This incomplete report will be seen in the feedback section of the freelancer’s profile as a review.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(18)" [ngClass]="{'collapsed': expanded[18],'notcollapsed': !expanded[18]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse18">
+                    <span *ngIf="!expanded[18]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse18">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[18]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse18">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    As an employer, can I edit a project after bidding has started?</a>
+                </h4>
+                </div>
+                <div id="collapse18" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        All the details can be modified after the bidding has started.
+                        You may put additional information, skills, and upgrades on your description to help freelancers better understand the project. You may want to consider this if you've forgotten to include some details of the work required or you want to change the instructions on your description. But the title of the project and its budget must remain the same.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(19)" [ngClass]="{'collapsed': expanded[19],'notcollapsed': !expanded[19]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse19">
+                    <span *ngIf="!expanded[19]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse19">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[19]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse19">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Why can’t I open perfectlancer.com from certain countries?</a>
+                </h4>
+                </div>
+                <div id="collapse19" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Since Perfectlancer is a US company, we must comply with US export control regulations. In an effort to comply with these, we now block all IP addresses that are located in Cuba, Iran, North Korea, Republic of Crimea, Sudan, and Syria.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(20)" [ngClass]="{'collapsed': expanded[20],'notcollapsed': !expanded[20]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse20">
+                    <span *ngIf="!expanded[20]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse20">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[20]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse20">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Why is my account suspended?</a>
+                </h4>
+                </div>
+                <div id="collapse20" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        There might be one of these possible reasons for suspension of your account:
+                            &emsp;-You have posted your contact information in a direct or an indirect way.
+                            &emsp;-You have posted inappropriate content such as advertisements or illegal information.
+                            &emsp;-You have violated Perfectlancer Terms and conditions.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(21)" [ngClass]="{'collapsed': expanded[21],'notcollapsed': !expanded[21]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse21">
+                    <span *ngIf="!expanded[21]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse21">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[21]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse21">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What projects can be done on Perfectlancer?</a>
+                </h4>
+                </div>
+                <div id="collapse21" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Any job that could be done remotely could be performed on Perfectlancer. Using your computer, the Internet and some useful softwares that you are proficient in, you can start getting jobs on Perfectlancer and deliver the results through the platform to the clients.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(22)" [ngClass]="{'collapsed': expanded[22],'notcollapsed': !expanded[22]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse22">
+                    <span *ngIf="!expanded[22]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse22">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[22]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse22">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How can I find clients online?</a>
+                </h4>
+                </div>
+                <div id="collapse22" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        In the first page, search for projects in the field of your interest and you will see the projects posted on Perfectlancer. Start bidding on the projects and you will get hired and find the jobs that you are looking for.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(23)" [ngClass]="{'collapsed': expanded[23],'notcollapsed': !expanded[23]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse23">
+                    <span *ngIf="!expanded[23]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse23">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[23]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse23">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How does Perfectlancer make money?</a>
+                </h4>
+                </div>
+                <div id="collapse23" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Perfectlancer charges contractors 14% commission fee and it gets less as a project continue between two parties for a while. There is no transaction fee or any extra hidden fees for neither freelancers nor clients on Perfectlancer and it only works with marginal profit to keep customers content.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(24)" [ngClass]="{'collapsed': expanded[24],'notcollapsed': !expanded[24]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse24">
+                    <span *ngIf="!expanded[24]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse24">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[24]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse24">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What is the difference between finding clients online and finding them locally?</a>
+                </h4>
+                </div>
+                <div id="collapse24" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Online clients could be from around the world, from a remote place that you don’t/can’t go to, but the job is appealing to you and you want to do it. Besides, you can find multiple projects and work with different clients simultaneously, but when you work in the location of a business, you normally do their job and cannot work with others.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(25)" [ngClass]="{'collapsed': expanded[25],'notcollapsed': !expanded[25]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse25">
+                    <span *ngIf="!expanded[25]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse25">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[25]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse25">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    As a client, what should I do after signing up?</a>
+                </h4>
+                </div>
+                <div id="collapse25" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        You can Post a Project, input its details and, descriptions, skills required and then specify what type of job you are hiring for. 
+After your project is published, you will wait for a while until enough people bid on the project and after that you will hire one or more of them based on what you need.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(26)" [ngClass]="{'collapsed': expanded[26],'notcollapsed': !expanded[26]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse26">
+                    <span *ngIf="!expanded[26]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse26">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[26]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse26">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    What if after a project is completed, I am not happy with the results?</a>
+                </h4>
+                </div>
+                <div id="collapse26" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        The majority of projects on Perfectlancer are done on time and successfully. But from time to time, there is a case where the freelancer do not deliver the desired results on time or the results are not what the client were looking for. 
+                        In such a case, there is a dispute assistant system that helps the parties solve the issue.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(27)" [ngClass]="{'collapsed': expanded[27],'notcollapsed': !expanded[27]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse27">
+                    <span *ngIf="!expanded[27]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse27">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[27]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse27">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Who owns the legal rights of the project products?</a>
+                </h4>
+                </div>
+                <div id="collapse27" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Once the freelancer receives the payment for a completed project, the ownership of the work or product is transferred from the freelancer to the client.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(28)" [ngClass]="{'collapsed': expanded[28],'notcollapsed': !expanded[28]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse28">
+                    <span *ngIf="!expanded[28]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse28">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[28]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse28">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How will I be charged?</a>
+                </h4>
+                </div>
+                <div id="collapse28" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        There is a fixed-priced method that Perfectlancer works with. Once you post a project, you are prompted to enter your payment method, but it will be required to enter these details only before you want to hire a freelancer. Before hiring freelancers the payment verification is optional and right at the time of hiring you need to verify these details and once you start the process of hiring, the money you have set out for the project will be deducted from your card and entered into your account on Perfectlancer. But the freelancer will get paid only after you receive the final result of the project and are satisfied with it.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(29)" [ngClass]="{'collapsed': expanded[29],'notcollapsed': !expanded[29]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse29">
+                    <span *ngIf="!expanded[29]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse29">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[29]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse29">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Can I get an official invoice?</a>
+                </h4>
+                </div>
+                <div id="collapse29" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        Yes, all payments can have invoices that can be downloaded and printed.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(30)" [ngClass]="{'collapsed': expanded[30],'notcollapsed': !expanded[30]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse30">
+                    <span *ngIf="!expanded[30]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse30">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[30]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse30">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    Do I have to file the tax forms?</a>
+                </h4>
+                </div>
+                <div id="collapse30" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        No, Perfectlancer does all the tax work of the freelancers for the clients. One of the benefits of paying through Perfectlancer is that your freelancer is classified as an independent contractor and you should not be responsible for reporting payments on Form 1099-MISC or any other tax forms for them.
+                        </pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h4 class="panel-title border-bottom" (click)="expand(31)" [ngClass]="{'collapsed': expanded[31],'notcollapsed': !expanded[31]}">
+                    <a class="titles p-3 d-flex color-black fs-20 lh-20 w-100 text-decoration-none" data-toggle="collapse" data-parent="#accordion" data-target="#collapse31">
+                    <span *ngIf="!expanded[31]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse31">
+                        <i class="fa fa-plus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    <span *ngIf="expanded[31]" data-toggle="collapse" data-parent="#accordion" data-target="#collapse31">
+                        <i class="fa fa-minus mr-2 clickable-orange" aria-hidden="true"></i>
+                    </span>
+                    How do I hire on Perfectlancer?</a>
+                </h4>
+                </div>
+                <div id="collapse31" class="panel-collapse collapse in">
+                <pre class="panel-body p-4 mb-0">
+                        You can evaluate the profile of the freelancers by reading their reviews and see their ratings, view their previous work samples and check out their work experience, and based on all that, either choose to work with them or not.
+After they have bid on your project, you get to choose one of the freelancers and start an interview with them to see if they are qualified for performing the project. 
+                        </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tab == 'Freelancer'">
+        <img src="../../../assets/images/register-freelancer.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/register-now.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/search-0.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/search-1.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/search-2.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/profile-0.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/profile-1.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/profile-2.png" class="d-none" alt='loading'>
+        <img src="../../../assets/images/profile-3.png" class="d-none" alt='loading'>
+        <div class="row d-md-flex d-none m-0 mb-80 text-center color-white signup-banner">
+            <span class="fs-25 align-self-center">Hovering each part of descriptions will display sample in the image</span>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-1 row justify-content-center">
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                    How to complete your profile
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                    <span (mouseover)="changeProfile(0)"> <span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': profile_id == 0}">1</span> After creating an account on Perfectlancer, you can (and should) start building your profile in order to attract more clients and land more jobs. Once you entered your profile </span>
+                    , in the Details window, on the right side,<span (mouseover)="changeProfile(1)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': profile_id == 1}">2</span> click on the pencil/edit icon and start editing your info. The details such as your name, your country and the city, and more importantly your skills, which you can add up to 10 skills, and a description of who you are and what you are good at.</span><br/>
+                    <span (mouseover)="changeProfile(2)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': profile_id == 2}">3</span>Next, you can add/edit your education history, if you have an academic background, enter your University details and what you have studied, so that the clients see in which area you have speciality.</span><br/>
+                    <span (mouseover)="changeProfile(3)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': profile_id == 3}">4</span>Last, you can enter your work experience. If you have worked for a company, mention its name, the title you held, the country of the company, the starting year and the ending year of your job.</span><br/>
+
+                </h3>
+            </div>
+            <div class="col-md-6 d-md-flex d-none justify-content-center">
+                <img *ngIf="profile_id == 0" id="profile-image" src="../../../assets/images/profile-0.png" alt="How to complete your profile" title="How to complete your profile" class="mt-3 how-img align-self-center">
+                <img *ngIf="profile_id == 1" id="profile-image" src="../../../assets/images/profile-1.png" alt="How to complete your profile" title="How to complete your profile" class="mt-3 how-img align-self-center">
+                <img *ngIf="profile_id == 2" id="profile-image" src="../../../assets/images/profile-2.png" alt="How to complete your profile" title="How to complete your profile" class="mt-3 how-img align-self-center">
+                <img *ngIf="profile_id == 3" id="profile-image" src="../../../assets/images/profile-3.png" alt="How to complete your profile" title="How to complete your profile" class="mt-3 how-img align-self-center">
+            </div>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-1 row justify-content-center">
+            <div class="col-md-6 d-md-flex d-none justify-content-center">
+                <img *ngIf="bid_id == 0" id="bid-image" src="../../../assets/images/search-0.png" alt="How to find a job" title="How to find a job" class="how-img align-self-center">
+                <img *ngIf="bid_id == 1" id="bid-image" src="../../../assets/images/search-1.png" alt="How to find a job" title="How to find a job" class="how-img align-self-center">
+                <img *ngIf="bid_id == 2" id="bid-image" src="../../../assets/images/search-2.png" alt="How to find a job" title="How to find a job" class="how-img align-self-center">
+            </div>
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                    How to find a job
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                    <span (mouseover)="changeBid(0)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': bid_id == 0}">1</span>After Login</span>,
+                    <span (mouseover)="changeBid(1)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': bid_id == 1}">2</span>you browse for a job or search for its title (whether you know it partially or completely), then among the results you have found, read their job descriptions and see whether you can deliver what they require and ask for or not. If you found the requirements in line with your skills, then look at their budget and see if it is acceptable for you. If you were okay with the budget too,</span>
+                    <span (mouseover)="changeBid(2)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': bid_id == 2}">3</span>then start the bidding process. 
+                    Specify the bid amount for the whole project, the duration (in days) required to finish the project, and a description of what you are going to do.
+                    Next, you can suggest milestones (steps) for completing the job. By adding milestones you describe what you are going to do in each step, the amount of money you are asking for that milestone and the duration it takes for that milestone to be completed. After adding all the required milestones, you can submit your bid and wait for the response from the client.</span>
+                </h3>
+            </div>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-3 row justify-content-center">
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                    How to complete a job
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                        <span (mouseover)="changeDoingfl(0)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': doingfl_id == 0}">1</span>After starting the project, you can send a file and a description for every milestone that you have completed. After finishing every milestone,</span><span (mouseover)="changeDoingfl(1)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': doingfl_id == 1}">2</span> you change the status of that milestone into Completed. Then, the client is prompted to Accept or Decline the result s/he is offered. Of course, within all the steps of doing this project, you and the client are able to communicate through the Chat option. If s/he accepts the result, you move on to the next milestone and the client is now prompted to check out from the previous milestone by paying the price for it. However, if s/he declines the result, you should modify or redo the project milestone and send the results to the client, until s/he accepts it. If the client does not accept or decline a milestone after you completed it within seven days, it will automatically be accepted and checked out.</span>
+                        <br/>
+                        <span (mouseover)="changeDoingfl(1)">Take a note that all of the files for each milestone, regardless of being accepted or rejected, will remain in the history of the job, so that if each side needed to go back to one file, s/he has access to all the versions of it.</span>
+                </h3>
+            </div>
+            <div class="col-md-6 d-md-flex d-none justify-content-center">
+                <img *ngIf="doingfl_id == 0" id="doing-fl" (click)="navigateRegister('freelancer')" src="../../../assets/images/register-freelancer.png" alt="Start working with a client" title="Start working with a client" class="how-img align-self-center clickable">
+                <img *ngIf="doingfl_id == 1" id="doing-fl" (click)="navigateRegister('freelancer')" src="../../../assets/images/register-now.png" alt="Start working with a client" title="Start working with a client" class="how-img align-self-center clickable">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tab == 'Employer'">
+            <img src="../../../assets/images/register-freelancer.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/register-now.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-0.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-1.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-2.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-3.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-4.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/post-a-project-5.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/hire-0.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/hire-1.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/hire-2.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/hire-3.png" class="d-none" alt='loading'>
+            <img src="../../../assets/images/hire-4.png" class="d-none" alt='loading'>
+        <div class="row d-md-flex d-none m-0 mb-80 text-center color-white signup-banner">
+            <span class="fs-25 align-self-center">Hovering each part of descriptions will display sample in the image</span>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-1 row justify-content-center">
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                    How to post a project
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                    <span (mouseover)="changePost(0)" class="post-0"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 0}">1</span>You can quickly <a class="text-decoration-none clickable clickable-orange" routerLink="/post-job">post your project</a> by following a few simple steps and fill in the job posting form.</span><br/>
+                    <span (mouseover)="changePost(1)" class="post-1"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 1}">2</span>Choose a Title for your Project. Try to make it clear and to the point. So, for instance, instead of this title : “Graphic designer”, write a more detailed title like this : “Website UI/UX Designer” or “Logo Designer”.</span><br/>
+                    <span (mouseover)="changePost(2)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 2}">3</span>In the description section, you can elaborate on the title in more details. Write about the job details and what you are looking for in a candidate.</span><br/>
+                    <span (mouseover)="changePost(3)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 3}">4</span>If you have a PDF or an image version of the job posting, you can also attach that to your post.</span><br/>
+                    <span (mouseover)="changePost(4)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 4}">5</span>You are also asked to write a few skills that are required for this job. You can specify up to 5 skills for your project and these skills help freelancers to find your job within the list of posted jobs on the website.</span><br/>
+                    <span (mouseover)="changePost(5)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': post_id == 5}">6</span>Finally, you get to decide on the budget you are willing to spend on the project. And this is as easy as it could be to post a project.</span>
+                </h3>
+            </div>
+            <div class="col-md-6 mt-3 d-md-flex d-none justify-content-center tmp">
+                <img *ngIf="post_id == 0" id="post-image" src="../../../assets/images/post-a-project-0.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+                <img *ngIf="post_id == 1" id="post-image" src="../../../assets/images/post-a-project-1.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+                <img *ngIf="post_id == 2" id="post-image" src="../../../assets/images/post-a-project-2.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+                <img *ngIf="post_id == 3" id="post-image" src="../../../assets/images/post-a-project-3.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+                <img *ngIf="post_id == 4" id="post-image" src="../../../assets/images/post-a-project-4.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+                <img *ngIf="post_id == 5" id="post-image" src="../../../assets/images/post-a-project-5.png" alt="Post a project in a few simple steps" title="Post a project in a few simple steps" class="how-img align-self-center">
+            </div>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-1 row justify-content-center">
+            <div class="col-md-6 d-md-flex d-none justify-content-center">
+                <img *ngIf="hire_id == 0" id="hire-image" src="../../../assets/images/hire-0.png" alt="Hire Professional Freelancers" title="Hire Professional Freelancers" class="how-img align-self-center">
+                <img *ngIf="hire_id == 1" id="hire-image" src="../../../assets/images/hire-1.png" alt="Hire Professional Freelancers" title="Hire Professional Freelancers" class="how-img align-self-center">
+                <img *ngIf="hire_id == 2" id="hire-image" src="../../../assets/images/hire-2.png" alt="Hire Professional Freelancers" title="Hire Professional Freelancers" class="how-img align-self-center">
+                <img *ngIf="hire_id == 3" id="hire-image" src="../../../assets/images/hire-3.png" alt="Hire Professional Freelancers" title="Hire Professional Freelancers" class="how-img align-self-center">
+                <img *ngIf="hire_id == 4" id="hire-image" src="../../../assets/images/hire-4.png" alt="Hire Professional Freelancers" title="Hire Professional Freelancers" class="how-img align-self-center">
+            </div>
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                        How to hire a freelancer
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                        <span (mouseover)="changeHire(0)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': hire_id == 0}">1</span>After posting your project, people are going to start to bid on your project.</span><br/> 
+                        <span (mouseover)="changeHire(1)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': hire_id == 1}">2</span>They are going to offer to do the job in different number of milestones and with different prices.</span><br/> 
+                        <span (mouseover)="changeHire(3)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': hire_id == 3}">3</span>You can start a chat with them to learn more about their qualifications and how confident they are in performing the task.</span><br/>
+                        <span (mouseover)="changeHire(2)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': hire_id == 2}">4</span> Before chat, you will be prompted to enter your credit card details, but you can skip it.</span><br/> 
+                        <span (mouseover)="changeHire(4)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': hire_id == 4}">5</span>However, when you finish the evaluation process and decide which freelancer you want to work with, you will have to enter your credit card details in order to start the project.</span>
+                </h3>
+            </div>
+        </div>
+        <div class="ml-2 mt-1 mr-0 mb-3 row justify-content-center">
+            <div class="col-md-6 align-self-center">
+                <h2 class="normal-txt mt-3 fs-24 b-600 text-left color-black mb-3">
+                    After starting the project
+                </h2>
+                <h3 class="desc fs-16 normal-txt text-left color-black">
+                    <span (mouseover)="changeDoing(0)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': doing_id == 0}">1</span>After starting the project, the freelancer can send a file and a description for every milestone he has completed. After finishing every milestone, the freelancer changes the status of that milestone into Completed.</span><br/>
+                    <span (mouseover)="changeDoing(1)"><span class="badge badge-secondary d-md-inline-block d-none" [ngClass]="{'active': doing_id == 1}">2</span>Then, you as the client are prompted to Accept or Decline the result that you are offered. Of course, within all the steps of doing this project, the freelancer and you are able to communicate through the Chat option. If you accept the result, the freelancer moves on to the next milestone and you are now prompted to Check Out from the previous milestone by paying the price for it.</span><br/> 
+                    <span (mouseover)="changeDoing(1)">However, if you decline the result, the freelancer should modify or redo the project milestone and send the results to you, until you accept it. If you do not accept or decline a milestone after the freelancer completed it within seven days, it will automatically be accepted and checked out.</span><br/>
+                    <span (mouseover)="changeDoing(1)">Take a note that all of the files for each milestone, regardless of being accepted or rejected, will remain in the history of the job, so that if each side needed to go back to one file, s/he has access to all the versions of it.</span><br/>
+                    <span (mouseover)="changeDoing(1)">After the project is finished there is an extra milestone other than the ones defined by the freelancer and this one milestone is for you (the client) to complete. The reason for this milestone is for you to announce the end of a project and finish it while rating the freelancer and writing a review for him/her based on the quality of the job they did and their punctuality as well as manners.</span><br/>
+                </h3>
+            </div>
+            <div class="col-md-6 d-md-flex d-none justify-content-center">
+                <img *ngIf="doing_id == 0" id="doing-image" (click)="navigateRegister('employer')" src="../../../assets/images/register-employer.png" alt="Delegate a task with ease of mind" title="Delegate a task with ease of mind" class="how-img align-self-center clickable">
+                <img *ngIf="doing_id == 1" id="doing-image" (click)="navigateRegister('employer')" src="../../../assets/images/register-now.png" alt="Delegate a task with ease of mind" title="Delegate a task with ease of mind" class="how-img align-self-center clickable">
+            </div>
+        </div>
+        <div class="right-card d-flex flex-row justify-content-center mt-30 pb-20">
+        </div>
+    </div>
+</div>

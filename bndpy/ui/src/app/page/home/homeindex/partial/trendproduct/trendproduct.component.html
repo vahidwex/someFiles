@@ -1,0 +1,56 @@
+<div class="trend ">
+  <p class="bigtext">{{productheader}}</p>
+  <div class="header">
+    <div class="buttons row justify-content-between ">
+      <div class="button"  (click)="getAllProducts();savedIndex=0" [class.clicked]="savedIndex==0" >
+        پربازدیدها
+        <div class="wrapper">
+          <div class="line-anim"></div>
+        </div>
+      </div>
+        <div class="button"  (click)="getProductByStore(prodkind._id);savedIndex=i+1;" [class.clicked]="savedIndex==i+1"  *ngFor="let prodkind of prodkinds;let i=index">
+          {{prodkind.title}}
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </div>
+
+    </div>
+</div>
+  <div class="container row justify-content-around">
+    <div [routerLink]="['/product/' + item.titleEnglish]"
+      class="section row col-lg-4 col-sm-4 col-xs-12  align-items-center animated fadeIn" *ngFor="let item of data; let i = index;">
+      <div *ngIf="i<=8" class="Maincontent row w-100 justify-content-between">
+
+        <div class="image w-50 row">
+          <img class="image col-12" [src]="env.port+'/images/'+item.logo" alt="">
+          <div class="stars text-center col-12">
+            <span class="star">
+              <i class="item fas fa-star"></i>
+              <i class="item fas fa-star"></i>
+              <i class="item fas fa-star"></i>
+              <i class="item fas fa-star"></i>
+              <i class="item fas fa-star"></i>
+            </span>
+          </div>
+        </div>
+        <div class="content w-50">
+          
+          <p class="price text-end">{{item.title}}</p>
+          <p class="title text-end">{{item.shortDesc}}</p>
+          
+        </div>
+
+      </div>
+
+    </div>
+    
+  </div>
+  <div class="row justify-content-center">
+    <!-- <button [routerLink]="['/products']" mat-raised-button [disableRipple]="true" color="primary">ادامه
+      محصولات</button> -->
+
+      <button class="button-prime" (click)="routeThisShit()" >ادامه
+        محصولات</button>
+  </div>
+</div>

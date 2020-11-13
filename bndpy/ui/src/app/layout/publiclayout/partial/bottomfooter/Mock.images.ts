@@ -1,0 +1,27 @@
+export const IMAGES=[
+    {
+        id:1,
+        src:"../../../../../assets/img/cards1.png",
+        link:"#"
+    },
+    {
+        id:2,
+        src:"../../../../../assets/img/cards2.png",
+        link:"#"
+    },
+    {
+        id:3,
+        src:"../../../../../assets/img/cards3.png",
+        link:"#"
+    },
+    {
+        id:4,
+        src:"../../../../../assets/img/cards4.png",
+        link:"#"
+    },
+    {
+        id:5,
+        src:"../../../../../assets/img/cards5.png",
+        link:"#"
+    },
+]

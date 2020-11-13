@@ -1,0 +1,127 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.aboutUs {
+  background-color: #fff;
+}
+
+.header {
+  background-color: #d9d9d9;
+  height: 100px;
+  margin-bottom: 30px;
+  width: 100%;
+  margin: 0;
+}
+
+.textend {
+  text-align: right;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.color-primary {
+  color: #1565C0;
+}
+
+.paragraph {
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.color-primary {
+  color: #1565C0;
+}
+
+.HoverShadow:hover {
+  text-shadow: 0px 0px 1px #1565C0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.default {
+  cursor: default;
+}
+
+.capabilities {
+  background-color: rgba(255, 255, 255, 0.84);
+}
+.capabilities .container .section {
+  text-align: center;
+  margin: 20px 0;
+  padding: 90px 0;
+}
+.capabilities .container .section .svg {
+  height: 60px;
+  font-size: 14px;
+}
+.capabilities .container .section .svg:hover {
+  animation: ScaleUp 1s ease 1;
+}
+.capabilities .container .section .bigtext {
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+.capabilities .container .section .smalltext {
+  color: #8c8c8c;
+}
+
+.list-item {
+  width: fit-content;
+  padding: 5px 0;
+  direction: ltr;
+}
+
+.storeinformation {
+  margin: 0 auto;
+  width: 50% !important;
+}
+
+.featureimg {
+  width: 100%;
+}
+
+.symbol {
+  height: 100%;
+  padding: 5px;
+  font-size: 0.9em;
+  color: #217ee7;
+}
+
+.text {
+  padding: 2px;
+  font-weight: 600;
+  color: #737373;
+}
+
+@media only screen and (max-width: 960px) {
+  .textz {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+@keyframes ScaleUp {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}

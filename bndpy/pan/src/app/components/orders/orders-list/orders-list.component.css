@@ -1,0 +1,13 @@
+.container{
+    width: 850px !important;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.update{
+    margin: 15px 0;
+}
+.update-button{
+    margin: 15px;
+}

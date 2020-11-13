@@ -1,0 +1,349 @@
+<div class="container">
+    <div class="row bt-portlet">
+        <div class="col-md-3">
+            <div class="p-lancer-color col-md-12">
+                <div class="row"
+                     [ngClass]="{
+                'default-color': !milestoneSelected,
+                'selected-color': milestoneSelected
+                }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="milestoneSelected=true; paymentSelect=false; messageSelected=false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Milestones</div>
+                    </div>
+                    <div *ngIf="milestoneSelected">
+                        <i class="fa fa-chevron-up align-self-center" aria-hidden="true"></i>
+                    </div>
+                    <div *ngIf="!milestoneSelected">
+                        <i class="fa fa-chevron-down align-self-center" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row justify-content-center" *ngIf="milestoneSelected">
+                    <div class="col-md-12" style="padding-left: 0px; padding-right:0px;"
+                         *ngFor="let milestone of milestones">
+                        <div class="milestone" [ngClass]="{'selected-milestone': selectedMilestone == milestone}"
+                             (click)="milestoneSelect(milestone)">{{milestone.milestone_description}}
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding-left: 0px; padding-right:0px;
+                margin-top: 5px;
+                ">
+                        <!-- <div class="new-milestone" (click)="selectedMilestone = ''">+ Add milestone</div> -->
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                'default-color': !messageSelected,
+                'selected-color': messageSelected
+                }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="chat();messageSelected=true;paymentSelect=false;milestoneSelected=false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Message</div>
+                    </div>
+                </div>
+                <div class="row"
+                     [ngClass]="{
+                'default-color': !paymentSelect,
+                'selected-color': paymentSelect
+                }"
+                     style="cursor:pointer; margin-top: 5px; padding: 10px; padding-left: 20px;padding-right: 20px; justify-content: space-between;"
+                     (click)="paymentSelect=true; messageSelected=false; milestoneSelected=false;">
+                    <div class="row" style="margin: 0px;">
+                        <i class="far fa-clock align-self-center"
+                           style="font-family: FontAwesome;font-style: normal;"></i>
+                        <div class="align-self-center" style="margin-left: 10px">Payment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <div style="margin-bottom: 15px;
+        display: block;
+        border-radius: 4px;">
+                <!--<div style="height:0px; width:100%" [id]="bid.bid_id"></div>-->
+                <div style="background-color: #fff;
+          border: solid 1px #e1e1e1;
+          border-radius: 10px;
+          padding: 10px;
+          padding-left: 15px;
+          padding-right: 15px;">
+                    <div>
+                        <div class="my-close-holder" style="padding-bottom: 170px;">
+                            <div class="status">{{selectedMilestone.status}}</div>
+                        </div>
+
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="row" style="margin: -10px -30px 0px -30px;">
+                                <div class="job-card-title col-md-12" style="padding-left: 30px; padding-right: 30px;">
+                                    {{selectedMilestone.milestone_description}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin:0px">
+                        <div class="bid_description col-md-12">
+                            {{selectedMilestone.milestone_description}}
+                        </div>
+                    </div>
+                    <div class="row" style="margin:0px;margin-top: 10px;">
+                        <div class="col-md-4">
+                            <div class="title">
+                                Duration
+                            </div>
+                            <div class="result">
+                                {{selectedMilestone.milestone_duration}}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="title">
+                                Budget
+                            </div>
+                            <div class="result">
+                                {{selectedMilestone.budget}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project'" class="row"
+                         style="margin-left: 15px; margin-right: 15px;">
+                        <hr class="col-md-12" style="width: 100%; padding:0px;">
+                    </div>
+
+                    <!-- /// -->
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.files && selectedMilestone.files[0] && milestoneSelected"
+                         class="row" style="margin: 0px;">
+                        <div class="col-md-12 upload-title">
+                            Old upload milestone attachment
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.files && selectedMilestone.files[0]"
+                         class="row" style="margin:0px;margin-top: 10px;margin-bottom: 10px;">
+                        <div class="col-md-12 filedownload">
+                            <i class="fa fa-paperclip filedownload-clip" aria-hidden="true"></i><span
+                                (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+item.message_data.files[0].urlPath);"
+                                style="cursor: pointer">{{selectedMilestone.files[0].filename}}</span>
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.freelancer_message && selectedMilestone.freelancer_message.length != 0"
+                         class="row" style="margin: 0px;">
+                        <div class="col-md-12 title">
+                            Old Description
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.freelancer_message && selectedMilestone.freelancer_message.length != 0"
+                         class="row" style="margin:0px">
+                        <div class="bid_description col-md-12">
+                            {{selectedMilestone.freelancer_message}}
+                        </div>
+                    </div>
+
+                    <div *ngIf="(selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined') && selectedMilestone.files && selectedMilestone.files[0] && milestoneSelected"
+                         class="row" style="margin-left: 15px; margin-right: 15px;">
+                        <hr class="col-md-12" style="width: 100%; padding:0px;">
+                    </div>
+
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined'"
+                         class="row" style="margin: 0px;">
+                        <div class="col-md-12 upload-title">
+                            Upload milestone attachment
+                        </div>
+                    </div>
+                    <input type="file" #file style="display: none" (change)="onFilesAdded()"/>
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined'"
+                         class="row"
+                         style="margin:0px;margin-top: 10px;margin-bottom: 10px;padding-left: 15px;padding-right: 15px;">
+                        <button class='btn my-btn col-md-2'
+                                style='align-self: center;justify-content: space-around;display: flex;margin-top: 7px;background-color:transparent; width:auto; padding-left: 15px;padding-right: 15px;'
+                                (click)="addFiles()">
+                            <i class="fa fa-plus-circle icon-size" style="margin-top: 4px;"></i> Upload file
+                        </button>
+                        <div class="col-md-10">
+                            <div class="mt-2" *ngFor="let file of files">
+                                <h4 class="inline-middle">{{file.name}}</h4>
+                                <div class="inline-middle">
+                                    <mat-progress-bar *ngIf="progress && !uploadedFile" mode="determinate"
+                                                      [value]="progress[file.name].progress | async"></mat-progress-bar>
+                                </div>
+                                <div class="inline-middle float-right">
+                                    <div class="inline-middle" *ngIf="uploadedFile">Completed</div>
+                                    <i class="fa fa-times" aria-hidden="true" style="margin-left: 10px; cursor: pointer;"
+                                       (click)="removeFile()"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined'"
+                         class="row" style="margin: 0px;">
+                        <div class="col-md-12 title">
+                            Description
+                        </div>
+                    </div>
+
+                    <div *ngIf="selectedMilestone.milestone_description != 'complete project' && selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined'"
+                         class="row justify-content-center" style="margin: 0px;">
+                        <div class="col-md-12">
+                            <textarea [disabled]="selectedMilestone.status == 'completed'"
+                                      class="my-input area-min-height" [(ngModel)]="file_description"></textarea>
+                        </div>
+                        <!-- <div class="col-md-12 errors" *ngIf="(description.length < 20 || description.length > 50) && (submitted || submitdesc)">Description must be between 20 and 50 characters</div> -->
+                    </div>
+
+                    <div class="row justify-content-center" style="margin:0px;">
+                        <div *ngIf="selectedMilestone.status == 'pending' || selectedMilestone.status == 'declined'"
+                             class="row col-md-12 justify-content-end">
+                            <button class='btn next-btn col-md-3'
+                                    style="margin-right: 13px; background-color: white; color: var(--clickable-orange)"
+                                    (click)="completeMilestone()">
+                                Mark as completed
+                            </button>
+                            <button *ngIf="selectedMilestone.milestone_description != 'complete project'"
+                                    class='btn next-btn col-md-2' (click)="updateMilestone()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="milestonesMSG && milestonesMSG.length != 0" style="margin-bottom: 15px;
+        display: block;
+        border-radius: 4px;">
+                <!--<div style="height:0px; width:100%" [id]="bid.bid_id"></div>-->
+                <div style="height: 77.5px;
+          border: solid 1px #e1e1e1;
+          background-color: #f7f8fa;
+          font-size: var(--font-size-20);
+          font-weight: 600;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.35;
+          letter-spacing: normal;
+          text-align: center;
+          color: #707070;
+          align-self: center;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;">
+                    Comments
+                </div>
+                <div style="background-color: #fff;
+          border: solid 1px #e1e1e1;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          padding: 10px;
+          padding-left: 15px;
+          padding-right: 15px;">
+                    <div *ngFor="let item of milestonesMSG">
+                        <div *ngIf="item.role == 'freelancer'">
+                            <div class="col-md-12" style="margin-bottom: 10px">
+                                <div class="row justify-content-start">
+                                    <div class="job-card-title col-md-10" style="padding: 0px;height:auto;border-radius: 10px;
+                      padding: 10px !important;
+                      background-color: #e3e2df;">
+                                        <div style="display: flex;flex-direction:row">
+                                            <img src="../../../assets/default-avatar.png" style="
+                              width: 67.7px;
+                              height: 67.7px;
+                              border-radius: 33.85px" alt="">
+                                            <div style="display: flex;flex-direction:column;width: 100%;">
+                                                <div style="display: flex;flex-direction:row;justify-content:space-between;">
+                                                    <div>You</div>
+                                                    <div>Changed status to {{item.message_data.status}}</div>
+                                                </div>
+                                                <div *ngIf="selectedMilestone.milestone_description != 'complete project' && item.message_data.files && item.message_data.files[0]"
+                                                     class="row"
+                                                     style="margin:0px;margin-top: 10px;margin-bottom: 10px;">
+                                                    <div class="col-md-12 filedownload">
+                                                        <i class="fa fa-paperclip filedownload-clip"
+                                                           aria-hidden="true"></i><span
+                                                            (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+item.message_data.files[0].urlPath);"
+                                                            style="cursor: pointer">{{selectedMilestone.files[0].filename}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="padding-left: 80px;
+                          font-size: var(--font-size-15);
+                          font-weight: normal;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: 1.33;
+                          letter-spacing: normal;
+                          text-align: left;
+                          color: #000000;">
+                                            {{item.message_data.freelancer_message}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="item.role == 'employer'">
+                            <div class="col-md-12" style="margin-bottom: 10px">
+                                <div class="row justify-content-end">
+                                    <div class="job-card-title col-md-10" style="padding: 0px;height:auto;border-radius: 10px;
+                      padding: 10px !important;
+                      background-color: #5b5b5b;">
+                                        <div style="display: flex;flex-direction:row">
+                                            <img src="../../../assets/default-avatar.png" style="
+                                    width: 67.7px;
+                                    height: 67.7px;
+                                    border-radius: 33.85px" alt="">
+                                            <div style="display: flex;flex-direction:column;width: 100%;">
+                                                <div style="display: flex;flex-direction:row;justify-content:space-between;">
+                                                    <div>David david</div>
+                                                    <div>Changed status to {{item.message_data.status}}</div>
+                                                </div>
+                                                <div *ngIf="selectedMilestone.milestone_description != 'complete project' && item.message_data.files && item.message_data.files[0]"
+                                                     class="row"
+                                                     style="margin:0px;margin-top: 10px;margin-bottom: 10px;">
+                                                    <div class="col-md-12 filedownload">
+                                                        <i class="fa fa-paperclip filedownload-clip"
+                                                           aria-hidden="true"></i><span
+                                                            (click)="newWindowOpen('https://node.perfectlancer.com/file/download?filename='+item.message_data.files[0].urlPath);"
+                                                            style="cursor: pointer">{{selectedMilestone.files[0].filename}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="padding-left: 80px;
+                                font-size: var(--font-size-15);
+                                font-weight: normal;
+                                font-style: normal;
+                                font-stretch: normal;
+                                line-height: 1.33;
+                                letter-spacing: normal;
+                                text-align: left;
+                                color: #000000;">
+                                            {{item.message_data.employer_message}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+  

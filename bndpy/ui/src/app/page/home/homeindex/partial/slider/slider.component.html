@@ -1,0 +1,13 @@
+<div class="slider " (mouseenter) ="stop()" (mouseleave) ="autoplay()">
+    <div (click)="prev()" class="prev"><i class="fas fa-chevron-circle-left"></i></div>
+    <div (click)="next()" class="next"><i class="fas fa-chevron-circle-right"></i></div>
+    <div class="slide" *ngFor="let item of items ; let i = index" [class.active]="i == indexActive" >
+        <div class="drawer">
+            <div class="container">
+                <h4  class="text-end my-2 title" >{{item.title}}</h4>
+                <p class="text-end details description" >{{item.description}}</p>
+            </div>
+        </div>
+        <img class="image" [src]="env.port+'/images/'+item.image" alt="">
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+  </div>
+
+  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
+          
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-success" [disabled]=" ">ذخیره</button>&nbsp;
+              
+              <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="title">عنوان</label>
+                <input type="text" id="title" formControlName="title" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="price">هزینه</label>
+                <input type="text" id="price" class="form-control" formControlName="price">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="description">توضیحات</label>
+                <textarea type="text" id="description" class="form-control" formControlName="description"
+                  rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

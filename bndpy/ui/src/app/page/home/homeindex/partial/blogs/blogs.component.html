@@ -1,0 +1,27 @@
+<div class="blogs ">
+  <div class="header">
+    <p class="recent">{{subeducationalSources}}</p>
+    <p class="big-text">{{educationalSources}}</p>
+  </div>
+  <div class="container">
+
+    <owl-carousel-o [options]="customOptions">
+      
+        <ng-template carouselSlide *ngFor="let item of items">
+          <div class="section">
+                <div class="image row justify-content-center">
+                  <img class="img" [src]="env.port+'/images/'+item.icon" alt="">
+
+                    </div>
+                    <div class="content">
+                        <p class="time">{{item.title}}</p>
+                        <p class="main">{{item.desc}}</p>
+                        
+                    </div>
+          </div>
+        </ng-template>
+      
+    </owl-carousel-o>
+
+  </div>
+</div>

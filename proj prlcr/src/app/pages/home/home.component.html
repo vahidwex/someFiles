@@ -1,0 +1,281 @@
+<div class="container home-page px-0">
+    <div class="bg-f7">
+        <div class="banner w-100 h-100" id="tophover">
+            <div class="topbanner-cover w-100 px-2 mx-0 d-flex justify-content-center flex-column">
+                <div class="row m-0 d-flex justify-content-start">
+                    <h1 class="col-md-12 row px-0 mx-0">
+                        <div class="col-md-10 offset-md-1 fs-40 normal-txt font-weight-bold clickable-orange hire-top">
+                            Hire Top Freelancers!
+                        </div>
+                        <div class="col-md-10 offset-md-1 mt-2 fs-20 normal-txt text-left color-white">
+                            Choose From Top Professionals<br/>
+                            Pay Only When you Are 100% Satisfied
+                        </div>
+                    </h1>
+                    <div class="row col-md-10 offset-md-1 mt-48">
+                        <div class="col-md-2 col-xs-2 col-5 search-tabs mx-2 fs-20 normal-txt text-left" [ngClass]="{'active': searchTabs == 'freelancers'}">
+                            <span class="clickable" (click)="searchTabs = 'freelancers'">Freelancers</span>
+                        </div>
+                        <div class="col-md-2 col-xs-2 col-5 search-tabs mx-2 fs-20 normal-txt text-left" [ngClass]="{'active': searchTabs == 'projects'}">
+                            <span class="clickable" (click)="searchTabs = 'projects'">Projects</span>
+                        </div>
+                    </div>
+                    <div *ngIf="searchTabs == 'projects'" class="row col-md-10 offset-md-1 mt-2 max-width">
+                        <input type="text" [(ngModel)]="searchText" class="search br-10 bg-white p-3 w-100" (keydown.enter)="search()" placeholder="Search for ...">
+                        <a routerLink="/search" title="Search projects" [queryParams]="{title: searchText}" class="text-decoration-none search-right position-absolute bg-clickable-orange text-center normal-txt font-weight-bold color-white br-r-10 fs-20 clickable">
+                            Find Projects
+                        </a>
+                    </div>
+                    <div *ngIf="searchTabs == 'freelancers'" class="row col-md-10 offset-md-1 mt-2 max-width">
+                            <input type="text" [(ngModel)]="searchText" class="search br-10 bg-white p-3 w-100" (keydown.enter)="search()" placeholder="Search for ...">
+                            <a routerLink="/freelancer" title="Search freelancers" [queryParams]="{title: searchText}" class="text-decoration-none search-right position-absolute bg-clickable-orange text-center normal-txt font-weight-bold color-white br-r-10 fs-20 clickable">
+                                Find Experts
+                            </a>
+                        </div>
+                    <h2 class="row col-md-10 offset-md-1 mt-2 search-skills overflow-hidden">
+                        <div class="skills-title mr-45 fs-17 normal-txt font-weight-bold text-left color-white mt-1 align-self-center">
+                            Skills:
+                        </div>
+                        <div class="d-flex justify-content-center mr-1 mt-1" *ngFor="let skill of skills">
+                            <a *ngIf="searchTabs == 'freelancers'" [title]="'Search ' + skill + ' freelancers'" routerLink="/freelancer" [queryParams]="{filter: skill}" class="text-decoration-none skills-result br-5 fs-15 normal-txt text-center px-3 lh-30 clickable">
+                                {{skill}}
+                            </a>
+                            <a *ngIf="searchTabs == 'projects'" [title]="'Post a ' + skill + ' job'" routerLink="/search" [queryParams]="{filter: skill}" class="text-decoration-none skills-result br-5 fs-15 normal-txt text-center px-3 lh-30 clickable">
+                                {{skill}}
+                            </a>
+                        </div>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 svgs">
+            <img class="col-4 three-images" src="../../../assets/public-1.svg" alt="Simplicity" title="Simplicity">
+            <img class="col-4 three-images" src="../../../assets/public-2.svg" alt="Growth" title="Growth">
+            <img class="col-4 three-images" src="../../../assets/public-3.svg" alt="Satisfaction" title="Satisfaction">
+            <h3 class="col-4 three-texts no-height overflow-visible normal-txt font-weight-bold text-center color-dark">Simplicity</h3>
+            <h3 class="col-4 three-texts no-height overflow-visible normal-txt font-weight-bold text-center color-dark">Growth</h3>
+            <h3 class="col-4 three-texts no-height overflow-visible normal-txt font-weight-bold text-center color-dark">Satisfaction</h3>
+        </div>
+        <div class="header-desc fs-20 normal-txt b-600 text-center color-dark row justify-content-center mx-0 mt-70">
+            <h2 class="col-md-8 max-width-hire">
+                    With Perfectlancer, hiring freelancers is a breeze. Search, choose and delegate, as simple as that. You are in good hands.
+            </h2>
+        </div>
+        <div class="row justify-content-center m-0">
+            <div class="col-md-4 offset-md-1">
+                <img src="../../../assets/public-4.png" class="w-100" alt="Advantages" title="Advantages">
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="row d-flex justify-content-center align-self-center h-200">
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>0% transaction fee
+                    </h3>
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>Safe & secure
+                    </h3>
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>2% credit return for every project
+                    </h3>
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>Simple and quick job posting
+                    </h3>
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>Finalized payment after 
+                        approving the result
+                    </h3>
+                    <h3 class="col-md-6">
+                        <i class="fas fa-check-circle clickable-orange mr-1"></i>No freelancer tax work for
+                        the employer
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <h2 class="row how-it-works-title normal-txt text-center fs-20 color-dark m-5 d-flex justify-content-center">
+            <a routerLink='/how-it-works' title="How it works?" class="mr-1 how-it-works fs-30 font-weight-bold text-decoration-none color-black">How it works?</a>
+            <span class="align-self-center">to hire a freelancer</span>
+        </h2>
+        
+        <div class="row col-md-12 d-md-flex d-none how-it-works-title normal-txt text-center fs-20 color-dark justify-content-center mx-0 mb-240">
+            <div class="d-flex flex-column">
+                <img class="imgs p-0" src="../../../assets/public-5.svg" alt="Post projects easily" title="Post projects easily">
+                <h3 class="how-it-works-bottom justify-content-center d-flex flex-column position-absolute normal-txt text-center color-dark"
+                    [innerHTML]="'Post projects easily in a few quick steps' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-2 dashed-separator align-self-center"></div>
+            <div class="d-flex flex-column">
+                <img class="imgs p-0" src="../../../assets/public-6.svg" alt="Check, Compare, and narrow down the offers that you received " title="Choose among the several professional freelancers">
+                <h3 class="how-it-works-bottom justify-content-center d-flex flex-column position-absolute normal-txt color-dark text-center w-240"
+                    [innerHTML]="'Check, Compare, and narrow down the offers that you received' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-2 dashed-separator align-self-center"></div>
+            <div class="d-flex flex-column">
+                <img class="imgs p-0" src="../../../assets/public-7.svg" alt="Hire the best freelancer to work on your project" title="Start a converstion with the freelancer you hired">
+                <h3 class="how-it-works-bottom justify-content-center d-flex flex-column position-absolute normal-txt text-center color-dark"
+                    [innerHTML]="'Hire the best freelancer to work on your project' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-2 dashed-separator align-self-center"></div>
+            <div class="d-flex flex-column">
+                <img class="imgs p-0" src="../../../assets/public-8.svg" alt="Get the satisfying result and finalize the project" title="Get the satisfying result and finalize the project">
+                <h3 class="how-it-works-bottom justify-content-center d-flex flex-column position-absolute normal-txt color-dark text-center"
+                    [innerHTML]="'Get the satisfying result and finalize the project' | titlecase | titleMarkup"></h3>
+            </div>
+        </div>
+        <div class="row col-md-12 mb-3 d-md-none d-flex how-it-works-title normal-txt text-center fs-20 color-dark justify-content-center m-0 mt-1 mb-30">
+            <div class="col-md-12 m-0 justify-content-start d-flex">
+                <img class="imgs p-0 mw-45" src="../../../assets/public-5.svg" alt="Post project easily in a few quick steps" title="Post project easily in a few quick steps">
+                <h3 class="align-self-center how-it-works-right ml-2 normal-txt text-left color-dark "
+                    [innerHTML]="'Post project easily in a few quick steps' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-12 m-0 justify-content-start d-flex">
+                <img class="imgs p-0 mw-45" src="../../../assets/public-6.svg" alt="Choose among the several professionals freelancer" title="Choose among the several professionals freelancer">
+                <h3 class="align-self-centerhow-it-works-right ml-2 normal-txt text-left color-dark "
+                    [innerHTML]="'Choose among the several professionals freelancer who have proposed to work for you' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-12 m-0 justify-content-start d-flex">
+                <img class="imgs p-0 mw-45" src="../../../assets/public-7.svg" alt="Start a conversation with the freelancer you hired" title="Start a conversation with the freelancer you hired">
+                <h3 class="align-self-centerhow-it-works-right ml-2 normal-txt text-left color-dark "
+                    [innerHTML]="'Start a conversation with the freelancer you hired & help them understand what you want' | titlecase | titleMarkup"></h3>
+            </div>
+            <div class="col-md-12 m-0 justify-content-start d-flex">
+                <img class="imgs p-0 mw-45" src="../../../assets/public-8.svg" alt="Get the satisfying result and finalize the project" title="Get the satisfying result and finalize the project">
+                <h3 class="align-self-center how-it-works-right ml-2 normal-txt text-left color-dark "
+                    [innerHTML]="'Get the satisfying result and finalize the project' | titlecase | titleMarkup"></h3>
+            </div>
+        </div>
+
+        <div class="row d-flex m-0 mb-80 text-center color-white signup-banner">
+            <span class="fs-25 align-self-center">Are you ready to start your journey?</span>
+            <a routerLink="register" class="clickable fs-20 d-flex h-49px justify-content-center bg-clickable-orange br-10 w-150px color-white text-decoration-none align-self-center register-btn-banner">Get started</a>
+        </div>
+
+
+        <div class="row justify-content-center m-0 mb-80">
+            <div class="col-md-5 offset-md-1 justify-content-center align-self-center mb-30 flex-column">
+                <h2 class="col-md-12 how-does normal-txt fs-30 font-weight-bold mt-2 color-dark text-center">
+                    How Does Perfectlancer Work?
+                </h2>
+                <h3 class="col-md-12 pl-connects">
+                    Perfectlancer Connects you to your ideal freelancers and lets you hire top professionals in every field of expertise
+                </h3>
+            </div>
+            <div class="col-md-5">
+                <!-- <iframe width="100%" height="315" src="https://www.youtube.com/embed/NPt7mEi4SS0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                <video controls preload="none" poster="../../../assets/video-poster.png" class="h-auto w-100">
+                    <source src="../../../assets/videoplayback.mp4"
+                            type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'/>
+                </video>
+            </div>
+        </div>
+
+        <div class="bg-white browse-container">
+            <h2 class="browse-fl fs-35 normal-txt font-weight-bold text-center color-dark">
+                Browse and Hire Freelancers
+            </h2>
+            <owl-carousel [options]="myFlSlideOptions" [items]="mySlideImages" [carouselClasses]="['owl-theme', 'sliding']" >
+                    <div class="item mx-4 fl-card br-10 bg-f9" *ngFor="let image of mySlideImages;let i = index">
+                        <div class="d-flex justify-content-center flex-column">
+                            <img [src]="freelancers[i].img" alt="Top freelancer" [title]="freelancers[i].name" class="my-4 rounded-circle mx-auto fl-img"/>
+                            <h3 class="fl-name">
+                                <a [title]="freelancers[i].name" [routerLink]="'/profile/'+ freelancers[i].id" class="dark-color">
+                                    {{freelancers[i].name}}
+                                </a>
+                            </h3>
+                            <div class="align-self-center">
+                                <i class="fa fa-star clickable-orange" aria-hidden="true"></i>
+                                {{freelancers[i].star}}
+                            </div>
+                            <div class="justify-content-center mb-2 col-md-12 row">
+                                <i class="fas fa-map-marker-alt fs-20 color-8b mx-2" aria-hidden="true"></i>
+                                <h4 class="profile-location-name fs-15 normal-txt text-center color-8b">
+                                    <!-- {{user_country ? user_country : 'not set'}} - {{user_state ? user_state : 'not set'}} |  -->
+                                    {{freelancers[i].country}}
+                                </h4>
+                            </div>
+                            <div class="justify-content-center mb-2 row m-0 mb-4 skill-holder">
+                                <div class="justify-content-center d-flex mr-1 mt-1" *ngFor="let skill of freelancers[i].skills">
+                                    <h5 class="skills-result br-5 fs-15 normal-txt text-center px-4 lh-30">
+                                        {{skill}}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="justify-content-center mb-2 row m-0 mb-4 clickable-orange view-profile">
+                                <a [title]="freelancers[i].name" [routerLink]="'/profile/'+ freelancers[i].id" class="view-profile-click">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+            </owl-carousel>
+            <h6 class="see-more fs-20 normal-txt b-600 clickable-orange text-center">
+                <a routerLink="/freelancer" title="All freelancers" class="view-profile-click lh-40">See More</a>
+            </h6>
+        </div>
+
+        <div class="all-skill-holder">
+            <h2 class="choose-skills">
+                Choose a Skill and Get Started
+            </h2>
+            <div class="justify-content-center mb-2 row m-0 mb-22 pl-skill">
+                <div class="justify-content-center d-flex mr-3 mt-2" *ngFor="let skill of allSkills">
+                    <a class="text-decoration-none skills-result br-5 fs-15 normal-txt text-center px-4 lh-30 clickable dark-color bg-white no-op" [title]="'Post a ' + skill + ' job'" routerLink='/post-job' [queryParams]="{title: skill,skills: skill}">
+                        {{skill}}
+                    </a>
+                </div>
+            </div>
+            <h6 class="see-all-cat">
+                <a routerLink="/categories" title="Categories" class="see-all-cat-a">
+                    See all categories
+                </a>
+            </h6>
+        </div>
+
+        <h2 class="most-pop">
+            Most Popular Projects
+        </h2>
+        <div class="post-job-row row justify-content-center m-0 mt-3 br-10">
+            <div class="recent-jobs col-md-12 row justify-content-center">
+                <div class="row col-md-12 justify-content-center pb-5">
+                    <div *ngFor="let job of projects;let i = index" class="col-md-3 row justify-content-center m-0 mw-240" >
+                        <div class="popular-job w-100 br-7 mt-3 col-md-12 col-sm-8 p-0" [ngStyle]="{background: 'url(../../../assets/images/popular-' + (i+1) + '.jpg)'}">
+                            <div class="hover-job row w-100 h-100 br-7 m-0 d-flex justify-content-center">
+                                <div class="col-md-12 row job-pop px-1">
+                                    <h3 class="col-md-12 hover-title fs-20 normal-txt color-white text-center font-weight-bold h-35 o-hide px-1">
+                                        {{job.title}}
+                                    </h3>
+                                    <h4 class="col-md-12 hover-money normal-txt text-center color-white fs-17 px-1">
+                                        from {{job.min_budget}}$ to {{job.max_budget}}$
+                                    </h4>
+                                    <div class="col-md-12 px-1">
+                                        <a class="text-decoration-none hover-post normal-txt fs-16 text-center br-7 clickable-orange clickable d-flex justify-content-center" [title]="'Post a job like ' + job.title" routerLink="/post-job" (click)="postProjectLikeThis(job)">
+                                            Post a project like this
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row justify-content-center m-0 d-flex bg-lighter">
+            <h2 class="col-md-12 text-center blog-title">
+                Blog
+            </h2>
+            <owl-carousel class="my-carousel" [options]="mySlideOptions" [items]="posts" [carouselClasses]="['owl-theme', 'sliding']" >
+                <div class="item" *ngFor="let post of posts;let i = index" class="mx-4 br-10 posts">
+                    <div class="d-flex justify-content-between post-holder">
+                        <a [href]="post.link" [title]="post.link" target="_blank">
+                            <img [src]="post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url" [alt]="post.title.rendered" [title]="post.title.rendered" class="clickable w-100 br-t-10 mb-4"/>
+                        </a>
+                        <h3 class="post-title pl-2 pt-2 pr-2 pb-2 text-center overflow-hidden fs-17 normal-txt justify-content-center d-flex flex-column text-center h-100 color-dark mb-4">
+                            {{post.title.rendered}}
+                        </h3>
+                    </div>
+                </div>
+            </owl-carousel>
+
+        </div> -->
+
+    </div>
+</div>

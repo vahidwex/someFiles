@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+  </div>
+
+  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="technologyForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-success" [disabled]=" ">ذخیره</button>&nbsp;
+              <!-- <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+              <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="title">عنوان</label>
+                <input type="text" id="title" formControlName="title" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="wikiLink">لینک ها</label>
+                <input type="text" id="wikiLink" class="form-control" formControlName="wikiLink">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="kind">نوع فناوری</label>
+
+                <select name="kind" id="kind" class="form-control" formControlName="kind">
+                  <option *ngFor="let k of kinds" value="{{k._id}}">{{k.title}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="description">توضیحات</label>
+                <textarea type="text" id="description" class="form-control" formControlName="description"
+                  rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="image">انتخاب عکس</label>
+                <input type="file" class="form-control" (change)="onUpload($event.target.files)" accept='image/*'>
+                <input type="text" name="image" formControlName="image" hidden>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <img [src]="technology.image || imgURL" style="width: auto;height: 300px;" class="img-responsive"
+                *ngIf="technology.image || imgURL">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="background-full">
+    <div class="container">
+        <div class="wrapper bg-light">
+            <div id="formContent" class="row bg-light">
+                <div *ngIf="pageState == 'register'" class="col-md-6 align-self-center">
+                    <h1 *ngIf="sentEmail" class="row justify-content-center logo">
+                        PERFECTLANCER
+                    </h1>
+                    <h2 *ngIf="sentEmail" class="row justify-content-center fs-20 normal-txt text-center mb-37 semi-dark-color">
+                        Discover the world's top freelancers & projects
+                    </h2>
+                    <form *ngIf="sentEmail" (submit)="onSignUpClick($event)">
+                        <input type="email" class="second" name="email"
+                            [(ngModel)]="registerModel.email"
+                            (keypress)="registerError.email = ''"
+                            placeholder="Email" id="email" />
+                        <div class="errors-holder" *ngIf="registerError.email">
+                            <div class="errors">{{ registerError.email }}</div>
+                        </div>
+                        <input type="password" id="password" class="third"
+                            [(ngModel)]="registerModel.password"
+                            (keypress)="registerError.password = ''"
+                            name="password" placeholder="Password" />
+                        <div class="errors-holder" *ngIf="registerError.password">
+                            <div class="errors">{{ registerError.password }}</div>
+                        </div>
+                        <div class="role-select m-1">
+                            <input type="button" (click)="ChangeRoleView($event,'employer')" class="select-role select-first br-l-10 br-r-0" [class.active]="registerModel.role =='employer'" [class.deactive]="registerModel.role =='freelancer'" value="Employer">
+                            <input type="button" (click)="ChangeRoleView($event,'freelancer')" class="select-role select-second br-r-10 br-l-0" [class.active]="registerModel.role =='freelancer'" [class.deactive]="registerModel.role =='employer'" value="Freelancer">
+                        </div>
+                        <div class="create">
+                            Creating an account means that you accept our <a title="Terms of Services" class="terms" target="_blank" href="/terms">Terms of Services,</a><a title="Privacy Policy" class="terms-2" target="_blank" href="/terms"> Privacy Policy</a>, and our Default Notification Settings.
+                        </div>
+                        <input type="submit" id="register-click" class="fourth btn-size register-button" value="Register">
+                    </form>
+
+                    <form *ngIf="!sentEmail" (submit)="onSignUpClick($event)">
+                            <div class="title">Verification email is sent to {{registerModel.email}}</div>
+                            <input type="submit" class="fourth btn-size" value="Resend">
+                        </form>
+
+                    <div *ngIf="!sentEmail" id="formFooter" class="bg-light">
+                        Wrong email?
+                        <a title="Change email?" (click)="sentEmail = true" class="clickable-orange">Change</a>
+                    </div>
+
+                    <h3 *ngIf="sentEmail" id="formFooter" class="bg-light">
+                        Already a member?
+                        <a title="Login now!" routerLink="/login" class="clickable-orange">Login Now</a>
+                    </h3>
+
+                </div>
+
+                <div *ngIf="pageState == 'complete'" class="col-md-6 align-self-center">
+                    <h2 class="row justify-content-center logo">
+                        Welcome to Perfectlancer, <br />
+                        Complete your profile
+                    </h2>
+                    <form (submit)="completeProfile($event)" class="full-center">
+                        <input type="text" class="second" name="username"
+                            [(ngModel)]="userDataModel.first_name"
+                            (keypress)="userDataError.first_name = ''"
+                            placeholder="First name" id="first_name" />
+                        <div class="errors-holder" *ngIf="userDataError.first_name">
+                            <div class="errors">{{ userDataError.first_name | preparekeyword | titlecase }}</div>
+                        </div>
+                        <input type="text" id="last-name" class="third"
+                            [(ngModel)]="userDataModel.last_name"
+                            (keypress)="userDataError.last_name = ''"
+                            name="last_name" placeholder="Last name" />
+                        <div class="errors-holder" *ngIf="userDataError.last_name">
+                            <div class="errors">{{ userDataError.last_name | preparekeyword | titlecase }}</div>
+                        </div>
+
+                        <div class="row complete-form w-85 m-1">
+                            <div class="col-md-12 p-0">
+                                <div class="form-group mb-0">
+                                    <select name="country" id="country"
+                                            class="form-control"
+                                            [(ngModel)]="userDataModel.country"
+                                            (change)="userDataError.country = ''">
+                                        <option *ngFor="let item of countries" [value]="item.code">{{ item.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="errors-holder" *ngIf="userDataError.country">
+                                    <div class="errors">{{ userDataError.country | preparekeyword | titlecase }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="verifyRegisterModel.role == 'freelancer'">
+                            <tag-input class="third"
+                                    inputId = "tag-input-input"
+                                    [(ngModel)]="userDataModel.skills"
+                                    [ngModelOptions]="{standalone: true}"
+                                    placeholder="+ Skill"></tag-input>
+                        </ng-container>
+                        <div class="errors-holder" *ngIf="userDataModel.skills.length > 10">
+                            <div class="errors col-md-12">You can just add up to 10 skills</div>
+                        </div>
+                        <div class="errors-holder" *ngIf="userDataError.skills">
+                            <div class="errors">{{ userDataError.skills }}</div>
+                        </div>
+
+                        <input type="submit" name="button" class="fourth btn-size" value="Start">
+                    </form>
+                </div>
+
+                <div class="col-md-6 d-none d-lg-block d-md-block align-self-center">
+                    <img src="../../assets/login.png" alt="Register" title="Register" class="right-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

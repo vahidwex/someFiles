@@ -1,0 +1,23 @@
+body{background-color: #f1f1f1;}
+     .bslf{
+  	width: 350px;
+	margin: 120px auto;
+	padding: 25px 20px;
+	background: #3a1975;
+	box-shadow: 2px 2px 4px #ab8de0;
+	border-radius: 5px;
+	color: #fff;
+     }
+     .bslf h2{
+  	margin-top: 0px;
+	margin-bottom: 15px;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	border: 1px solid #25055f;
+     }
+     .bslf a{color: #783ce2;}
+     .bslf a:hover{
+  	text-decoration: none;
+    	color: #03A9F4;
+     }
+     .bslf .checkbox-inline{padding-top: 7px;}

@@ -1,0 +1,23 @@
+<div class="instagram ">
+  <div class="header">
+    <b>
+      <p class="header">{{string.instatag}}</p>
+    </b>
+  </div>
+  <div class="container ">
+    <owl-carousel-o [options]="customOptions">
+      <div class="item" *ngFor="let item of items">
+        <ng-template carouselSlide>
+          <div class="section">
+            <img class="image" src="{{item.imagesource}}" alt="">
+            <span class="rotate">
+              <div class="main">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </span>
+          </div>
+        </ng-template>
+      </div>
+    </owl-carousel-o>
+  </div>
+</div>

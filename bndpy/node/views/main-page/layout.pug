@@ -1,0 +1,74 @@
+extends ../../public/pug-bootstrap/_bootstrap
+append styles
+	// Custom styles for this template
+	link(href='../pugs/css/jumbotron.css', rel='stylesheet')
+	link(href='../pugs/css/carousel.css', rel='stylesheet')
+	link(href='../pugs/css/navbar-fixed-top.css', rel='stylesheet')
+	link(href='../styleSheets/style.css', rel='stylesheet')
+	//- link(href='../styleSheets/accordion.css', rel='stylesheet')
+	link(href='../styleSheets/product-details.css', rel='stylesheet')
+	link(href='../styleSheets/solution-details.css', rel='stylesheet')
+  
+ 
+append head	
+	title  #{settings.companyName}
+mixin layout(setting,products,solutions)
+ 
+	+navbar-fixed( setting.companyName ,'../images/' + setting.logo ,"navbar",right,"navbar-right")
+		+nav_item("#") درباره ی ما
+		+nav_item("#") مشتریان
+		+nav_item_dropdown("#")(label="محصولات")
+			each product in products			
+				+nav_item("#") #{product.title}
+		+nav_item_dropdown("#")(label="راهکارها")
+			each solution in solutions			
+				+nav_item("#") #{solution.title}
+	footer
+		.footer-top
+			.container
+				.col-xs-12.col-sm-6.col-md-3.col-lg-3
+					h3 اطلاعات تماس
+					hr(style="border-top: 1px dotted gray;")
+					each address in settings.addresses
+						p
+							span.glyphicon.glyphicon-map-marker(style="color:green") 
+							|	#{address.address}
+					p
+						span.glyphicon.glyphicon-phone(style="color:green")  
+						|	#{setting.tel}
+					p 
+						span.glyphicon.glyphicon-envelope(style="color:green")  
+						|	#{setting.email}
+				.col-xs-12.col-sm-6.col-md-3.col-lg-3
+					h3 درباره ما
+					hr(style="border-top: 1px dotted gray;")
+					p
+						a بیانیه ماموریت
+					p
+						a توانمندی ها
+					p
+						a تیم ما
+					p
+						a فناوری ها
+					p
+						a مشتریان
+				.col-xs-12.col-sm-6.col-md-3.col-lg-3
+					h3 محصولات
+					hr(style="border-top: 1px dotted gray;")
+					each item in products 
+						-var imgUrl ="../images/" + item.logo 
+						.p(style="padding:5px")
+							img(src=imgUrl,style="width:20px;height:20px;")
+							a(style="padding:5px") #{item.title}
+								
+				.col-xs-12.col-sm-6.col-md-3.col-lg-3
+					h3 راهکارها
+					hr(style="border-top: 1px dotted gray;")
+					each item in solutions 
+						-var imgUrl ="../images/" + item.logo 
+						.p(style="padding:5px")
+							img(src=imgUrl,style="width:20px;height:20px;")
+							a(style="padding:5px") #{item.title}
+
+		.footer-bottom
+			p.text-muted تمامی حقوق مادی و معنوی این سایت و دوره های آموزشی متعلق به   #{settings.companyName} می باشد و هرگونه کپی برداری و انتشار غیر مجاز پیگرد قانونی دارد .

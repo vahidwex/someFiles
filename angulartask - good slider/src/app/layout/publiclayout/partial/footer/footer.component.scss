@@ -1,0 +1,137 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+
+.footer{
+    direction: rtl;
+    background-color: $color-theme-secondary;
+    .topside{
+        width: 90%;
+        margin :auto;
+        padding :15px;
+        border-bottom: darken( $color-light,20) solid 1px;
+        .title{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .header{
+                font-size: 19px;
+                font-weight: 500;
+            }
+            .body{
+                font-size: 14px;
+                color: darken( $color-light,45);
+            }
+        }
+        .email{
+            border-left: darken( $color-light,20) solid 1px;
+            .button{
+                padding :13px 22px;
+                color: $color-light;
+                background-color: $color-theme-primary;
+                margin :5px;
+                font-weight: 500;
+                border: 1px solid transparent;
+                cursor: pointer;
+
+                &:hover{
+                    color: $color-dark;
+                    background-color: $color-light;
+                    border: $color-theme-primary 1px solid;
+                    transition: 0.3s all linear;
+                }
+            }
+            .inp{
+                height: 50px;
+                direction: ltr;
+                margin :6px 5px 0 0;
+                border: darken( $color-light,20) solid 1px;
+                padding: 10px;
+            }
+        }
+    }
+    .bottomside{
+        .list-items{
+            .header{
+                font-size: 1.1em;
+                padding-bottom: 15px;
+                font-weight: 600;
+            }
+            .list-item{
+                width: fit-content;
+                padding: 5px 0;
+                .link{
+                    color: darken( $color-light,45);
+                    text-decoration: none;
+               }
+                .line-anim{
+                    height: 2px;
+                    width:0;
+                    background-color: $color-theme-primary;
+                }
+                &:hover{
+                    .line-anim{
+                        width: 100%;
+                        transition: 1s ease all;
+                    }
+                }
+            }
+        }
+        direction :ltr;
+        padding :70px;
+        .about{
+            .image{
+
+            }
+            .about-company{
+                padding :25px 25px 25px 0;
+                color: darken( $color-light,45);
+            }
+            .socialmedia{
+                .items{
+                    font-size: 1.5rem;
+                    padding: 10px 15px;
+                }
+            }
+        }
+        .storeinformation{
+            .symbol{
+                height: 100%;
+                padding: 5px ;
+                font-size: 0.9em;
+                color: darken( $color-light,45);
+            }
+            .text{
+                color: darken( $color-light,45);
+                cursor: default;
+                padding: 5px ;
+            }
+        }
+        
+    }
+}
+@media only screen and (max-width: 1025px){
+    .footer{
+        .topside{
+            flex-direction: column;
+            align-items: center;
+            .title{
+                order: 1;
+                align-items: center;
+                .body{
+                    display: none;
+                }
+            }
+            .email{
+                order :2;
+                border: none;
+                .button{
+                    padding: 15px 10px;
+                    font-size: .9em;
+                }
+                .inp{
+                    font-size: .9em;
+                }
+            }
+        }
+    }
+}

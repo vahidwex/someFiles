@@ -1,0 +1,27 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+.footer{
+    width: 100vw;
+    margin: 0;
+    background-color: $color-light;
+    height: 50px;
+    .text{
+        color: darken($color-light , 45);
+        font-size: 0.9em;
+    }
+    .mark{
+        padding:  0 10px;
+        background-color: white;
+    }
+}
+@media only screen and (max-width: 1025px){
+    .footer{
+        .container{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.default{
+    cursor: default;
+}

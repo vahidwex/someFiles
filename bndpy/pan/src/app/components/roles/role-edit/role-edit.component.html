@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-success" [disabled]="!roleForm.valid || !roleForm.dirty ">ذخیره</button>&nbsp;
+            <!-- <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+            <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="title">عنوان</label>
+              <input type="text" id="title" formControlName="title" class="form-control">
+            </div>
+          </div>
+        </div>
+
+
+
+      </form>
+    </div>
+  </div>
+

@@ -1,0 +1,95 @@
+<div class="animated fadeIn row justify-content-center products w-100 m-0">
+
+  <div class="header row justify-content-center align-items-center">
+    <div class="container row">
+      <div class="HoverShadow name col-6 fw-600 default">
+        
+      </div>
+      <div class="address col-6">
+        <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+            class="HoverShadow pointer" [routerLink]="['/products']">محصولات</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center col-12 my-4 row justify-content-center ">
+    <div class="col-12 col-md-6 order-2 order-md-1" include="form-input-select()">
+        <input  type="text" class="select mx-3 text-end" placeholder="جستجو" [(ngModel)]="searchValue" (input)="search()">
+    </div>
+    <div class="col-12 col-md-3 order-1 order-md-2" include="form-input-select()">
+      <select class="select" required (change)="onChange($event.target.value)">
+
+        <option value="" hidden>مرتب سازی بر اساس</option>
+    
+        <!-- normal options -->
+        <option value="?sortBy=bazdid:desc">بر اساس بازدید</option>
+        <option value="?sortBy=like:desc">بر اساس لایک</option>
+        <option value="?sortBy=sellCount:desc">بر اساس فروش</option>
+        <option value="?sortBy=price:asc">بر اساس کمترین قیمت</option>
+        <option value="?sortBy=price:desc">بر اساس بیشترین قیمت</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mainContent row container justify-content-center m-4">
+      <div class="wrapper col-lg-4 col-md-4 col-sm-6 col-xs-12 my-4" *ngFor="let item of items">
+        <div [routerLink]="['/product/' + item.titleEnglish]" class="animated fadeIn card  pointer " >
+
+          <div  class="image row justify-content-center ">
+            <img class="image p-2" [src]="env.port+'/images/'+item.logo" alt="">
+          </div>
+          <div class="content text-center">
+
+            <p class="price text-end fw-600 ellips rtl w-100 text-center">{{item.title}}</p>
+            <p class="title text-end ellips rtl w-100 text-center">{{item.shortDesc}}</p>
+
+              <div class="price w-100 row justify-content-center m-0 my-2">
+                <span class="">
+                  قیمت :
+                </span>
+               <div class=" col text-center  ">
+                 
+                 <span class="fs-19 text-number color-primary">
+                   {{item.offPrice}} تومان 
+
+                 </span>
+               </div>
+
+               <div class="realPrice col text-center  ">
+                 
+                 <del class="fs-19 text-number ">
+                   {{item.price}} تومان 
+                 </del>
+ 
+               </div>
+              </div>
+          </div>
+
+          <div class="viewLike row justify-content-center">
+
+            <div class="likes  mx-2">
+              <span class="text-number">
+                {{item.like}}
+              </span>
+              <span>
+                <i class="color-like fas fa-heart"></i>
+              </span>
+            </div>
+
+            <div class="view  mx-2">
+              <span class="text-number">
+                {{item.bazdid}}
+              </span>
+              <span>
+                <i class="color-default far fa-eye"></i>
+              </span>
+            </div>
+
+          </div>
+            
+        </div>
+      </div>
+      <div  class="loc" id="Location"></div>
+  </div>
+
+</div>

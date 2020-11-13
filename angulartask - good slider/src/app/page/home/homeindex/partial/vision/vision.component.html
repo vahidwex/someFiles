@@ -1,0 +1,13 @@
+<div class="vision row justify-content-center">
+    <div class="container row">
+        <div class="child " *ngFor="let item of items ">
+            <div class="wrapper row justify-content-center">
+                    <img class="image" src="{{item.source}}" alt="">
+            </div>
+            <div class="section">
+                    <p class="offerpercent">{{item.offerpercent}}</p>
+                    <p class="maincontent">{{item.Maincontent}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="container">
+
+
+
+  <div class="row">
+
+    <div class="col-xs-12">
+      <form [formGroup]="settingForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <button type="submit" class="btn btn-success" [disabled]="!settingForm.valid ">ذخیره</button>&nbsp;
+            
+            <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="companyName">نام شرکت</label>
+              <input type="text" id="companyName" formControlName="companyName" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="email">ایمیل</label>
+              <input type="text" id="email" class="form-control" formControlName="email">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="HeaderMessage">پیام هدر</label>
+              <input type="text" id="HeaderMessage" class="form-control" formControlName="HeaderMessage">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="productHeader"> هدر محصولات</label>
+              <input type="text" id="productHeader" class="form-control" formControlName="productHeader">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="abutUsFooter"> پیام درباره ما </label>
+              <input type="text" id="abutUsFooter" class="form-control" formControlName="abutUsFooter">
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="location"> ادرس</label>
+              <input type="text" id="location" class="form-control" formControlName="location">
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="downFooterText">پیام فوتر پایین</label>
+              <input type="text" id="downFooterText" class="form-control" formControlName="downFooterText">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="tel">تلفن</label>
+              <input type="text" id="tel" class="form-control" formControlName="tel">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="abutUsPage">متن بلند درباره ما</label>
+              <textarea type="text" id="abutUsPage" class="form-control" formControlName="abutUsPage" rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <div class="form-group">
+              <label for="fax">دورنگار</label>
+              <input type="text" id="fax" class="form-control" formControlName="fax">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+              <app-setting-address *ngIf='settingExist'></app-setting-address>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-12">
+                <app-setting-social-network *ngIf='settingExist'></app-setting-social-network>
+              </div>
+            </div>
+              <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+
+            <div class="form-group">
+              <label for="logo">انتخاب لوگو</label>
+              <input type="file" class="form-control" (change)="onUpload($event.target.files)" accept='image/*'>
+              <input type="text" name="logo" formControlName="logo" hidden>
+            </div>
+          </div>
+
+          <div style="width: 57%;">
+
+            <div class="form-group">
+              <label for="logo">انتخاب بکگراند</label>
+              <input type="file" class="form-control" (change)="onUploadBackGround($event.target.files)" accept='image/*'>
+              <input type="text" name="backGround" formControlName="backGround" hidden>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"></div>
+          <div class="col-xs-7">
+            <img [src]="  imgURL" style="width: auto;height: 300px;" class="img-responsive" *ngIf="  imgURL">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

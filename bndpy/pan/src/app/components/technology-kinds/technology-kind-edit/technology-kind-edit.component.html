@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+  </div>
+
+  <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="technologyKindForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-success" [disabled]="!technologyKindForm.valid || !technologyKindForm.dirty ">ذخیره</button>&nbsp;
+              <!-- <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+              <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="title">عنوان</label>
+                <input type="text" id="title" formControlName="title" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="logo">انتخاب عکس</label>
+                <input type="file" class="form-control" (change)="onUpload($event.target.files)" accept='image/*'>
+                <input type="text" name="logo" formControlName="logo" hidden>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <img [src]="technologyKind.logo || imgURL" style="width: auto;height: 300px;" class="img-responsive"
+                *ngIf="technologyKind.logo || imgURL">
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

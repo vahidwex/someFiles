@@ -1,0 +1,17 @@
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import './utility/utility.scss';
+@import './font.scss';
+@import './basic.scss';
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'IRSANS';
+}

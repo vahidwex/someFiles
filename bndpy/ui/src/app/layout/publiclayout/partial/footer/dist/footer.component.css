@@ -1,0 +1,139 @@
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.footer {
+  direction: rtl;
+  background-color: whitesmoke;
+}
+.footer .bottomside {
+  padding: 70px;
+}
+.footer .bottomside .list-items .header {
+  text-align: right;
+  color: #1565C0;
+  font-size: 1.1em;
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+.footer .bottomside .list-items .list-item {
+  width: fit-content;
+  padding: 5px 0;
+  direction: ltr;
+}
+.footer .bottomside .list-items .list-item .images {
+  max-width: 25px;
+  max-height: 25px;
+}
+.footer .bottomside .list-items .list-item .images .image {
+  width: 100%;
+  height: 100%;
+}
+.footer .bottomside .list-items .list-item .link {
+  color: #8c8c8c;
+  text-decoration: none;
+}
+.footer .bottomside .list-items .list-item .wrapper {
+  direction: rtl;
+}
+.footer .bottomside .list-items .list-item .wrapper .line-anim {
+  height: 2px;
+  width: 0;
+  background-color: #1565C0;
+  transition: 1s ease all;
+}
+.footer .bottomside .list-items .list-item:hover .wrapper .line-anim {
+  width: 100%;
+  transition: 1s ease all;
+}
+.footer .bottomside .about {
+  text-align: right;
+}
+.footer .bottomside .about .image {
+  height: 150px;
+}
+.footer .bottomside .about .about-company {
+  padding: 25px 0;
+  color: #8c8c8c;
+}
+.footer .bottomside .about .socialmedia .items {
+  font-size: 1.5rem;
+  padding: 10px 15px;
+}
+.footer .bottomside .storeinformation .symbol {
+  height: 100%;
+  padding: 5px;
+  font-size: 0.9em;
+  color: #8c8c8c;
+}
+.footer .bottomside .storeinformation .text {
+  color: #8c8c8c;
+  cursor: default;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 1025px) {
+  .footer .topside {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .topside .title {
+    order: 1;
+    align-items: center;
+  }
+  .footer .topside .title .body {
+    display: none;
+  }
+  .footer .topside .email {
+    order: 2;
+    border: none;
+  }
+  .footer .topside .email .button {
+    padding: 15px 10px;
+    font-size: 0.9em;
+  }
+  .footer .topside .email .inp {
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .categorys {
+    width: 50%;
+  }
+
+  .whywechoose {
+    width: 50%;
+  }
+
+  .text {
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .storeinformation {
+    width: 100%;
+    border-top: 1px solid #d4d4d4;
+    padding: 10px;
+    margin: 10px;
+  }
+}
+.imagesocial {
+  height: 100%;
+  max-width: 30px;
+}
+
+.socialmedia {
+  height: 30px;
+}
+
+.revert {
+  direction: rtl !important;
+}
+
+.pointer {
+  cursor: pointer;
+}

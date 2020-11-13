@@ -1,0 +1,63 @@
+<div class="productdetails animated fadeIn">
+
+  <div class="header row justify-content-center align-items-center">
+    <div class="container row">
+      <div class="HoverShadow name col-6 fw-600 default">
+        انواع راهکار ها
+      </div>
+      <div class="address col-6">
+        <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+            class="HoverShadow pointer" [routerLink]="['/solutions']">راه کارها</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="top row ">
+      <div class="leftstatic col-lg-3 order-lg-1  order-md-3 order-sm-3 order-xm-3 col-sm-12 col-md-12 col-xs-12">
+        <div class="capabilityes d-flex flex-lg-column figure m-2 p-2 align-items-center mb-4">
+          <div class="row py-3 section" *ngFor="let item of capabilities">
+            <img class="svg col-md-6" [src]="env.port+'/images/'+item.logo" alt="">
+            <div class="content col-md-6 col-xs-12 my-3">
+              <p class="bigtext fw-600 color-primary text-center">{{item.title}}</p>
+              <p class="smalltext ellips text-center w-100">{{item.tags}}</p>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="content col-lg-9 order-2 col-md-12 col-sm-12 col-xs-12 mb-4 p-4">
+        <div class="featuresperOne row p-3 " [class.my-4]="i%2==0" [class.rtl]="i%2==0"
+          *ngFor="let solutionKind of Sk;let i = index">
+          <div class="pic col-4">
+            <img class="w-100 img" [src]="env.port+'/images/'+solutionKind.logo" alt="">
+
+          </div>
+          <div class="details col-8 d-flex flex-column justify-content-between">
+            <div class="detail">
+              <h3 class="mx-2 text-end fw-600 color-primary heading">{{solutionKind.title}}</h3>
+
+              <p [class.text-start]="i%2==0" class="paragraph text-end">
+                {{solutionKind.description}}
+              </p>
+
+            </div>
+
+            <div [class.text-end]="i%2!=0"  class="demo">
+              <button [routerLink]="['/solutions/'+solutionKind.title]" class="button-prime">جزئیات</button>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>

@@ -1,0 +1,66 @@
+<div class="footer">
+  <div class="topside  row justify-content-between">
+    <div class="email row col-12 col-md-6 justify-content-start">
+      <div class="button col-4">SUBSCRIBE</div>
+      <input class="inp col-6" type="text" placeholder="Enter your email">
+    </div>
+    <div class="title col-6">
+      <p class="header">{{string.knowbig}}</p>
+      <p class="body">{{string.nevemiss}}</p>
+    </div>
+  </div>
+
+  <div class="bottomside row justify-content-between">
+
+    <div class="about col-lg-5 col-md-6 ">
+      <img class="image" src="../../../../../assets/img/logo.png" alt="">
+      <p class="about-company">{{string.bottomitemdetails}}</p>
+      <div class="socialmedia">
+        <span class="items"><i class="item" class="fab fa-google-plus-g"></i></span>
+        <span class="items"><i class="item" class="fab fa-facebook-f"></i></span>
+        <span class="items"><i class="item" class="fab fa-twitter"></i></span>
+        <span class="items"><i class="item" class="fab fa-instagram"></i></span>
+        <span class="items"><i class="item" class="fas fa-rss"></i></span>
+      </div>
+    </div>
+
+
+    <div class="categorys list-items col-lg-2 col-md-6">
+      <p class="header">CATEGORIES</p>
+      <div class=" list-item" *ngFor="let category of categorys">
+        <a class="link" href="category.link">{{category.name}}</a>
+        <div class="line-anim"></div>
+      </div>
+    </div>
+
+
+    <div class="whywechoose list-items col-lg-2 col-md-6">
+      <p class="header">WHY WE CHOOSE</p>
+      <div class=" list-item" *ngFor="let choose of chooses">
+        <a class="link" href="choose.link">{{choose.name}}</a>
+        <div class="line-anim"></div>
+      </div>
+    </div>
+
+
+    <div class="storeinformation list-items col-lg-3 col-md-6">
+      <p class="header">STORE INFORMATION</p>
+      <div class=" list-item row">
+          <div class=" symbol"><i class="fas fa-map-marker-alt"></i></div> 
+        <div class="text">Multikart Demo Store, Demo Store</div>
+      </div>
+      <div class=" list-item row">
+          <div class=" symbol"><i class="fas fa-phone-volume"></i></div>
+        <div class="text">Call Us: 123-456-7898</div>
+      </div>
+      <div class=" list-item row">
+        <div class=" symbol"><i class="far fa-envelope"></i></div>
+        <div class="text">Email Us: wahidwex@gmail.com</div>
+      </div>
+      <div class=" list-item row">
+        <div class=" symbol"><i class="fas fa-fax"></i></div>
+        <div class="text">Fax: 123456</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row bt-portlet mb-4">
+    <div class="col-md-3">
+      <div class="session-color-messages col-md-12">
+        <div style="display:flex;flex-direction:row;cursor:pointer; margin-top: 5px; padding: 10px;" [ngClass]="{'active': channelSessionId == chats.id}" *ngFor="let chats of sessionChats"
+             (click)="scroll()" (click)="LIVECHAT_HISTORY(chats)">
+          <span class="icon_session_name" style="width: 40px;max-width: 40px;min-width: 40px;"> {{chats.session_name| slice:0:1 |uppercase}} </span>
+          <div class="session_name_contain" style="margin-left:0px;overflow:hidden;white-space: nowrap;
+          text-overflow:ellipsis;">
+            {{chats.session_name}}
+          </div>
+          <span *ngIf="newMessageCounter[chats.id] != null" class="newMessage">{{newMessageCounter[chats.id]}}</span>
+        </div>
+        <div class="row" style="margin-top: 5px; padding: 10px;" *ngIf="sessionChats.length == 0">
+            <span class="icon_session_name"> N </span>
+            <span class="session_name_contain">
+              No contacts
+            </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="messages-component">
+        <div class="p-lancer-color-messages col-md-12">
+          <div class="row" style="cursor:pointer; margin-top: 5px; padding: 10px;justify-content: space-between;">
+            {{channelSessionName || "Project Name"}}
+            <!-- <a [routerLink]="'/workdiary/'+channelProjectId" style="text-decoration: none;color:white" *ngIf="channelProjectId && user.role == 'employer'">
+                <i class="fa fa-chevron-left" style="margin-right: 5px;" aria-hidden="true"></i> Go back to project
+            </a>
+            <a [routerLink]="'/milestone/'+channelProjectId" style="text-decoration: none;color:white" *ngIf="channelProjectId && user.role == 'freelancer'">
+              <i class="fa fa-chevron-left" style="margin-right: 5px;" aria-hidden="true"></i> Go back to project
+          </a> -->
+          </div>
+        </div>
+
+        <div class="messages" id="messageScroll">
+          <div
+            [ngClass]="{'justify-content-end':myUserId==message.sender_id ,'justify-content-start':myUserId!=message.sender_id }"
+            class="row" style="margin: 0px" *ngFor="let message of messages">
+            <div [ngClass]="{'message':myUserId!=message.sender_id ,'message_myChats':myUserId==message.sender_id }"
+                 class="col-md-7">
+              <!--<span class="icon_session_name"> {{message.session_name| slice:0:1 |uppercase}} </span>-->
+              <div class="row session_name_contain text-left">{{ message.message }}
+              </div>
+              <div style="text-align: right">{{ message.created_at * 1000 | date:'yyyy-MM-dd HH:mm:ss' }}</div>
+            </div>
+          </div>
+
+          <div id="endOfChats">
+          </div>
+          <!--<div class="message" *ngFor="let chats of sessionChats">-->
+          <!--{{chats.session_name}}-->
+          <!--</div>-->
+        </div>
+
+        <div class="new-message-component">
+          <div class="field col-md-10">
+            <input id="message" (keydown.enter)="LIVECHAT_SEND(message)" [(ngModel)]="message">
+          </div>
+          <button (click)="LIVECHAT_SEND(message)" [disabled]="channelSessionId =='' " class="btn btn-default col-md-2">
+            Send
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+</div>
+</div>
+

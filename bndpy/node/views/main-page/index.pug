@@ -1,0 +1,64 @@
+extends ../../public/pug-bootstrap/_bootstrap
+
+block body
+ 
+	include ./layout.pug
+	+layout( settings,products,solutions)
+
+	br
+	.container
+		.row
+			+carousel("myCarousel",banners)
+	.solution
+		.strike
+			span راهکارها
+		.container
+			.row
+				each item in solutions
+					-var imgUrl ="../images/" + item.logo
+					-var routeUrl = '/solutions/' + item.titleEnglish 
+					.col-xs-12.col-sm-6.col-md-4.col-lg-3
+						.solution-block 
+							img.solution-image.img-rounded(src=imgUrl)
+							h2 #{item.title}
+							p
+								| #{item.shortDesc}
+							p
+								a.btn.btn-default(href=routeUrl, role='button') جزئیات »
+	.product
+		.strike
+			span محصولات
+		.container 
+			.row
+				each item in products
+					-var imgUrl ="../images/" + item.logo 
+					-var routeUrl= '/products/'+  item.titleEnglish 
+					.col-xs-12.col-sm-6.col-md-4.col-lg-3
+						.product-block 
+							img.product-image.img-circle(src=imgUrl)
+							h2 #{item.title}
+							p
+								| #{item.shortDesc}
+							p
+								a.btn.btn-default(href=routeUrl , role='button') جزییات »
+
+	.customer
+		.strike
+			span مشتریان
+		.container
+			.row
+				each item in customers
+					-var imgUrl ="../images/" + item.logo 
+					.col-xs-12.col-sm-6.col-md-4.col-lg-3
+						.customer-block
+							img.customer-image.img-circle(src=imgUrl)
+							h2 #{item.title}
+							p
+								| #{item.shortDesc}
+
+
+		block content
+	
+ 
+ 
+	

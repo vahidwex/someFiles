@@ -1,0 +1,19 @@
+<div class="instagram ">
+  <div class="header">
+    <b>
+      <p class="header">{{customersHeader}}</p>
+    </b>
+  </div>
+  <div class="container ">
+
+    <owl-carousel-o [options]="customOptions">
+      <ng-template  carouselSlide *ngFor="let item of items">
+        <div class="section row justify-content-center">
+          <img class="image"  [src]="env.port+'/images/'+item.logo" alt="">
+         
+        </div>
+      </ng-template>  
+      
+    </owl-carousel-o>
+  </div>
+</div>

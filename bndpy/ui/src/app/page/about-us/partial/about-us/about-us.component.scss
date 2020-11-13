@@ -1,0 +1,114 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.aboutUs{
+    background-color: $color-light;
+}
+.header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+  }
+  .textend{
+    text-align: right;
+  }
+  .fw-600{
+    font-weight: 600;
+  }
+  .fw-700{
+    font-weight: 700;
+  }
+  .color-primary{
+    color: $color-theme-primary;
+  }
+  .paragraph{
+    line-height: 30px;
+    font-size: 15px;
+  }
+  .color-primary{
+    color: $color-theme-primary;
+  }
+  .HoverShadow{
+      &:hover{
+          text-shadow: 0px 0px 1px $color-theme-primary;
+
+      }
+  }
+  .pointer{
+    cursor: pointer;
+  }
+  .default{
+      cursor: default;
+  }
+
+  .capabilities{
+    background-color: rgba($color: $color-light, $alpha: 0.84);
+
+    .container{
+        .section{
+            text-align: center;
+            // border-bottom: 1px solid darken($color-light, 20);
+            margin: 20px 0;
+            padding: 90px 0;
+            .svg {
+                height: 60px;
+                font-size: 14px;
+                &:hover{
+                  animation: ScaleUp 1s ease 1;
+                }
+              }
+              .bigtext {
+                padding: 10px 0;
+                font-weight: 600;
+                font-size: 20px;
+              }
+              .smalltext {
+                color: darken($color-light, 45);
+              }
+        }
+    }
+}
+
+.list-item {
+    width: fit-content;
+    padding: 5px 0;
+    direction: ltr;
+}
+.storeinformation{
+    margin: 0 auto;
+    width: 50% !important;
+}
+.featureimg{
+    width: 100%;
+}
+.symbol {
+    height: 100%;
+    padding: 5px;
+    font-size: 0.9em;
+    color: lighten($color-theme-primary, 10);
+  }
+  .text{
+    padding: 2px;
+    font-weight: 600;
+    color: darken($color-light, 55);
+
+  }
+  @media only screen and (max-width: 960px) {
+    .textz{
+      font-size: 13px;;
+      font-weight: 600;
+    }
+
+  }
+@keyframes ScaleUp {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+  }

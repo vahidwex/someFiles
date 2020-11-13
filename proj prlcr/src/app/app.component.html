@@ -1,0 +1,21 @@
+<ngx-loading-bar color="#fca726" [height]="'3px'" [includeSpinner]="false"></ngx-loading-bar>
+<app-header *ngIf="checkRoute() && authService.isUser()"></app-header>
+<app-header-public id="head" *ngIf="!authService.isUser()" [ngClass]="{'header-light': checkRouteForTransparent()}"></app-header-public>
+
+<main role="main" class="bd-content" style="min-height: 80vh">
+    <div style="height:72px;" id="neck"></div>
+    <router-outlet></router-outlet>
+
+    <div class="cookie-policy" *ngIf="showCookieDialog" [@slideDown]>
+        <p>
+            We use cookies to improve your online experience. By continuing to use our website,
+             we assume that you allow the use of cookies.
+        </p>
+        <a (click)="onRemoveCookieDialog()">Ok</a>
+    </div>
+</main>
+
+
+
+<app-footer id="foot"></app-footer>
+<ngx-json-ld [json]="schema"></ngx-json-ld>

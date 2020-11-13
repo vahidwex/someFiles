@@ -1,0 +1,78 @@
+
+*{
+    box-sizing: border-box;
+
+    font-family: "b homa";
+    margin: 0;
+    padding: 0;
+}
+
+.eachTitle{
+    font-family: "b nazanin";
+
+
+}
+.navTitle{
+    color: gray!important;
+}
+.educational-source:hover{
+    transform: scale(1.1,1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.pdf-files:hover{
+    transform: scale(1.1,1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.educational-source{
+    width:100px;
+    height: 100px;
+    border-radius: 7px;
+    float: right;
+    text-align: center;
+    border: 1px solid gray;
+    background: lightgray;
+    margin: 10px;
+    background-size: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.listOption{
+    text-align: center;
+    font-family: b nazanin;
+    font-weight: bold;
+}
+.listOptionHeader{
+ 
+    font-family: b nazanin;
+    font-weight: bold;
+    font-size:19px;
+    color: white;
+
+}
+.indiv-container{
+    width: 150px;
+    height: 180px;
+float: left;
+}
+.indiv{
+    color: none;
+}
+
+
+.indiv:hover{
+    transform: scale(1.1,1.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.pdf-files{
+    width:100px;
+    height: 100px;
+    text-align: center;
+    border-radius: 7px;
+    float: left;
+     border: 1px solid gray;
+     background: magenta;
+     margin: 10px;
+}

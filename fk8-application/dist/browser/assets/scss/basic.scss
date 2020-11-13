@@ -1,0 +1,30 @@
+@import './utility/utility.scss';
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: $color-light;
+}
+
+h1 {
+    margin: 0;
+}

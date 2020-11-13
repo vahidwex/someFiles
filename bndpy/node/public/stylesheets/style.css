@@ -1,0 +1,201 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 400px;
+}
+
+a {
+  color: #00B7FF;
+}
+*{
+  direction: rtl
+}
+@font-face{
+ font-family: "Sahel";
+ src: url("../fonts/sahel.woff"),
+ url("../fonts/sahel.woff");
+}
+
+@font-face{
+  font-family: "Dinar";
+  src: url("../fonts/bolandpayeh/Mj_Dinar\ One\ Light_p30download.com.ttf");
+ }
+
+*{
+ font-family:"Sahel";
+}
+
+input.ng-invalid.ng-touched{
+ border: 1px solid saddlebrown
+}
+
+textarea.ng-invalid.ng-touched{
+ border: 1px solid saddlebrown
+}
+
+th,td{
+ text-align: center
+}
+th{
+ background-color: cornflowerblue
+}
+
+a{
+  cursor: pointer;
+}
+span{
+ padding: 5px;
+}
+
+.product-image{
+  width: 90px;
+  height: 90px;
+ 
+}
+.product-block {
+  padding: 30px;
+  margin: 10px;
+  background-image: linear-gradient(to right, rgba(170, 195, 241, 0.808), rgba(129, 184, 236, 0.829));
+  border-radius: 25px;
+  border: 2px ;
+
+}
+.product-block > p,h2  {
+  text-align: center;
+  font-family: "Dinar";
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+.product-block > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solution-image{
+  width: 200px;
+  height: 200px;
+ 
+}
+.solution-block {
+  padding: 30px;
+  margin: 10px;
+  background-image: linear-gradient(to right, rgba(36, 56, 92, 0.808), rgba(129, 184, 236, 0.829));
+  border-radius: 25px;
+  border: 2px ;
+  height: 400px;
+}
+.solution-block > p,h2  {
+  text-align: center;
+  font-family: "Dinar";
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.solution-block > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.customer-image{
+  width: 190px;
+  height: 190px;
+ 
+}
+.customer-block {
+  padding: 30px;
+  margin: 10px;
+  
+  border-radius: 25px;
+  border: 2px ;
+
+}
+.customer-block > p,h2  {
+  text-align: center;
+  font-family: "Dinar";
+  color: rgb(99, 53, 53);
+  text-shadow: 2px 2px 4px #000000;
+}
+.customer-block > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+span.caret {
+  color:rgb(0, 0, 0);
+  display:inline-block;
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:5px;
+  font-size:8px;
+}
+.footer-top {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 25px;
+  height: 400px;
+  background-image: url("../word_map.png");
+  background-size: 100% 100%; 
+}
+.footer-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #161515;
+
+ 
+}
+.footer-bottom > p {
+  margin-top: 10px;
+  margin-right: 50px;
+}
+/*--------------------------strick-----------------------*/
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap; 
+  margin-left: 100px;
+}
+
+.strike > span {
+  position: relative;
+  display: inline-block;
+  font-family: "Dinar";
+  font-size: 25px;
+
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  color: rgb(53, 130, 160);
+  text-shadow: 2px 2px 4px #141313;
+}
+
+.strike > span:before,
+.strike > span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: rgb(129, 128, 128);
+}
+
+.strike > span:before {
+  right: 100%;
+  margin-right: 35px;
+}
+
+.strike > span:after {
+  left: 100%;
+  margin-left: 35px;
+}
+ 

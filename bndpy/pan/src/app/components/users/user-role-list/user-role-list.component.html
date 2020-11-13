@@ -1,0 +1,28 @@
+<div class="well">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <a (click)="onNavigate()" class="close" data-dismiss="alert" aria-label="close" style="font-size: 35px;padding-top:0px">&times;</a>
+    
+      <app-user-role-edit></app-user-role-edit>
+
+      <table class="table  ">
+        <thead>
+          <tr>
+            <th style="width: 5%">ردیف</th>
+            <th style="width: 85%">عنوان</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of userRoles;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{role | getTitle:kinds}}</td>
+            <td>  <a (click)="removeRole(role)"  class="close" data-dismiss="alert" aria-label="close">&times;</a> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

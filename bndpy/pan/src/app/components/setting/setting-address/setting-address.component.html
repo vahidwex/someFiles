@@ -1,0 +1,72 @@
+<div class="well">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- <a (click)="onNavigate()" class="close" data-dismiss="alert" aria-label="close" style="font-size: 35px;padding-top:0px">&times;</a> -->
+      <h4> آدرس</h4>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <form [formGroup]=" settingAddressForm" (ngSubmit)="onSubmit()" class="form-inline">
+
+            <div class="col-sm-12 form-group">
+              <div class="form-group">
+
+                <input type="text" id="address" formControlName="address" class="form-control"
+                  placeholder="آدرس را وارد کنید" size="70%">
+
+              </div>
+              <div class="form-group">
+
+                <input type="text" id="positionHeight" formControlName="positionHeight" class="form-control"
+                  placeholder="طول جغرافیایی را وارد کنید"  size="15%">
+
+              </div>
+              <div class="form-group">
+
+                <input type="text" id="positionWidth" formControlName="positionWidth" class="form-control"
+                  placeholder="عرض جغرافیایی را وارد کنید"  size="15%">
+              </div>
+              <div class="form-group">
+
+                    <button class="btn btn-success" type="submit">تایید</button>
+
+                </div>
+            </div>
+
+
+          </form>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11">
+          <table class="table  ">
+            <thead>
+              <tr>
+                <th style="width: 5%">ردیف</th>
+                <th style="width: 65%">آدرس</th>
+                <th style="width: 15%">طول</th>
+                <th style="width: 15%">عرض</th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let setting of  settingAddress;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{setting.address }}</td>
+                <td>{{setting.positionHeight}}</td>
+                <td>{{setting.positionWidth }}</td>
+                <td> <a (click)="removeSettingAddress(setting._id)" class="close" data-dismiss="alert"
+                    aria-label="close">&times;</a> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

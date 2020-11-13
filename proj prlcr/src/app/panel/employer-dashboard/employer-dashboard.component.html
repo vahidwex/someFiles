@@ -1,0 +1,123 @@
+<div class="container dark-background">
+    <div id="top" style="height: 0px"></div>
+
+    <div class="alert alert-warning alert-dismissible fade show mb-3 mt-3" role="alert" *ngIf="!authService.isCardVerified()">
+        <app-add-card title="Add Card">
+            <strong class="pointer">Add your card information now.</strong>
+        </app-add-card>
+        Your job postings will be more visible and you will get a green Payment Verified badge as well.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="post-job-row row m-0 justify-content-center" style="border: solid 1px #e1e1e1; border-radius:10px;overflow: hidden;">
+        <div class="post-banner col-md-12 row justify-content-center">
+            <div class="col-md-7 row hover-holder" style="z-index: 100;">
+                <div class="white col-md-12 big-size bold" style="margin-top: 14px;
+                padding: 0px;">
+                    Post a project in four quick steps
+                </div>
+                <div class="sub-title col-md-12" style="padding:0px;">
+                    You can easily and quickly post your projects with our auto-filled wizard form. Simply type in your title and we will help you in writing the rest of it.
+                </div>
+                <div class="col-md-4 d-none d-lg-block d-md-none lines" style="margin-top: 17px;margin-left: -59px;">
+                    <img src="../../../assets/lines.png" id='lines' alt="" style="transition: width ease-out 0.7s;width:0px;height: 38px;">
+                </div>
+                <a class="col-md-4 post-job d-md-none d-lg-block d-none" id='post-job' style="margin-top: 10px;margin-bottom: 10px;margin-left: -220px;transition: margin-left ease-out 0.5s;" routerLink="/post-job">Post Project</a>
+                <a class="col-md-4 post-job d-md-block d-block d-lg-none" style="margin-top: 10px;margin-bottom: 10px;" routerLink="/post-job">Post Project</a>
+            </div>
+            <div class="col-md-5 justify-content-center row">
+                <img src="../../../assets/postbanner.png" alt="" style="max-height: 191.2px;width: 384px;object-fit: cover;object-position: 100% 0;">
+            </div>
+        </div>
+        <div class="recent-jobs col-md-12 row justify-content-center" *ngIf="projects.lenght != 0">
+            <div class="row col-md-12" *ngFor="let project of projects" style="margin-top: 17px;margin-bottom: 14px;">
+                <a class="col-md-5 description d-md-block d-none" [routerLink]="'/projects/' + project.project_id">
+                    {{project.title}}
+                </a>
+                <div class="col-md-5 post-date d-md-block d-none">
+                    posted on {{getTime(project.created_at)}}
+                </div>
+                <a class="col-md-5 description d-md-none d-block" style="text-align: center;" [routerLink]="'/projects/' + project.project_id">
+                    {{project.title}}
+                </a>
+                <div class="col-md-5 post-date d-md-none d-block" style="text-align: center;">
+                    posted on {{getTime(project.created_at)}}
+                </div>
+                <div class="col-md-2 bid-num d-md-block d-none" style="text-align: right;">
+                    0 bids
+                </div>
+                <div class="col-md-2 bid-num d-md-none d-block">
+                    0 bids
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="post-job-row m-0 row justify-content-center" style="border: solid 1px #e1e1e1; border-radius:10px;margin-top: 15px;">
+            <div class="header-banner col-md-12 row justify-content-center">
+                <div class="col-md-12 row header-title">
+                    Popular Projects
+                </div>
+            </div>
+            <div class="recent-jobs col-md-12 row justify-content-center">
+                <div class="row col-md-12 justify-content-center" style="padding-bottom: 15px;">
+                    <div *ngFor="let job of jobs;let i = index" class="col-md-3 row justify-content-center" style="min-width: 240px;margin:0px;">
+                        <div class="popular-job col-md-12 col-sm-8" style="padding: 0px;" alt="" [ngStyle]="{background: 'url(../../../assets/images/popular-' + (i+1) + '.jpg)'}">
+                            <div class="hover-job row">
+                                <div class="col-md-12 row" style="margin: 0 auto;padding-top: 16%;line-height: 2;">
+                                    <div class="col-md-12 hover-title" style="height: 35px;
+                                    overflow: hidden;">
+                                        ..{{job.title}}
+                                    </div>
+                                    <div class="col-md-12 hover-money">
+                                        from {{job.min_budget}}$ to {{job.max_budget}}$
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="hover-post" (click)="postProjectLikeThis(job)">
+                                            Post a project like this
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="post-job-row row mx-0 mt-3 justify-content-center" style="border-radius:10px;margin-top: 15px;">
+                <div class="header-category col-md-12 row justify-content-center" style="margin-bottom: 15px;margin-top: 15px;">
+                    <div class="col-md-12 row category-title">
+                        Popular Categories
+                    </div>
+                    <div class="col-md-12 row category-description">
+                        Find the most relevant category and sub-category to what you need and post a job from it or from the jobs posted, choose one to Post a project like that.
+                    </div>
+                </div>
+                <div class="col-md-12 row justify-content-center">
+                    <div class="row col-md-12 justify-content-center" style="padding-bottom: 15px;">
+                        <div class="col-md-3" *ngFor="let item of titles" style="min-width: 260px;">
+                            <div class="popular-category" alt="">
+                              <div style="width: 100%;height: 64px;" class="d-flex justify-content-center">
+                                  <img [src]="'../assets/images/'+item.icon" alt="" style="font-size: var(--font-size-55);text-align: center;color: var(--clickable-orange); transition: margin 0.3s ease-out">
+                              </div>
+                              <div class="category-name">
+                                {{item.title}}
+                              </div>
+                              <div class="description-category">
+                                {{item.description}}
+                              </div>
+                              <div class="more-category" [queryParams]="{category: item.title}" routerLink="/categories">
+                                  More
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="display: flex;
+                        justify-content: center;
+                        margin-top: 15px;">
+                            <a class="see-all" routerLink="/categories">See All Categories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-5">
+
+      <div class="well">
+
+        <div class="form-group">
+          <label >وضعیت سفارش</label>
+
+          <select (change)="changeStatus($event)" class="form-control" >
+
+            <option>وضعیت سفارش را انتخاب نمایید</option>
+
+            <option value="success">موفق</option>
+            <option value="cancled">باطل</option>
+            <option value="pending">انتظار</option>
+            <option value="sended">ارسال شد</option>
+            <option value="delivered">تحویل شد</option>
+
+          </select>
+
+          <div class="update well p-2 m-2">
+
+            <select (change)="changeStatusEdit($event)" class="form-control" >
+
+              <option> بوزرسانی وضعیت سفارش را انتخاب نمایید </option>
+  
+              <option value="success">موفق</option>
+              <option value="cancled">باطل</option>
+              <option value="pending">انتظار</option>
+              <option value="sended">ارسال شد</option>
+              <option value="delivered">تحویل شد</option>
+              
+            </select>
+
+            <button type="button" class="btn btn-primary update-button" (click)="Update()"><span class="glyphicon glyphicon-edit" aria-hidden="true"> </span> بروزرسانی</button>
+          </div>
+
+        </div>
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="width: 5%">ردیف</th>
+              <th style="width: 10%">قیمت نهایی</th>
+              <th style="width: 20%">نام گیرنده</th>
+              <th style="width: 8%">نوع وضعیت</th>
+              <th style="width: 7%">اتنخاب</th>
+              <th style="width: 25%">تاریخ اخرین وضعیت</th>
+              <th style="width: 35%">جزییات</th>
+              
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders;let i = index">
+              <td>{{ (limit*skip)+ i+1}}</td>
+              <td>{{order.totalPrice}}</td>
+              <td>{{order.client.name +" "+order.client.family}}</td>
+              <td>{{order.status}}</td>
+              <td><input type="checkbox" (change)="changeCheckbox($event,order._id)" value=""></td>
+              <td>{{order.lastStatusDate}}</td>
+              
+              <td>
+                  <p *ngFor="let item of order.products">
+                    <span>{{item.count}} X {{item._id.title}}</span> 
+                  </p>
+              </td>
+                
+              <!-- <td>
+                <a (click)="onEdit(order._id)"><span class="glyphicon  glyphicon-edit"
+                style="color: green;cursor: pointer;font-size: 18px" alt="155" title="ویرایش"></span></a>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <div class="buttons row justify-content-around">
+          <button type="button" class="btn btn-primary" [disabled]="disableNext" (click)="next()"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span></button>
+          <p class="activeIndex">صفحه {{skip+1}}</p>
+          <button type="button" class="btn btn-primary" [disabled]="disablePrev" (click)="prev()"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> </span></button>
+          <input type="number" placeholder="تعداد هر صفحه" (input)="changelimit($event)">
+
+        </div>
+        <button type="button" class="btn btn-primary" (click)="getDataforPrint()">چاپ</button>
+
+        
+
+      </div>
+
+
+
+    </div>
+  </div>

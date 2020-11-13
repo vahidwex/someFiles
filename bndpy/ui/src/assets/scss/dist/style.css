@@ -1,0 +1,99 @@
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+@font-face {
+  font-family: "LatoSans";
+  src: url("/assets/font/Lato-Sans/Lato-Regular.eot");
+  src: url("/assets/font/Lato-Sans/Lato-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/font/Lato-Sans/Lato-Regular.woff") format("woff"), url("/assets/font/Lato-Sans/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mj_DinarTwoLight";
+  src: url("/assets/font/Mj_DinarTwoLight/Mj_DinarTwoLight.eot");
+  src: url("/assets/font/Mj_DinarTwoLight/Mj_DinarTwoLight.eot?#iefix") format("embedded-opentype"), url("/assets/font/Mj_DinarTwoLight/Mj_DinarTwoLight.woff2") format("woff2"), url("/assets/font/Mj_DinarTwoLight/Mj_DinarTwoLight.woff") format("woff"), url("/assets/font/Mj_DinarTwoLight/Mj_DinarTwoLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.ellips {
+  display: inline-block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+div {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.text-center {
+  text-align: center;
+}
+
+body {
+  background-image: url("/assets/img/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+* {
+  font-family: "Mj_DinarTwoLight";
+}

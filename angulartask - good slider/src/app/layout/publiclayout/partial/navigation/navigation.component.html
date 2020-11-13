@@ -1,0 +1,59 @@
+<div class="navigation">
+  <div class=" internal row align-items-center justify-content-between container ">
+      <div class="left col-lg-4 col-md-8 col-8 row justify-content-between align-items-center" >
+            <div class="drawer">
+                    <div class="open-drawer">
+                      <i class="button fas fa-bars" (click)="open!=open" (click)="sidenav.toggle()"></i>
+                    </div>
+                    <mat-sidenav-container [class.visible]="open==true">
+                      <mat-sidenav #sidenav mode="over">submenu</mat-sidenav>
+                      <mat-sidenav-content>
+              
+                      </mat-sidenav-content>
+                    </mat-sidenav-container>
+                  </div>
+                  <div class="logo">
+                    <img src="../../../../../assets/img/logo.png" alt="">
+                  </div>
+      </div>
+    
+    <div class="right row justify-content-around col-lg-8 col-md-4 col-4">
+      <div class="drawertwo">
+          <div class="open-drawer">
+              <i class="button fas fa-bars" (click)="opentwo!=opentwo" (click)="sidenavtwo.toggle()"></i>
+            </div>
+            <mat-sidenav-container [class.visible]="opentwo==true">
+                <mat-sidenav #sidenavtwo position="end" mode="over">submenu</mat-sidenav>
+                <mat-sidenav-content>
+                </mat-sidenav-content>
+              </mat-sidenav-container>
+      </div>
+            <div class="list col-6">
+                    <ul class="items row justify-content-between">
+                      <li class="item">
+                        <a class="link" href="#">HOME</a>
+                      </li>
+                      <li class="item">
+                        <a class="link" href="#">FEATURES</a>
+                      </li>
+                      <li class="item">
+                        <a class="link" href="#">PRODUCTS</a>
+                      </li>
+                      <li class="item">
+                        <a class="link" href="#">PAGES</a>
+                      </li>
+                      <li class="item">
+                        <a class="link" href="#">SHOP</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="advanced-list col-lg-3 col-md-9 row justify-content-around">
+                    <div class="item"> <a class="link" href=""><i class="fas fa-search"></i></a> </div>
+                    <div class="item"> <a class="link" href=""><i class="fas fa-cog"></i></a> </div>
+                    <div class="item"> <a class="link" href=""><i class="fas fa-shopping-basket"></i></a> </div>
+                    
+                  </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="animated fadeIn row justify-content-center w-100 m-0 products">
+
+    <div class="header row justify-content-center align-items-center">
+      <div class="container row">
+        <div class="HoverShadow name col-6 fw-600 default">
+          
+        </div>
+        <div class="address col-6">
+          <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+              class="HoverShadow pointer" [routerLink]="['/solutions']">راه کار ها</span></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="aboutSolutionKind text-center my-2 w-100">
+        <h4 class="fw-600 w-100">در باره این مجموعه راهکار</h4>
+        <div class="head w-100 row justify-content-center rtl my-4">
+            <img class="imagez p-2" [src]="env.port+'/images/'+solutionKind.logo" alt="">
+            <h3 class="fw-600">{{solutionKind.title}}</h3>
+        </div>
+        <p class="descriptionSk w-100">{{solutionKind.description}}</p>
+    </div>
+
+  
+    <div class="mainContent row container">
+      <div class="wrapper col-lg-3 col-md-4 col-sm-6 col-xs-12 my-4" *ngFor="let item of solutions">
+        <div [routerLink]="['/solution/' + item.titleEnglish]" class="animated fadeIn card  pointer " >
+          <div  class="image row justify-content-center ">
+            <img class="image p-2" [src]="env.port+'/images/'+item.logo" alt="">
+          </div>
+          <div class="content text-start rtl">
+            
+            <p class="price text-start fw-600">{{item.title}}</p>
+            <p class="title text-end ellips">{{item.description}}</p>
+            
+            </div>
+        </div>
+    </div>
+  
+  </div>
+  

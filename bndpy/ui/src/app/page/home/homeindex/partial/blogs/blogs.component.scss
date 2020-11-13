@@ -1,0 +1,81 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+.blogs{
+    background-color: rgba($color: $color-light, $alpha: 1);
+
+    padding: 50px 0;
+    .header{
+        padding: 30px;
+        text-align: center;
+        .recent{
+            color:$color-theme-primary;
+            font-size: 18px;
+        }
+        .big-text{
+            color: $color-dark;
+            font-size: 30px;
+            font-weight: 900;
+            position: relative;
+            
+            &::after{
+                content: "";
+                width: 60px;
+                height: 2px;
+                background-color: $color-theme-primary;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .container{
+        .section{
+            background-color: white;
+            padding: 10px 0;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 12px 0px rgba($color: $color-dark, $alpha: 0.35);
+
+
+            .image{
+                max-width: 100%;
+                margin: 0;
+                .img{
+                    width:366px;
+                    height: 298px;
+                }
+                
+            }
+            .content{
+                text-align: center;
+                .time{
+                    color: $color-theme-primary;
+                    font-size: 20px;
+                }
+                .main{
+                    font-weight: 600;
+                    font-size: 18px;
+                    color:$color-dark;
+                    padding: 10px 0;
+                    position: relative;
+                    &:hover{
+                        color:$color-theme-primary;
+                        transition: 1s ease all;
+                    }
+                    &::after{
+                        content: "";
+                        width: 60px;
+                        height: 2px;
+                        background-color: $color-theme-primary;
+                        position: absolute;
+                        bottom: 0;
+                        left: 125px;
+                    }
+                }
+                .author{
+                    color: darken( $color-light,50);
+                }
+            }
+        }
+    }
+}

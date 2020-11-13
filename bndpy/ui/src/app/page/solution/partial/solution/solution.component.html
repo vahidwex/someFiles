@@ -1,0 +1,80 @@
+<div class="animated fadeIn solution">
+  <div class="header row justify-content-center align-items-center">
+    <div class="container row">
+      <div class="HoverShadow name col-6 fw-600 default">
+        {{item.title}}
+      </div>
+      <div class="address col-6">
+        <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+            class="HoverShadow pointer" [routerLink]="['/solutions']">راه کارها</span></h5>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="top container">
+    <div class="row mt-5 row">
+      <div class="leftstatic col-lg-3 order-lg-1  order-md-3 order-sm-3 order-xm-3 col-sm-12 col-md-12 col-xs-12">
+        <div class="capabilityes  d-flex flex-lg-column figure m-2 p-2 align-items-center mb-4 ">
+          <div class="row py-3 section" *ngFor="let itemz of capabilities">
+            <img class="svg col-5 mx-1" [src]="env.port+'/images/'+itemz.logo" alt="">
+            <div class="content col-6">
+              <p class="bigtext fw-600 color-primary">{{itemz.title}}</p>
+              <p class="smalltext ellips">{{itemz.tags}}</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="aboutSolution figure container col-lg-9 order-2 col-md-12 col-sm-12 col-xs-12 mb-4 p-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 imagez">
+            <img class="image p-2" [src]="env.port+'/images/'+item.logo" alt="">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 describe d-flex flex-column justify-content-between">
+            <div class="about">
+              <div class="title text-end color-primary">
+                <h4> {{item.title}} </h4>
+              </div>
+              <div class="desc text-end paragraph">
+                <p>{{item.description}}</p>
+              </div>
+            </div>
+            <div class="buyoradd rtl row justify-content-start  my-3">
+                <h6 class="col-12 fw-600 color-primary p-0 text-start">عملیات</h6>
+  
+                <button class="mx-2 button-prime "><i class="fas fa-shopping-basket"></i></button>
+                <button class="button-prime"><i class="fas fa-heart"></i></button>
+  
+  
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="products container">
+    <div class="row justify-content-center align-items-center">
+      <div class="pic col-2 pointer" [routerLink]="['/product/'+pic.title]" *ngFor="let pic of item.products">
+        <div class="ProPic row align-items-center w-100 m-0">
+          <img [src]="env.port+'/images/'+pic.logo" alt="">
+        </div>
+        <h5 class="text-center proText color-primary">{{pic.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

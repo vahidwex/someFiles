@@ -1,0 +1,5 @@
+if (typeof localStorage === "undefined" || localStorage === null) {
+    let LocalStorage = require('node-localstorage').LocalStorage;
+        localStorage = new LocalStorage('./scratch');
+    PAYMENT_KEY="pk_test_njKYuSNCweLG89xhvwbMYdJ800wA3lLNCK";
+}

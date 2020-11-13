@@ -1,0 +1,86 @@
+<div class="preview animated fadeIn">
+
+    <div class="header row justify-content-center align-items-center">
+      <div class="container row">
+        <div class="HoverShadow name col-6 fw-600 default">
+          سبد خرید
+        </div>
+        <div class="address col-6">
+          <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span
+              class="HoverShadow pointer" [routerLink]="['/basket']">سبد خرید</span></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="container p-3">
+        <div class="content row justify-content-around text-start py-4">
+
+            <div class="personalData col-md-5 col-11 my-1 h-fit row rtl text-start figure justify-content-center">
+                
+                <div class="headers w-50">
+                    <div class="field name">نام:</div>
+                    <div class="field family">نام خانوادگی:</div>
+                    <div class="field mobile">موبایل:</div>
+                    <div class="field address">آدرس:</div>
+                    <div class="field postalCode">کد پستی:</div>
+                </div>
+
+                <div class="body w-50">
+                    <div class="field name">{{person.name}}</div>
+                    <div class="field family">{{person.family}}</div>
+                    <div class="field mobile text-number">{{person.mobile}}</div>
+                    <div class="field address">{{person.address}}</div>
+                    <div class="field postalCode text-number">{{person.postalCode}}</div>
+                </div>
+
+
+            <button (click)="personalBack()" class="col-6 m-3" class="button-prime">ویرایش اطلاعات پستی</button>
+
+            </div>
+
+            <div class="buyData h-fit col-md-5 col-11 my-1 rtl figure justify-content-center">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th >ردیف</th>
+                            <th >نام کالا</th>
+                            <th >قیمت</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of products;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.title}}</td>
+                            <td class="text-number">{{product.offPrice}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="darken-primary fw-600 fs-21">مبلغ کل : <span class="text-number fw-700">{{totalPrice | inputCustomize}}</span> تومان</p>
+                <button (click)="basketBack()" class="col-6 m-3 button-prime">ویرایش اطلاعات خرید</button>
+
+            </div>
+
+        </div>
+
+        <div class="bottom row justify-content-around">
+
+            <div class="transport col-md-5 col-11 my-1 ">
+                <app-transportation (transfetCalcPrice)="transfetCalcPrice($event)" [order]="currentOrder"></app-transportation>
+            </div>
+
+            <div class="payment col-md-5 col-11 my-1 ">
+                <app-select-payment></app-select-payment>
+            </div>
+
+        </div>
+
+        <div class="buttons col-12 d-flex flex-column justify-content-center my-4 align-items-center">
+            <p class="darken-primary fw-600 fs-21">مبلغ قابل پرداخت : <span class="text-number fw-700">{{totalPriceUpdated | inputCustomize}}</span> تومان</p>
+            <button (click)="init()" class="h-100 col-3 button-prime">تکمیل خرید</button>
+        </div>
+
+    </div>
+
+</div>

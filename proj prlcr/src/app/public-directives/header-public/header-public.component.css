@@ -1,0 +1,103 @@
+.trans{
+    background: rgba(0, 0, 0, 0.5);
+}
+.nottrans{
+    background-color: var(--dark-color);
+}
+.avatar {
+    width: 32px;
+    height: 32px;
+}
+.nav-link{
+    align-self: center;
+    white-space: nowrap;
+}
+.lh-16{
+    line-height: 16px !important;
+}
+.nav-item{
+    display: flex;
+    text-align: right;
+}
+.profile-pic{
+    width: 140px;
+    height: 140px;
+}
+.welcome{
+    display: flex;
+    justify-content: center;
+}
+.user-name{
+    text-align: center;
+    width: 180px;
+    font-size: var(--font-size-18);
+}
+.dropdown-item{
+    justify-content: space-between;
+    display: flex;
+}
+.dropdown-menu{
+    padding: 10px;
+}
+.post-job{
+    min-width: 140px;
+    text-align: center;
+    border-radius: 30px;
+    background-color: var(--clickable-orange);
+    color: white !important;
+    font-size: var(--font-size-17);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+    font-style: normal;
+    margin-right: 10px;
+}
+.right-align{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.white{
+    color: white !important;
+}
+.orange{
+    color:var(--clickable-orange);
+}
+.divider-vertical{
+    width: 1px;
+    background-color: white;
+    height: 70%;
+    align-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.freelancer{
+    
+    font-size: var(--font-size-17);
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--clickable-orange) !important;
+}
+.back-white{
+    background-color: white !important;
+}
+.mobile-size{
+    flex-direction: row;
+    line-height: 3px;
+    color: white;
+    justify-content: space-between;
+    margin: 5px;
+}
+@media (min-width: 768px) and (max-width: 901px) {
+    .categories{
+        display:none !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 861px){
+    .freelancer-key{
+        display:none !important;
+    }
+}

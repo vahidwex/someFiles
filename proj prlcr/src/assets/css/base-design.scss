@@ -1,0 +1,46 @@
+$pl_colors:
+        "light-green" #8ac349,
+        "light-blue" #03dff3,
+        "blue" #3498db,
+        "navy-blue" #34495e,
+        "purple" #b081f0,
+        "yellow" #ffd600,
+        "orange" #f39c12,
+        "red" #e74c3c,
+        "dark-red"#d7202e,
+        "black" #2b2b2b,
+        "white" #ffffff;
+
+$light-green: #8ac349;
+$light-blue: #03dff3;
+$blue: #3498db;
+$navy-blue: #34495e;
+$purple: #b081f0;
+$yellow: #ffd600;
+$orange: #f39c12;
+$red: #e74c3c;
+$dark-red: #d7202e;
+$black: #2b2b2b;
+$white: #ffffff;
+
+@each $i in $pl_colors {
+  .color-#{nth($i, 1)} {
+    color:nth($i, 2)!important;
+  }
+}
+
+$marginSizes:
+        "8" 8px,
+        "12" 12px,
+        "14" 14px,
+        "16" 16px,
+        "18" 18px,
+        "24" 24px,
+        "32" 32px,
+        "40" 40px;
+
+@each $i in $marginSizes {
+  .font-#{nth($i, 1)} {
+    font-size: nth($i, 2)!important;
+  }
+}

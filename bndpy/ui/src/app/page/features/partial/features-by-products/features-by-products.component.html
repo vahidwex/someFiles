@@ -1,0 +1,39 @@
+<div class="features animated fadeIn ">
+    <div class="header row justify-content-center align-items-center">
+        <div class="container row">
+          <div class="HoverShadow default name col-6 fw-600 ">
+            ویژگی های {{product.title}} 
+          </div>
+          <div class="address col-6">
+            <h5 class="textend fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span class="HoverShadow pointer" [routerLink]="['/products']">محصولات</span> / <span class="HoverShadow default" >ویژگی ها</span></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="container pb-4">
+        <div class="featuresperOne row p-3 "  [class.my-4]="i%2==0" [class.rtl]="i%2==0" *ngFor="let feature of features;let i = index">
+            <div class="pic col-4">
+                <img class="w-100 img" [src]="env.port+'/images/'+feature.icon" alt="">
+    
+            </div>
+            <div class="details col-8 d-flex flex-column justify-content-between">
+                <div class="detail">
+                    <h3 class="mx-2 textend fw-600 color-primary">{{feature.title}}</h3>
+                
+                    <p class="paragraph textend">
+                        {{feature.desc}}
+                    </p>
+
+                </div>
+
+                <div class="demo">
+                    <button class="button-prime">درخاست دمو</button>
+                </div>
+            </div>
+    
+            
+          </div>
+      </div>
+      
+
+</div>

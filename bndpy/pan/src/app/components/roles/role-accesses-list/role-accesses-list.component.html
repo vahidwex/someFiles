@@ -1,0 +1,38 @@
+
+
+
+    <div class="row">
+
+
+      <div class="well">
+        <a (click)="onNavigate()" class="close" data-dismiss="alert" aria-label="close" style="font-size: 35px;padding-top:0px">&times;</a>
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th style="width: 5%">ردیف</th>
+              <th style="width: 35%">عنوان</th>
+              <th style="width: 25%">وضعیت
+
+                  <input type="checkbox" value="">
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of roleAccesses;let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.access | getTitle:accesses }}</td>
+
+              <td><input type="checkbox" [checked]="item.isAuthorized" value={{item.isAuthorized}} (click)="onModifyAccess(item._id,!item.isAuthorized)" ></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+

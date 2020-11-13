@@ -1,0 +1,180 @@
+.lh-2-7{
+  line-height: 2.7 !important;
+}
+
+.mt-45{
+  margin-top: 45px;
+}
+
+@media (max-width: 768px) {
+    .border-right{
+        border-right: 0px!important;
+    }
+}
+
+.mw-120{
+   min-width: 120px !important;
+}
+
+.lh-1-5{
+  line-height: 1.5 !important;
+}
+.lh-2-3{
+  line-height: 2.3 !important;
+}
+
+.post-small-btn{
+  height: 25.5px !important;
+}
+.bid-small-btn{
+  height: 25.5px !important;
+}
+.search-button{
+    height: 49px;
+}
+.back-white{
+  border: solid 1px #e1e1e1;
+}
+.job-card{
+  border: solid 1px #e1e1e1;
+}
+.job-description{
+  white-space: pre-line;
+}
+.lh-27{
+  line-height: 27px !important;
+}
+.skills{
+    flex-wrap: wrap;
+    background-color: #d3d3d9;
+    letter-spacing: .05rem;
+    color: #444;
+    transition: .3s;
+    margin: .1rem .3rem .1rem 0;
+    padding: .08rem .45rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+}
+.lh-2{
+  line-height: 2 !important;
+}
+.my-bookmark{
+  right: 0px;
+  width: 45px;
+  height: 39px;
+}
+
+.my-close-holder{
+  top: 10px;
+  right: 0px;
+  width: 45px;
+  padding-bottom: 120px;
+}
+
+.filedownload{
+  font-size: var(--font-size-17);
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #48c9f0;
+}
+
+.filedownload-clip{
+  color: #48c9f0;
+}
+.pb-100{
+  padding-bottom: 100px;
+}
+.px-6{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.lh-1-46{
+  line-height: 1.46 !important;
+}
+.my-credit-card{
+  color: #0fdf89;
+}
+.lh-1-29{
+  line-height: 1.29 !important;
+}
+
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: var(--clickable-orange);
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: var(--font-size-13);
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: var(--clickable-orange);
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  background-color: #fafafa;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--font-size-16);
+  margin: 5px;
+  width: 85%;
+  border: 2px solid var(--background-fa-color);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid var(--clickable-orange);
+}
+
+input[type=text]::placeholder {
+  color: #cccccc;
+}
+
+input[type=password]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid var(--clickable-orange);
+}
+
+input[type=password]::placeholder {
+  color: #cccccc;
+}

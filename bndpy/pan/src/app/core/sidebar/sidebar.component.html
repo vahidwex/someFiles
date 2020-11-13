@@ -1,0 +1,96 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <br>
+    </li>
+    <li style="display:flex; justify-content: center;">
+
+      <ul style="list-style-type: none;" *ngIf="username !=''"  >
+          <li  style="padding-left: 65px" >  <img src="{{imgUrl}}" class="img-circle" alt="Image" style="width: 80px;height: 80px"></li>
+          <li style="color: rgb(144, 148, 172);padding-right: -5px "> نام کاربر :<strong> {{username}}</strong> </li>
+
+      </ul>
+
+
+    </li>
+    <hr style="width: 80%;color: darkgrey">
+    <li>
+      <a [routerLink]="['/roles']"><span class="glyphicon glyphicon-home" aria-hidden="true"> </span> نقش ها </a>
+    </li>
+    <li>
+      <a [routerLink]="['/users']"><span class="glyphicon glyphicon-search" aria-hidden="true"> </span> کاربران</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/banners']"><span class="glyphicon glyphicon-tasks" aria-hidden="true"> </span> بنرها</a>
+    </li>
+    
+    <li>
+      <a [routerLink]="['/capabilitykinds']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        انواع خدمات ها</a>
+    </li>
+    
+    <li>
+      <a [routerLink]="['/capabilities']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        خدمات ها</a>
+    </li>
+    
+
+    <li>
+      <a [routerLink]="['/product-details-kind']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> دسته بندی ویژگی های محصولات</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/product-details']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> ویژگی های محصولات</a>
+    </li>
+    
+    <li>
+      <a [routerLink]="['/productKind']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> انواع محصولات</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/products']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        محصولات</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/order']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        سفارش ها</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/transport']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        حمل و نقل</a>
+    </li>
+
+    <li>
+      <a [routerLink]="['/customers']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>
+        مشتریان</a>
+    </li>
+    <li>
+      <a [routerLink]="['/stores']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span>فروشگاه ها</a>
+    </li>
+    
+    <li>
+      <a [routerLink]="['/setting']"><span class="glyphicon glyphicon-envelope" aria-hidden="true"> </span> تعاریف
+        پایه</a>
+    </li>
+    
+  </ul>
+</div>
+<!-- /#sidebar-wrapper -->
+
+<!-- Page Content -->
+<!-- <a [routerLink]="['/roles']" >نقش ها</a>
+  <a [routerLink]="['/users']" >کاربران</a>
+  <a [routerLink]="['/banners']" >بنرها</a>
+  <a [routerLink]="['/solutionkinds']" >انواع راهکار ها</a>
+  <a [routerLink]="['/solutions']" >راهکار ها</a>
+  <a [routerLink]="['/technologykinds']" >انواع تکنولوژی ها</a>
+  <a [routerLink]="['/technologies']" >تکنولوژی ها</a>
+  <a [routerLink]="['/capabilitykinds']" >انواع قابلیت ها </a>
+  <a [routerLink]="['/capabilities']" >قابلیت ها</a>
+  <a [routerLink]="['/products']" >محصولات</a>
+  <a [routerLink]="['/customers']" >مشتریان</a>
+  <a [routerLink]="['/setting']" >تنظیمات</a> -->

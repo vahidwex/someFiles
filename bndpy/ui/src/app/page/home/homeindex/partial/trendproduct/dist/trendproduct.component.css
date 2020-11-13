@@ -1,0 +1,97 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.trend {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.84);
+}
+.trend .bigtext {
+  color: #222;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0 0 29px 0;
+}
+.trend .header .buttons {
+  margin-bottom: 20px;
+}
+.trend .header .buttons .button {
+  padding: 10px 20px;
+  font-size: 19px;
+  color: #222;
+  cursor: pointer;
+}
+.trend .header .buttons .button.clicked {
+  color: #1565C0;
+}
+.trend .container .section {
+  max-width: 23% !important;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #fff;
+}
+.trend .container .section .Maincontent .content {
+  height: fit-content;
+}
+.trend .container .section .Maincontent .content .stars {
+  font-size: 12px;
+  padding: 5px;
+  color: #1565C0;
+}
+.trend .container .section .Maincontent .content .stars .star .item {
+  font-size: 9px;
+  padding: 2px;
+}
+.trend .container .section .Maincontent .content .title {
+  color: #666666;
+  font-size: 14px;
+}
+.trend .container .section .Maincontent .content .price {
+  font-weight: 600;
+  font-size: 18px;
+  color: #222;
+}
+
+.image {
+  max-width: 80px;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+@media only screen and (max-width: 1200px) {
+  .trend .container .section .Maincontent .content .stars .star .item {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .trend .container .section {
+    flex: 0 0 33.33%;
+    max-width: 33.33% !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .trend .container .section {
+    flex: 0 0 50%;
+    max-width: 50% !important;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .trend .container .section {
+    flex: 0 0 100%;
+    max-width: 100% !important;
+  }
+}

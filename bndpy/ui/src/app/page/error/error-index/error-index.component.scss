@@ -1,0 +1,16 @@
+@import '../../../../assets/scss/utility/utility.scss';
+
+.error {
+    background-color: $color-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    height: 100vh;
+    .image {
+        background-image: url('../../../../assets/img/error-404.png');
+        background-size: cover;
+        width: 400px;
+        height: 200px;
+    }
+}

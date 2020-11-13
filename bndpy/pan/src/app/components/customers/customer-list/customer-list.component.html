@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+
+      <div class="well">
+        <button type="button" class="btn btn-primary" (click)="addNew()">جدید</button>
+        <hr>
+
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="width: 5%">ردیف</th>
+              <th style="width: 45%">عنوان</th>
+              <th style="width: 15%">تلفن</th>
+
+              <th style="width: 15%">عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of customers;let i = index">
+              <td>{{i+1}}</td>
+              <td>{{customer.title}}</td>
+              <td>{{customer.tel}}</td>
+
+              <td><a (click)="onEdit(customer._id)"><span class="glyphicon  glyphicon-edit"
+                    style="color: green;cursor: pointer;font-size: 18px;padding: 8px" alt="155" title="ویرایش">
+                  </span></a>
+                <a (click)="onDelete(customer._id)"><span class="glyphicon glyphicon-trash"
+                    style="color: brown;cursor: pointer;font-size: 18px;padding: 8px" title="حذف"> </span></a>
+                <a (click)="onAddProducts(customer._id)"><span class="glyphicon glyphicon-list"
+                    style="color: rgb(56, 81, 102);cursor: pointer;font-size: 18px;padding: 5px" title="برنامه ها">
+                  </span></a>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

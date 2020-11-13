@@ -1,0 +1,86 @@
+extends ../../public/pug-bootstrap/_bootstrap
+
+block body
+ 
+	include ./layout.pug
+	+layout( settings,products,solutions)
+
+	br
+	.container
+		.row
+			+carousel("myCarousel",banners)
+	
+		.container-fluid(style='direction:rtl;')
+			h2(style='font-family:Sahel;font-weight:bold;') جزئیات محصول
+			#accordion.panel-group
+				
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse8') معرفی نرم‌افزار
+					#collapse8.panel-collapse.collapse
+						.panel-body.eachTitle
+							-var imgUrl = '../images/' + product.logo;
+							img.card-img(src=imgUrl, alt='alternative Image', style='float:left;border-radius:3%;margin-bottom:15px;', width='128px', height='128px')
+							h3 #{product.title}
+							p #{product.LongDesc}
+				
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse1') امکانات
+					#collapse1.panel-collapse.collapse(style='padding:10px;padding-right:32px;')
+						.panel-body.eachTitle
+							.card.mb-3(style='max-width:540px;')
+								.row.no-gutters
+									.list-group(style='direction:rtl;text-align:right!important;width:595px;margin-top:20px;')
+										button.list-group-item.list-group-item-action.active.listOptionHeader(type='button', style='text-align:center;') لیست امکانات #{product.title}
+										each feature in product.features
+											button.list-group-item.list-group-item-action.listOption(type='button', style='text-align:center;') #{feature.title}
+				
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse2') ویژگی‌ها
+					#collapse2.panel-collapse.collapse
+						.panel-body.eachTitle
+							.list-group(style='direction:rtl;text-align:right!important;width:595px;margin-top:20px;margin-right:21px;')
+								button.list-group-item.list-group-item-action.active.listOptionHeader(type='button', style='text-align:center;') لیست ویژگی‌های #{product.title}
+								each advantage in product.advantages
+									button.list-group-item.list-group-item-action.listOption(type='button', style='text-align:center;') #{advantage.title}
+				
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse3') فناوری‌ها
+					#collapse3.panel-collapse.collapse
+						.panel-body.eachTitle
+							.list-group(style='direction:rtl;text-align:right!important;width:595px;margin-top:20px;')
+								button.list-group-item.list-group-item-action.active.listOptionHeader(type='button', style='text-align:center;') لیست فناوری‌های #{product.title}
+								each technology in product.technologies
+									button.list-group-item.list-group-item-action.listOption(type='button', style='text-align:center;') #{technology.title}
+				
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse4') منابع آموزشی
+					#collapse4.panel-collapse.collapse
+						.panel-body.eachTitle(style='padding:20px;')
+							.container(style='margin-right:-29px;width:inherit')
+								each educationalSource in product.educationalSources
+									-var imgUrl = '../images/' + educationalSource.icon;
+									.educational-source(style='background-image:url(' + imgUrl +');')
+										p #{educationalSource.title}
+				
+				.panel.panel-default(style='margin-top:5px;')
+					.panel-heading
+						h4.panel-title
+							a.navTitle(data-toggle='collapse', data-parent='#accordion', href='#collapse6') اشخاصی که با این محصول کار می‌کنند
+					#collapse6.panel-collapse.collapse
+						.panel-body.eachTitle(style='padding:20px;')
+							div(style='margin-left:20px;')
+								.indiv-container
+									each customer in customers
+										-var imgUrl = '../images/' + customer.logo;
+											img.indiv(src=imgUrl, alt=customer.title, style='border-radius:50%;padding:10px;', width='128px', height='128px')
+											h4(style='text-align:center;color:gray;font-family:Sahel;font-weight:bold;') #{customer.title}

@@ -1,0 +1,38 @@
+<div class="trend row justify-content-center">
+  <p class="bigtext">TRENDING ITEMS</p>
+  <div class="container">
+
+    <owl-carousel-o [options]="customOptions">
+      <div class="item" *ngFor="let item of items">
+        <ng-template carouselSlide>
+          <div class="section">
+              <div class="image">
+                  <img src="{{item.source}}" alt="">
+                </div>
+                <div class="drawer row">
+                  <span class="items">
+                    <a class="link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a class="link" href="#"><i class="far fa-heart"></i></a>
+                    <a class="link" href="#"><i class="fas fa-search"></i></a>
+                    <a class="link" href="#"><i class="fas fa-sync-alt"></i></a>
+                  </span>
+                </div>
+                <div class="content">
+                  <div class="stars">
+                    <span class="star">
+                      <i class="item fas fa-star"></i>
+                      <i class="item fas fa-star"></i>
+                      <i class="item fas fa-star"></i>
+                      <i class="item fas fa-star"></i>
+                      <i class="item fas fa-star"></i>
+                    </span>
+                  </div>
+                  <p class="title">{{item.title}}</p>
+                  <p class="price">{{item.price}}</p>
+                </div>
+          </div>
+        </ng-template>
+      </div>
+    </owl-carousel-o>
+  </div>
+</div>

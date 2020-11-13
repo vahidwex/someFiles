@@ -1,0 +1,461 @@
+.dropdown-content {
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 0px;
+}
+  
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover{
+  background-color: #3333;
+}
+
+.search-button{
+    height: 49px;
+}
+.p-6{
+  padding: 6px !important;
+}
+.search-header{
+    margin-bottom: 26px;
+    padding-right: 47px;
+    padding-left: 44px;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+}
+.back-white{
+  border: solid 1px #e1e1e1;
+}
+.my-dropdown{
+    border: solid 1px #c3c3c3;
+    height: 49px;
+}
+.job-card:hover {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+.b-32{
+  bottom: 29px;
+  font-size: 14px;
+} 
+.no-wrap{
+  white-space: nowrap;
+}
+/* align glyph */
+.right-addon .glyphicon { right: 5px; top:-1px; font-size: var(--font-size-16);}
+
+/* add padding  */
+.right-addon input { padding-right: 30px; margin-bottom: 15px; }
+
+.my-toggle::after{
+    display: none !important;
+}
+.job-card{
+  border: solid 1px #e1e1e1;
+}
+.job-card-title{
+    margin-top: 18px;
+}
+.job-title-duration{
+    margin-top: 18px;
+    color: #707070;
+}
+.job-description{
+  white-space: pre-line;
+}
+.skills{
+    flex-wrap: wrap;
+    background-color: #d3d3d9;
+    letter-spacing: .05rem;
+    color: #444;
+    transition: .3s;
+    margin: .1rem .3rem .1rem 0;
+    padding: .08rem .45rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+}
+.t-133{
+  top: 133px !important;
+}
+.fit-down{
+  object-fit: scale-down;
+}
+.my-d-none{
+  display:none;
+}
+.lh-27{
+  line-height: 27px !important;
+}
+.search-icon{
+  top: 21px;
+  right: 30px;
+}
+.flag{
+  width: 43px;
+  height: 43px;
+  margin-top: 10px;
+}
+.my-bookmark{
+  top: 120px;
+  right: 0px;
+  height: 39px;
+}
+.bookmark-width{
+  width: 45px;
+}
+
+.my-close-holder{
+  top: 10px;
+  right: 0px;
+  width: 45px;
+  padding-bottom: 120px;
+}
+.my-close{
+  background-color: #c3c3c3;
+  top: 170px;
+  right: 0px;
+  width: 45px;
+  height: 39px;
+}
+.job-card:hover  .right-hover{
+  width: 100%;
+  top:0px !important;
+  opacity: 0.3;
+}
+.right-hover{
+  top:0px !important;
+}
+.holder-width{
+  padding-top: 94px !important;
+  right: 155px;
+}
+.switch {
+  width: 90px;
+  height: 34px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.slider {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: #2ab934;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(55px);
+  -ms-transform: translateX(55px);
+  transform: translateX(55px);
+}
+
+/*------ ADDED CSS ---------*/
+
+.on, .off
+{
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+}
+
+input:checked+ .slider .on
+{display: block;}
+
+input:checked + .slider .off
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;}
+  
+
+$bar-height: 20px;
+
+.progress-bar{
+  border:#ccc solid 1px;
+  height:$bar-height;
+  line-height:$bar-height;
+  vertical-align:midle;
+  background-color:#f2f2f2;
+  box-shadow:0 4px 10px -5px rgba(0, 0, 0, 0.25);
+  .bar{      
+    position:absolute;
+    top:0;
+    height:100%;
+    overflow:hidden;
+    span{
+      position:absolute;      
+      display:block;
+      height:100%;
+      text-align:center;
+    }
+    &.positive{
+      background:#48c9f0;
+      left:0;
+      font-size: var(--font-size-10);
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.4;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+      width:54%;      
+      span{
+        left:0;
+        color:#333;
+      }
+      -webkit-animation: animate-positive 1s;
+      animation: animate-positive 1s;
+    }      
+    &.negative{
+      background:#f2f2f2;
+      right:0;
+      width:46%;
+      span{
+        right:0;
+        color:#fff;
+      }
+      
+      -webkit-animation: animate-negative 1s;
+      animation: animate-negative 1s;
+    }    
+  }
+}
+
+@-webkit-keyframes animate-positive {
+  0% { width:0%; }
+}
+@keyframes animate-positive {
+  0% { width:0%; }
+}
+@-webkit-keyframes animate-negative {
+  0% { width:100%; }  
+}
+@keyframes animate-negative {
+  0% { width:100%; }  
+}
+
+// collapse
+.description_full{
+  height: auto;
+}
+.description_hide{
+  max-height: 35px;
+}
+.skills_full{
+  height:auto;
+}
+.skills_hide{
+  height: 38.5px;;
+}
+.bg-paginator{
+  background-color: transparent !important;
+}
+::ng-deep .mat-paginator-range-label{
+  display: none;
+}
+
+::ng-deep .owl-next:hover{
+  background: transparent !important;
+}
+::ng-deep .owl-prev:hover{
+  background: transparent !important;
+}
+
+.single-skill-hide{
+  height: 30.5px;
+  overflow: hidden;
+}
+.single-skill-full{
+  height: auto;
+}
+
+// CAROUSEL
+.fl-img{
+  width: 100px !important;
+  height:100px !important;
+  object-fit: scale-down;
+}
+.mt--5{
+  margin-top: -5px;
+}
+.mb-80{
+  margin-bottom: 80px !important;
+}
+.skills-title{
+  min-width: 50px;
+}
+.skills-result{
+  height: 30px;
+  opacity: 0.8;
+  background-color: #c3c3c3;
+  color: #2c2c2c;
+}
+>>> .owl-item{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 40px;
+}
+
+>>> .owl-theme .owl-nav{
+  margin-top: 0px;
+  text-align: center;
+  margin-left: 0px;
+}
+
+>>> .my-carousel {
+  width: 100%;
+}
+
+>>> .my-carousel > .owl-theme > .owl-stage-outer > .owl-stage{
+background-color: #eeeeee;
+}
+
+.fl-card{
+  width: 280px !important;
+}
+
+.h-49{
+  height: 49px;
+}
+
+.remove-btn{
+  right: 26px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.view-profile-click{
+  cursor: pointer !important;
+  color: var(--clickable-orange) !important;
+  text-decoration: none !important;
+}
+
+.view-profile{
+  font-size: var(--font-size-17) !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  letter-spacing: normal !important;
+  overflow: hidden !important;
+}
+
+.skill-holder{
+  height: 72px !important;
+  overflow: hidden !important;
+}
+
+.fl-name{
+  font-size: var(--font-size-17) !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  letter-spacing: normal !important;
+  text-align: center !important;
+  color: var(--dark-color) !important;
+}
+
+.pl-connects{
+  font-size: var(--font-size-20) !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  letter-spacing: normal !important;
+  text-align: center !important;
+  color: var(--dark-color) !important;
+}
+.custom-width{
+  width:60%;
+}
+@media (max-width:900px) and (min-width:100px){
+  .custom-width{
+    width:90%;
+  }
+}
+
+@media (max-width:980px) and (min-width:770px){
+  .sort-by{
+    width: 0px !important;
+    overflow: hidden;
+  }
+}
+
+.filter{
+  height: 25px;
+  align-self: center;
+}
+.banner{
+  background-image: url('../../../assets/images/banner-country.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: #7e78cc !important;
+  min-height:141px !important;
+  border-radius: 5px;
+}
+.banner-flag{
+  min-height: 109px !important;
+}
+.inactive-filter{
+  color : #c3c3c3 !important;
+}
+.active-filter{
+  color : #444444 !important;
+}
+.title{
+  line-height: 43px;
+}
+.category{
+  line-height: 24px;
+}
+.description{
+  line-height: 21px;
+}
+.subcategory{
+  line-height: 21px;
+}
+.list{
+  white-space: pre;
+  margin-left: 20px;
+}
+.link{
+  color: var(--clickable-orange) !important;
+}

@@ -1,0 +1,133 @@
+<div class="bg-light w-100 h-100">
+    <div class="container bg-light">
+        <div #topHeader></div>
+        <div class="post-job-row row justify-content-center py-3">
+            <div class="col-md-8 post-job-card br-10 bg-white" *ngIf="postState == 0">
+
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-10 col-xs-12">
+
+                        <div class="row">
+                            <h2 class="col-12 b-500 fs-16">Choose a name for your project</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input class="my-input bg-white mt-2 w-100 fs-12 br-10 px-3 py-1" type="text"
+                                    [(ngModel)]="projectModel.title"
+                                    (keypress)="projectErrorModel.title = ''"
+                                    (blur)="autoCompleteItems();" />
+                            </div>
+                            <div class="col-12 color-red text-left fs-12" *ngIf="projectErrorModel.title">
+                                {{ projectErrorModel.title }}
+                            </div>
+                        </div>
+                        <div class="row mt-30">
+                            <h3 class="col-12 b-500 fs-16">Tell us more about your project</h3>
+                        </div>
+                        <div class="row">
+                            <h3 class="col-12 b-500 small-description fs-10 color-8f mb-1">Start a bit about yourself or your business, and include an overview of what you need done.</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea class="my-input bg-white mt-2 w-100 fs-12 br-10 px-3 py-1 mh-120"
+                                        [(ngModel)]="projectModel.project_description"
+                                        (keypress)="projectErrorModel.project_description = ''"
+                                        (blur)="autoCompleteItems()"></textarea>
+                            </div>
+                            <div class="col-12 color-red text-left fs-12" *ngIf="projectErrorModel.project_description">
+                                {{ projectErrorModel.project_description }}
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="!projects">
+                            <div class="col-12">
+                                <div class="b-500 mt-3 dotted-border br-10 m-0 row">
+                                    <div class="col-md-3 mw-160">
+                                        <div class="upload-btn br-10 fs-20 p-1 clickable-orange d-flex justify-content-center mw-144 my-10">
+                                            <input type="file" onclick="this.value = null" #file class="d-none" (change)="onFilesAdded()" />
+                                            <button class='btn my-btn fs-14 w-100 clickable-orange mw-140 bg-transparent' (click)="addFiles($event)">
+                                                <i class="fa fa-plus-circle clickable-orange fs-18"></i> Upload file
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-2" *ngFor="let file of files">
+                                            <h4 class="inline-middle">{{file.name}}</h4>
+                                            <div class="inline-middle">
+                                                <mat-progress-bar *ngIf="progresses && !(uploadComplete[file.name] == 'done')" mode="determinate" [value]="progresses[file.name][file.name].progress | async "></mat-progress-bar>
+                                            </div>
+                                            <div class="inline-middle float-right">
+                                                <div class="inline-middle" *ngIf="uploadComplete[file.name] == 'done'">Completed</div>
+                                                <div (click)="removeFiles(file)" class="clickable inline-middle" >
+                                                    <i class="fa fa-times ml-2" aria-hidden="true" ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-30">
+                            <h3 class="col-12 b-500 fs-16">What skills are required?</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 b-500 small-description fs-10 color-8f mb-1">Enter up to 5 skills that best describe your project, Freelancers will use these skills to find projects they are most insterested and experienced in.</div>
+                        </div>
+                        <div class="row my-tagsinput">
+                            <div class="col-12">
+                                <tag-input class="bg-white mt-2 w-100 fs-12 br-10 px-3 py-1" [(ngModel)]="projectModel.project_skills"
+                                        inputId = "tag-input-input"
+                                        (onBlur)="projectErrorModel.skills = ''"
+                                        [errorMessages]="projectErrorModel.project_skills"
+                                        placeholder="+ Skill">
+                                    <tag-input-dropdown [autocompleteItems]="suggestions"></tag-input-dropdown>
+                                </tag-input>
+                            </div>
+                        </div>
+                        <div class="b-500 small-description fs-10 color-8f mb-1 row mx-0" >
+                            <div class="col-12 row">
+                                <div class="suggested fs-10">
+                                    Suggested skills :
+                                </div>
+                                <div class="suggested-result clickable color-6e fs-10" *ngFor="let suggest of suggestions"
+                                    (click)="addSuggested(suggest)">
+                                    {{ suggest }},
+                                </div>
+                            </div>
+                            <div class="col-12 color-red text-left fs-12 b-0" *ngIf="projectErrorModel.project_skills">
+                                {{ projectErrorModel.project_skills }}
+                            </div>
+                        </div>
+                        <div class="row mt-3 mx-0">
+                            <div class="row col-12 justify-content-start">
+                                <div class="budget-title">
+                                    What is your estimated budget?
+                                </div>
+                                <div class="dropdown justify-content-start">
+                                    <button type="button" class="btn my-dropdown br-10 mx-2 bg-white fs-16 normal-txt text-center color-black dropdown-toggle mw-163" data-toggle="dropdown">
+                                        {{ payment_method }}
+                                    </button>
+                                    <div class="dropdown-menu my-dropdown-menu">
+                                        <option class="dropdown-item pointer" *ngFor="let option of paymentOptions"
+                                                (click)="setPayment(option.min, option.max, option.name)">{{ option.name }}</option>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h1 class="row col-12 justify-content-end p-0">
+                                <button type="button" (click)="nextStep()" [innerHTML]="projects ? 'Update' : 'Post'" class='btn next-btn fs-14 br-10 w-100 color-white mw-140 bg-clickable-orange my-3 col-md-2 d-none d-md-block'>
+                                </button>
+                            </h1>
+                            <h1 class="row col-12 justify-content-center mx-0">
+                                <button type="button" (click)="nextStep()" [innerHTML]="projects ? 'Update' : 'Post'" class='btn next-btn fs-14 br-10 w-100 color-white mw-140 bg-clickable-orange my-3 col-md-2 d-block d-md-none mx-0'>
+                                </button>
+                            </h1>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

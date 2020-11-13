@@ -1,0 +1,174 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.trend {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-light;
+
+
+  .bigtext {
+    color: darken($color-theme-secondary,60);
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0 0 29px 0;
+  }
+
+  .header {
+    .buttons {
+      margin-bottom: 20px;
+
+      .button {
+        padding: 5px 12px;
+        font-size:1em;
+        color: darken($color-theme-primary,20);
+        letter-spacing: -0.5px;
+        cursor: pointer;
+        transition: 0.5s ease all;
+        .wrapper {
+          direction: rtl;
+           .line-anim {
+             height: 2px;
+             width: 0;
+             background-color: $color-theme-primary;
+             transition: .7s ease all;
+           }
+ 
+         }
+ 
+        &:hover {
+            .wrapper {
+                .line-anim {
+                    width: 100%;
+                    transition: .7s ease all;
+                }
+            }
+        }
+
+        &.clicked {
+          color: $color-theme-primary;
+          transform: scale(1.05);
+          font-weight: 600;
+          .wrapper {
+            .line-anim {
+                width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+
+    .section {
+      max-width: 30% !important;
+      margin: 10px;
+      cursor: pointer;
+      background-color: $color-theme-secondary;
+      align-self: start;
+      height: 200px;
+      border-radius: 3px;
+      padding-left: 26px;
+      border: solid 1px darken($color-theme-secondary,10);
+      .Maincontent{
+        .content {
+          height: fit-content;
+  
+          
+  
+          .title {
+            color: darken($color-light, 60);
+            font-size: 12px;
+          }
+  
+          .price {
+            font-weight: 600;
+            font-size: 14px;
+            color: darken($color-theme-primary,20);
+          }
+        }
+      }
+      
+    }
+  }
+}
+
+.image{
+  max-height: 153px !important;
+
+  .stars {
+    font-size: 12px;
+    padding: 5px;
+    color: $color-stars;
+
+    .star {
+      .item {
+        
+        font-size: 9px;
+        padding: 2px;
+      }
+    }
+  }
+}
+.text-start{
+  text-align: start;
+}
+.text-end{
+  text-align: end;
+}
+@media only screen and (max-width: 1200px) {
+  .trend {
+    .container {
+      .section {
+        .Maincontent{
+          .image {
+            .stars {
+              .star {
+                .item {
+                  padding: 0;
+                }
+              }
+            }
+  
+          }
+        }
+        
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .trend {
+    .container {
+      .section {
+        flex: 0 0 33.33%;
+        max-width: 33.33% !important;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .trend {
+    .container {
+      .section {
+        flex: 0 0 50%;
+        max-width: 50% !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px){
+  .trend {
+    .container {
+      .section {
+        flex: 0 0 100%;
+        max-width: 100% !important;
+      }
+    }
+  }
+}
+

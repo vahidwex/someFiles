@@ -1,0 +1,44 @@
+<div class="container">
+
+
+
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+      <div class="well">
+        <button type="button" class="btn btn-primary" (click)="addNew()">جدید</button>
+        <hr>
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="width: 5%">ردیف</th>
+              <th style="width: 35%">عنوان</th>
+              <th style="width: 25%">عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let role of roles;let i = index">
+              <td>{{i+1}}</td>
+              <td>{{role.title}}</td>
+
+              <td><a (click)="onEdit(role._id)"><span class="glyphicon  glyphicon-edit"
+                    style="color: green;cursor: pointer;font-size: 18px" alt="155" title="ویرایش"> </span></a>
+                <a (click)="onDelete(role._id)"><span class="glyphicon glyphicon-trash"
+                    style="color: brown;cursor: pointer;font-size: 18px" title="حذف"> </span></a>
+                <a (click)="onAccessShow(role._id)"><span class="glyphicon glyphicon-cog"
+                    style="color: rgb(57, 72, 119);cursor: pointer;font-size: 18px" title="دسترسی ها"> </span></a></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>

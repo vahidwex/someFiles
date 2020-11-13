@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /panel
+Disallow: /404
+Disallow: /500
+Crawl-delay: 5
+
+#Sitemaps
+
+Sitemap: https://www.perfectlancer.com/sitemap.xml
+Sitemap: https://www.perfectlancer.com/blog/sitemap_index.xml
+
+
+#exclude blog search
+Disallow: /blog/wp-content/cache/
+Disallow: /blog/feed/
+Disallow: /blog/comments/
+Disallow: /blog/?s=*
+Disallow: /blog/ajax-api/

@@ -1,0 +1,73 @@
+<div class="personalData animated fadeIn w-100 m-0">
+
+    <div class="header row justify-content-center align-items-center">
+        <div class="container row">
+          <div class="HoverShadow name col-6 fw-600 default">
+            اطلاعات پستی
+          </div>
+          <div class="address col-6">
+            <h5 class="text-end fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span></h5>
+          </div>
+        </div>
+    </div>
+
+    <div class="container py-4 rtl">
+        <form class="content w-100 m-0 row justify-content-end" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+
+            
+
+            <div class="col-12 col-md-6" include="form-input-select()">
+                <input tabindex="1" type="text" formControlName="name" class="select mx-3 text-end" placeholder="نام" >
+                <div *ngIf="!clientForm.controls.name.valid && clientForm.controls.name.touched">
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.name.errors['required']">لطفا نام خود را وارد نمایید</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6" include="form-input-select()">
+                <input tabindex="2"  type="text" formControlName="family" class="select mx-3 text-end" placeholder="نام خانوادگی" >
+                <div *ngIf="!clientForm.controls.family.valid && clientForm.controls.family.touched">
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.family.errors['required']">لطفا نام خانوادگی خود را وارد نمایید</p>
+                </div>
+
+            </div>
+
+    
+            <div class="col-12 col-md-6" include="form-input-select()">
+                <input tabindex="3" type="text" formControlName="postalCode" class="select mx-3 text-end text-number" placeholder="کد پستی" >
+                <div *ngIf="!clientForm.controls.postalCode.valid && clientForm.controls.postalCode.touched">
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.postalCode.errors['required']">لطفا نام کد پستی خود را وارد نمایید</p>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-6" include="form-input-select()">
+                <input tabindex="4" type="text" formControlName="mobile" class="select mx-3 text-end text-number" placeholder="شماره موبایل" >
+
+                <div *ngIf="!clientForm.controls.mobile.valid && clientForm.controls.mobile.touched">
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.mobile.errors['required'] ">لطفا شماره موبایل خود را وارد نمایید</p>
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.mobile.errors['minlength'] ">شماره تلفن باید شامل یازده رقم باشد</p>
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.mobile.errors['maxlength'] ">شماره تلفن باید شامل یازده رقم باشد</p>
+                </div>
+
+            </div>
+
+            <div class="col-12" include="form-input-select()">
+                <input tabindex="5" type="text" formControlName="address" class="select mx-3 text-end" placeholder="آدرس" >
+
+                <div *ngIf="!clientForm.controls.address.valid && clientForm.controls.address.touched">
+                    <p class="error animated fadeIn" *ngIf="clientForm.controls.address.errors['required']">لطفا آدرس خود را وارد نمایید</p>
+                </div>
+
+            </div>
+            
+            <div class="buttons col-12 row justify-content-center">
+                <button type="submit"  class="h-100 col-3 button-prime">تکمیل خرید</button>
+            </div>
+            
+
+        </form>
+
+    </div>
+
+</div>

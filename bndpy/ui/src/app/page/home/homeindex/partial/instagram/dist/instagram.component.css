@@ -1,0 +1,38 @@
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.instagram {
+  background-color: #fff;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instagram .header {
+  font-size: 28px;
+  font-weight: 900px;
+  padding: 20px 0;
+}
+.instagram .container .section {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+.instagram .container .section .image {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 770px) {
+  .instagram .container .section .rotate:hover .main {
+    animation: none;
+    visibility: hidden;
+  }
+}

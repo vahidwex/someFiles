@@ -1,0 +1,31 @@
+<div class="trend ">
+  <p class="bigtext">TRENDING PRODUCTS</p>
+  <div class="header">
+      <div class="buttons row justify-content-between ">
+          <div class="button" (click)="winters()" (click)="active=1" [class.clicked] ="active==1">WINTER</div>
+          <div class="button" (click)="greens()" (click)="active=2" [class.clicked] ="active==2">GREENS</div>
+          <div class="button" (click)="variouss()" (click)="active=3" [class.clicked] ="active==3">VARIOUS</div>
+      </div>
+  </div>
+  <div class="container row">
+    <div class="section row col-lg-3 col-md-6 col-sm-12  align-items-center" *ngFor="let item of items">
+        <div class="image col-6">
+            <img src="{{item.source}}" alt="">
+        </div>
+        <div class="content col-6">
+            <div class="stars">
+                <span class="star">
+                  <i class="item fas fa-star"></i>
+                  <i class="item fas fa-star"></i>
+                  <i class="item fas fa-star"></i>
+                  <i class="item fas fa-star"></i>
+                  <i class="item fas fa-star"></i>
+                </span>
+              </div>
+                <p class="title">{{item.title}}</p>
+                <p class="price">{{item.price}}</p>
+
+        </div>
+    </div>
+  </div>
+</div>

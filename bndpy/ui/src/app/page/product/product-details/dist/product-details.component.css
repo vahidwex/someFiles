@@ -1,0 +1,247 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@keyframes anim-loading-content {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+.stars {
+  font-size: 12px;
+  padding: 5px;
+  color: #1565C0;
+}
+.stars .star .item {
+  padding: 2px;
+}
+
+.productdetails {
+  background-color: #fff;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+.svg {
+  height: 60px;
+  font-size: 14px;
+}
+.svg:hover {
+  animation: ScaleUp 1s ease 1;
+}
+
+.leftSectionStyle {
+  border-radius: 6px;
+  box-shadow: 0px 0px 7px -2px #001b39;
+}
+
+.section {
+  border-bottom: solid 0.5px #d9d8d8;
+  width: 100%;
+}
+.section:last-child {
+  border: none;
+}
+
+.bord {
+  border-top: 1px solid #e7dfdf;
+}
+
+.svg2 {
+  height: 60px;
+  font-size: 14px;
+}
+
+.dots {
+  padding: 20px 0;
+}
+
+.header {
+  background-color: #d9d9d9;
+  height: 100px;
+  margin-bottom: 30px;
+  width: 100%;
+  margin: 0;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.HoverShadow:hover {
+  text-shadow: 0px 0px 1px #1565C0;
+}
+
+.pointer {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.img {
+  max-width: 100%;
+}
+
+.describe-head {
+  height: 20px;
+}
+
+.educationalSources {
+  box-shadow: 0px 0px 7px -2px #001b39;
+  border-radius: 7px;
+}
+
+.featureimg {
+  width: 100%;
+}
+
+.left {
+  border-right: 1.5px solid #f0f0f0;
+  height: fit-content;
+  position: relative;
+  min-height: 500px;
+}
+
+.color-like {
+  color: #E91E63;
+}
+
+.color-default {
+  color: #767676;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.height-fit {
+  height: fit-content;
+}
+
+.link {
+  text-decoration: none;
+  color: #1565C0;
+}
+
+.fs-19 {
+  font-size: 19px;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.offPrice {
+  position: relative;
+}
+.offPrice::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  height: 0;
+  width: 70%;
+  border: solid 0.5px black;
+}
+
+.color-title {
+  color: #cccccc;
+}
+
+line {
+  font-weight: 600;
+  color: #1565C0;
+}
+
+.featureimgs {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.unique-line {
+  border-bottom: 1px solid #dddddd;
+}
+
+.figure-2 {
+  border: solid 1px #8080808c;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 11px 2px rgba(0, 0, 0, 0.11);
+}
+
+.viewLike {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.figure {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  border: solid 1px #cfcfcf;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.color-primary {
+  color: #1565C0;
+}
+
+.descriptiontext {
+  color: #104d92;
+}
+
+.default {
+  cursor: default;
+}
+
+.paragraph {
+  line-height: 30px;
+  font-size: 15px;
+}
+
+.darken-color-primary {
+  color: #104d92;
+  font-weight: 700;
+}
+
+.active {
+  font-size: 20px;
+  color: #1565C0;
+  font-weight: 700;
+}
+
+.template .wrapper {
+  direction: rtl;
+}
+.template .wrapper .line-anim {
+  height: 2px;
+  width: 0;
+  background-color: #1565C0;
+  transition: 0.7s ease all;
+}
+.template:hover .wrapper .line-anim {
+  width: 100%;
+  transition: 0.7s ease all;
+}
+
+@media only screen and (max-width: 960px) {
+  .textz {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}

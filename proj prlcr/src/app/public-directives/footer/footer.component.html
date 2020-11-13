@@ -1,0 +1,112 @@
+<footer>
+    <div class="container" style="background-color: var(--dark-color); color:white;">
+        <div class="row">
+            <div *ngIf="user && user?.role == 'employer'" class="col-md-12">
+                <h2 class="col-md-8" class="post-job-footer" style="margin-right: 10px;">
+                    Connect and collaborate easily with Perfectlancer and get miles ahead!
+                    <li class="nav-item active" style="align-self: center;">
+                        <a title="Post a project now!" class="nav-link post-job" style="margin-left: 10px;" routerLink="/post-job">Post a Project</a>
+                    </li>
+                </h2>
+            </div>
+            <div *ngIf="!user" class="col-md-12">
+                <h2 class="col-md-8" class="post-job-footer" style="margin-right: 10px;">
+                    Connect and collaborate easily with Perfectlancer and get miles ahead!
+                    <li class="nav-item active" style="align-self: center;">
+                        <a title="Post a project now!" class="nav-link post-job" style="margin-left: 10px;" routerLink="/post-job">Post a Project</a>
+                    </li>
+                </h2>
+            </div>
+            <div *ngIf="!user" class="col-md-12" style="padding-left: 40px;padding-right: 40px;margin-top: 40px;">
+                <hr class="col-md-12" style="background-color:white;padding:0px;">
+            </div>
+            <div *ngIf="user && user?.role == 'employer'" class="col-md-12" style="padding-left: 40px;padding-right: 40px;margin-top: 40px;">
+                <hr class="col-md-12" style="background-color:white;padding:0px;">
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col text-left">
+                        <ul>
+                            <li class="footer-link mb-3" style="margin-top: 15px;">
+                                <h3 class="color-white footer-title italic">PERFECTLANCER</h3>
+                            </li>
+                            <li class="footer-link mb-1">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 10px; font-size: var(--font-size-18);" aria-hidden="true"></i>11755 Wilshire Blvd. Suite 1250, Los Angeles, CA 90025
+                            </li>
+                            <li class="footer-link">
+                                <i class="fa fa-envelope" style="margin-right: 10px; font-size: var(--font-size-18);" aria-hidden="true"></i><a title="Mail support" href="mailto:admin@perfectlancer.com">admin@perfectlancer.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col text-left">
+                        <ul>
+                            <li class="footer-link mb-3" style="margin-top: 15px;">
+                                <h3 class="color-white footer-title">Freelancer</h3>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Categories" routerLink="/categories">Categories</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Projects" routerLink="/search">Projects</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Freelancers" routerLink="/freelancer">Freelancers</a>
+                            </li>
+                            <li class="footer-link" style="margin: 0px;line-height:30px;">
+                                <a title="Local Jobs" routerLink="/local-jobs">Local Jobs</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col text-left">
+                        <ul> 
+                            <li class="footer-link mb-3" style="margin-top: 15px;">
+                                <h3 class="color-white footer-title">About</h3>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="About us" routerLink="/about">About us</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="How it works?" routerLink="/how-it-works/freelancer">How it Works | Freelancer</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Terms and conditions" routerLink="/how-it-works/employer">How it Works | Employer</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Terms and conditions" routerLink="/FAQ">FAQ</a>
+                            </li>
+                            <li class="footer-link mb-1" style="margin: 0px;line-height:30px;">
+                                <a title="Blog" href="/blog" target="_blank">Blog</a>
+                            </li>
+                            <li class="footer-link" style="margin: 0px;line-height:30px;">
+                                <a title="Terms and conditions" routerLink="/terms">Terms and conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col text-left">
+                        <ul>
+                            <li class="footer-link" style="margin-top: 15px;">
+                                <a title="Twitter" href="https://twitter.com/perfect_lancer" class="mr-4" rel="noopener" target="_blank">
+                                    <i class="fab fa-twitter" aria-hidden="true" style="font-size: var(--font-size-24);"></i>
+                                </a>
+                                <a title="Linkedin" href="https://www.linkedin.com/company/perfectlancer/" class="mr-4" rel="noopener" target="_blank">
+                                    <i class="fab fa-linkedin" aria-hidden="true" style="font-size: var(--font-size-24);"></i>
+                                </a>
+                                <a title="Instagram" href="https://www.instagram.com/perfectlancer/" class="mr-4" rel="noopener" target="_blank">
+                                    <i class="fab fa-instagram" aria-hidden="true" style="font-size: var(--font-size-24);"></i>
+                                </a>
+                                <a title="Facebook" href="https://www.facebook.com/Perfectlancerofficial/" class="mr-4" rel="noopener" target="_blank">
+                                    <i class="fab fa-facebook" aria-hidden="true" style="font-size: var(--font-size-24);"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="footer-en footer-end">© 2019 Perfectlancer</h3>
+            </div>
+        </div>
+    </div>
+</footer>

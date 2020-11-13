@@ -1,0 +1,22 @@
+<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+  <input class="input" type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+  <img class="img" src="assets/img/dnd/ic-upload-file.svg" alt="">
+  <h3 class="h3">فلیل را در این مکان بیندازید</h3>
+  <h3 class="h3">یا</h3>
+  <label for="fileDropRef" class="label">انتخاب فایل</label>
+</div>
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <img classimg src="assets/img/dnd/ic-file.svg" width="45px" alt="file">
+    <div class="info">
+      <h4 class="name h4">
+        {{ file?.name }}
+      </h4>
+      <p class="size">
+        {{ formatBytes(file?.size) }}
+      </p>
+      <app-progress [progress]="file?.progress"></app-progress>
+    </div>
+    <img class="img" src="assets/img/dnd/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+  </div>
+</div>

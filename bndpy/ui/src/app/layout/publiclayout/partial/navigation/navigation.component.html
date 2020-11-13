@@ -1,0 +1,138 @@
+<div class="navigation row justify-content-center w-100 m-0">
+  <div class="container row justify-content-around align-items-center">
+    <div class="drawer">
+      <mat-drawer-container class="example-container" autosize (click)="drawer.toggle()" [class.hide]="drawer.opened===false">
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <div class="head">
+  
+  
+            <div class="text text-center">
+              <h4 class="fw-900">{{companyName}}</h4>
+            </div>
+  
+          </div>
+          <div class="listz">
+  
+            <ul class="itemsz d-flex flex-column justify-content-between rtl">
+              <li class="item" [routerLink]="['/home']">
+                <i class="icon-list fas fa-home"></i>
+                <a class="link" >صفحه اصلی</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li>
+              <li class="item" [routerLink]="['/products'] ">
+                <i class="icon-list fas fa-gift"></i>
+                <a class="link" >محصولات</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li>
+              <!-- <li class="item" [routerLink]="['/solutions']">
+                <i class="icon-list fas fa-map-signs"></i>
+                <a class="link"  >راهکار ها</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li> -->
+              <li class="item">
+                <i class="icon-list fas fa-shopping-cart"></i>
+                <a class="link" href="#">فروشگاه</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li>
+              <li class="item" [routerLink]="['/aboutUs']">
+                <i class="icon-list fas fa-info-circle"></i>
+                <a class="link" >در باره ما</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li>
+              <li class="item" [routerLink]="['/basket']">
+                <i class="icon-list fas fa-shopping-cart"></i>
+                <a class="link" >سبد خرید</a>
+                <div class="wrapper">
+                  <div class="line-anim"></div>
+                </div>
+              </li>
+              
+            </ul>
+        </div>
+        </mat-drawer>
+      
+        <div class="example-sidenav-content">
+          
+        </div>
+      
+      </mat-drawer-container>
+    </div>
+
+    
+
+    <div  class="logo col-5 col-md-3 ">
+      
+        <img class="image-logo w-100 pointer" [routerLink]="['/home']" [src]="env.port+'/images/'+logo" alt="">
+    </div>
+    
+    <div class=" col-4 col-md-5 list">
+      <ul class="items row justify-content-between rtl">
+        <li class="item">
+          <a class="link" [routerLink]="['/home']">صفحه اصلی</a>
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </li>
+        <li class="item">
+          <a class="link" [routerLink]="['/products'] ">محصولات</a>
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </li>
+        <!-- <li class="item">
+          <a class="link" [routerLink]="['/solutions']" >راهکار ها</a>
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </li> -->
+        <li class="item">
+          <a class="link" href="#">فروشگاه</a>
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </li>
+        <li class="item">
+          <a class="link" [routerLink]="['/aboutUs']">در باره ما</a>
+          <div class="wrapper">
+            <div class="line-anim"></div>
+          </div>
+        </li>
+        
+      </ul>
+    
+      
+    </div>
+
+    <div class="col-2 row advance-list justify-content-center">
+      <span class="pointer">
+        <i class="hover-primary advance-list-item fas fa-cog"></i>
+      </span>
+
+      <span class="pointer mx-3">
+        <i class="hover-primary advance-list-item fas fa-search"></i>
+      </span>
+
+      <span class="pointer w-fit" [routerLink]="['/basket']" >
+        <div class="badgeHolder">
+          <div class="badge mx-1">{{count}}</div>
+        </div>
+        <i class="hover-primary advance-list-item fas fa-shopping-basket"></i>
+      </span>
+    </div>
+    
+    <div class="drawer-button">
+      <i (click)="drawer.toggle()" class="button fas fa-bars" ></i>
+    </div>
+  </div>
+  
+</div>

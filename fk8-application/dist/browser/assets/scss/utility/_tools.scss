@@ -1,0 +1,34 @@
+@import 'color';
+
+%circle {
+    border-radius: 50%;
+}
+
+%transition {
+    transition: 0.3s ease;
+}
+
+%radius {
+    border-radius: 5px;
+}
+
+%shadow {
+    box-shadow: $color-theme-primary 0 5px 10px 0;
+}
+
+%loading-content {
+    background-image: linear-gradient(to right, $color-light, lighten($color-gray, 20), $color-light);
+    animation: anim-loading-content 1s ease infinite;
+    border-radius: 5px;
+    background-size: 1000px;
+    vertical-align: middle;
+}
+
+@keyframes anim-loading-content {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: 100%;
+    }
+}

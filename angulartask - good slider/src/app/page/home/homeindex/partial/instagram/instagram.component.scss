@@ -1,0 +1,68 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+.instagram{
+    background-color: $color-light;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header {
+        font-size: 28px;
+        font-weight: 900px;
+        padding: 20px 0;
+      }
+    .container{
+        .section{
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            .rotate {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: rgba($color: red, $alpha: 0.2);
+                color: rgba($color-light, 0.8);
+            }
+            &:hover{
+                .rotate{
+                    display: block;
+                }
+                .main {
+                    animation: rotate-anim 0.5s 1 forwards;
+                  }
+            }
+        }
+    }
+}
+@keyframes rotate-anim {
+    0% {
+      transform: rotate(270deg);
+      font-size: 600px;
+    }
+
+    100% {
+      margin-left: 60px;
+      margin-top: 30px;
+      font-size: 90px;
+      transform: rotate(360deg)
+    }
+  }
+  @media only screen and (max-width: 770px){
+    .instagram{
+      .container{
+        .section{
+          .rotate{
+            &:hover{
+              
+              .main{
+                animation: none;
+                visibility: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

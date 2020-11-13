@@ -1,0 +1,1081 @@
+<!-- <div class="body-cards tab-content" id="pills-tabContent"> -->
+<div *ngIf="user && user.role == 'freelancer'" class="container" id="pills-home" role="tabpanel"
+     aria-labelledby="pills-home-tab" style="margin-top: 30px">
+    <div class="row no-margin" style="padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;">
+        <div class="col-md-4" style="min-height: 450px;">
+            <div style="height: 100%;padding-bottom:70px;height: 100%;margin-bottom: -70px;position: absolute;padding-right: 30px;padding-left: 15px;padding-bottom: 68px;width: 100%;">
+                <div class="profile-card">
+                    <div *ngIf="completeProfile == 0" class="ribbon"><span>completed</span></div>
+                    <div class="card-header">
+                        <div style="width: 0px;">
+                            <i style="width: 0px;overflow: hidden;" class="far fa-heart heart-icon" aria-hidden="true"></i>
+                        </div>
+                        <div style="cursor: pointer" (click)="openSetting()">
+                            <i class="fa fa-cog setting-icon" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="card-body row">
+                        <div app-image-cropper-modal
+                            elementId="upload-image-freelancer"
+                            (changes)="onFileAdded($event)">
+                        <img id='image' [src]="avatar" alt="" style="cursor: copy" class="profile-image rounded-circle">
+                        </div>
+                        <!-- <input type="file" #file style="display: none" (change)="onFileAdded()"/>
+                        <img [src]="avatar" alt="" style="cursor: copy" (click)="addFile($event)" class="profile-image rounded-circle"> -->
+                        <div class="profile-name col-md-12">{{first_name}} {{last_name}}</div>
+                        <!-- <div class="profile-name col-md-12">$30 USD/hr</div> -->
+                        <div class="profile-name col-md-12">
+                            <i class="fa fa-star" style="color:var(--clickable-orange)" aria-hidden="true"></i>
+                            {{rate}}
+                        </div>
+                        <div class="profile-location col-md-12 row">
+                            <!-- <img src="../assets/maps-and-flags@3x.png" alt="" class="location-icon col-md"> -->
+                            <i class="fas fa-map-marker-alt location-icon" aria-hidden="true"></i>
+                            <div class="profile-location-name">
+                                {{user_country| countryFormat}} - {{user_state ? user_state : 'not set'}} |
+                            </div>
+                            <i class="far fa-clock clock-icon"></i>
+                            <div class="profile-location-name">
+                                {{time | date:'h:mm a'}}
+                            </div>
+                        </div>
+                        <div class="col-md-12 row justify-content-center">
+                            <span class="badge badge-pill my-skills"
+                                  *ngFor="let skill of user_skills">{{skill.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 100%;padding-bottom:20px;height: 100%;padding-bottom: 20px;position: absolute;width: 100%;padding-right: 30px;padding-left: 15px;padding-top: 390px;">
+                <div class="bid-remaning" *ngIf="remain_bid > 2" (click)="openBuyBidDialog($event)">
+                    {{(remain_bid)}} bids remaning
+                    <span class="rounded-circle" *ngIf="remain_bid_extra != 0" style="width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        color: var(--clickable-orange);
+                        background-color:gold;">+{{remain_bid_extra}}</span>
+                </div>
+                <div class="bid-remaning bg-red" *ngIf="remain_bid < 2" (click)="openBuyBidDialog($event)">
+                    Buy bid
+                    <span class="rounded-circle" *ngIf="remain_bid_extra != 0" style="width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                        color: var(--clickable-orange);
+                        background-color:gold;">+{{remain_bid_extra}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="margin-hor">
+                <ul class="nav nav-pills mb-3 col-12 tabbar" id="pills-tab" role="tablist">
+                    <li class="nav-item col">
+                        <a (click)="changeTab('General');" class="nav-link centered no-op"
+                           [ngClass]="{'active': tab == 'General'}" id="pills-home-tab" data-toggle="pill"
+                           href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">General</a>
+                    </li>
+                    <li class="nav-item col">
+                        <a (click)="changeTab('Work Sample');" class="nav-link centered no-op"
+                           [ngClass]="{'active': tab == 'Work Sample'}" id="pills-profile-tab" data-toggle="pill"
+                           href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Work
+                            Samples</a>
+                    </li>
+                    <li class="nav-item col">
+                        <a (click)="changeTab('Setting');" class="nav-link centered no-op"
+                           [ngClass]="{'active': tab == 'Setting'}" id="pills-contact-tab" data-toggle="pill"
+                           href="#pills-contact" role="tab" aria-controls="pills-contact"
+                           aria-selected="false">Settings</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="tab=='General'">
+                <svg class="my-svg" id="completeSign" viewBox="0 0 1320 300" style="
+                font-size: var(--font-size-completed);
+                z-index: 100000000000;
+                overflow: hidden;
+                position: fixed;
+                transition: width 0.3s ease-out;
+                transition: height 0.3s ease-out;
+                left: 50%;
+                margin-left: -400px;
+                top: 50%;
+                margin-top: -400px;">
+
+                    <!-- Symbol -->
+                    <symbol id="s-text">
+                        <text text-anchor="middle"
+                              x="50%" y="50%" dy=".35em">
+                            Completed!
+                        </text>
+                    </symbol>
+
+                    <!-- Duplicate symbols -->
+                    <use xlink:href="#s-text" class="text"
+                    ></use>
+                    <use xlink:href="#s-text" class="text"
+                    ></use>
+                    <use xlink:href="#s-text" class="text"
+                    ></use>
+                    <use xlink:href="#s-text" class="text"
+                    ></use>
+                    <use xlink:href="#s-text" class="text"
+                    ></use>
+
+                </svg>
+                <div *ngIf="completeProfile != 0" class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                    <div *ngIf="completeProfile != 0" class="col-md-12 general-card-desc-title" style="display: flex;padding: 0px;
+                        margin-top: 0px;">
+                        <div style="font-weight: normal">Profile Strength: &nbsp;</div>
+                        {{profileLevel}}
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <div style="
+                                height: 11px;
+                                background-color: #c3c3c3;"
+                                 [ngClass]="{'profile-completion': completeProfile < 4}">
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="
+                                height: 11px;
+                                background-color: #c3c3c3;"
+                                 [ngClass]="{'profile-completion': completeProfile < 3}">
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="
+                                height: 11px;
+                                background-color: #c3c3c3;"
+                                 [ngClass]="{'profile-completion': completeProfile < 2}">
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="
+                                height: 11px;
+                                background-color: #c3c3c3;"
+                                 [ngClass]="{'profile-completion': completeProfile < 1}">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 1px;
+                        margin-right: 1px;
+                        margin-top: 10px;">
+                        <div (click)="editExprience = false; editEducation = false;generalEdit = false;goTo(getCompletePic('text'))"
+                             style="
+                            cursor: pointer;
+                            border-radius: 10px;
+                            width: 100%;
+                            border: solid 1px #e1e1e1;
+                            flex-direction: row;
+                            display: flex;
+                            background-color: #ffffff;">
+                            <img [src]="'../../../assets/'+getCompletePic()+'.png'" alt=""
+                                 style="width: 90px;height: 90px;margin: 10px 0px 10px 10px;">
+                            <div style="
+                                font-size: var(--font-size-13);
+                                font-weight: bold;
+                                font-style: normal;
+                                font-stretch: normal;
+                                line-height: 1.31;
+                                letter-spacing: normal;
+                                text-align: left;
+                                align-self: center;
+                                margin-left: 20px;
+                                color: #000000;">
+                                {{getCompletePic('text')}}
+                                <div style="
+                                    font-size: var(--font-size-13);
+                                    font-weight: normal;
+                                    font-style: normal;
+                                    font-stretch: normal;
+                                    line-height: 1.31;
+                                    letter-spacing: normal;
+                                    text-align: left;
+                                    color: #999999;">
+                                    {{getCompleteText()}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12 general-card-desc-title">
+                        Education
+                    </div>
+                    <div *ngFor="let education of education" class="col-md-12" style="padding:0px">
+                        <div class="edu-title col-md-12" style="margin-top: 10px;">
+                            {{education.university}} ({{education.title}})
+                        </div>
+                        <div class="edu-date col-md-12">
+                            {{education.country}} {{education.start}} - {{education.end}} ({{education.end - education.start}} years)
+                        </div>
+                    </div> -->
+                </div>
+                <div class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                    <div class="col-md-12 general-card-desc-title"
+                         style="justify-content: space-between;display: flex;">
+                        Details
+                        <div (click)="changeGeneralEdit()" *ngIf="generalEdit" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !generalEdit,'fas fa-times': generalEdit}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                        <div (click)="changeGeneralEdit()" *ngIf="!generalEdit" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !generalEdit,'fas fa-times': generalEdit}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                    </div>
+                    <div class="row" *ngIf="generalEdit">
+                        <div class="col-md-6">
+                            <div class="col-md-12 setting-title">
+                                First name
+                            </div>
+                            <div class="col-md-12">
+                                <input class="my-input" type="text" [(ngModel)]="firstname" placeholder="First name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 setting-title">
+                                Last name
+                            </div>
+                            <div class="col-md-12">
+                                <input class="my-input" type="text" [(ngModel)]="lastname" placeholder="Last name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="generalEdit" style="margin-top: 30px; padding-right: 0px;">
+                        <div class="col-md-6">
+                            <div class="col-md-12 setting-title">
+                                Country
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mb-0">
+                                    <select name="country" id="country"
+                                            style="margin-top: 10px;height: 49px;border: solid 1px #c3c3c3;background-color: #ffffff;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                                            class="form-control"
+                                            [(ngModel)]="country"
+                                    >
+                                        <option *ngFor="let item of countries" [value]="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <!-- <input class="my-input" type="text" [(ngModel)]="country" placeholder="Country"> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-12 setting-title">
+                                City
+                            </div>
+                            <div class="col-md-12">
+                                <input class="my-input" type="text" [(ngModel)]="state" placeholder="City">
+                            </div>
+                            <!-- <form class="example-form">
+                                <mat-form-field class="example-w-100">
+                                    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </form>                                       -->
+                        </div>
+                    </div>
+                    <div class="col-md-12 row" *ngIf="generalEdit" style="margin-top: 30px; padding-right: 0px;">
+                        <div class="col-md-12 setting-title">
+                            Skills
+                        </div>
+                        <div class="col-md-12" style="padding-right: 0px;">
+                            <tag-input
+                                    inputId="tag-input-input"
+                                    [(ngModel)]="skills"
+                                    [errorMessages]="errorMessages"
+                                    [validators]="validators"
+                                    placeholder="+ Skill"
+                            >
+                            </tag-input>
+                        </div>
+                        <div class="errors col-md-12" *ngIf="generalEdit && skills.length > 10">You can just add up to
+                            10 skills
+                        </div>
+                        <div class="col-md-12 skill-desc">
+                            Add up to 10 skills to display on your profile. Hit enter to separate skills.
+                        </div>
+                    </div>
+                    <div class="col-md-12 row" *ngIf="generalEdit" style="margin-top: 30px; padding-right: 0px;">
+                        <div class="col-md-12 setting-title">
+                            Description
+                        </div>
+                        <div class="col-md-12" style="padding-right: 0px;">
+                            <textarea class="my-input" [(ngModel)]="description"
+                                      style="min-height: 115px; padding-top: 6px; padding-bottom: 6px;"
+                                      placeholder="description"></textarea>
+                        </div>
+                    </div>
+                    <div *ngIf="user_description.length == 0 && !generalEdit" style="display: flex;justify-content: center;flex-direction: column;
+                    align-content: center;
+                    align-items: center;">
+                        <img src="../../../assets/description.png" id="description" alt="" (click)="changeGeneralEdit()"
+                             style="cursor: pointer;width: 90px;height: 90px">
+                        <div style="font-size: var(--font-size-13);
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 1.31;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #c3c3c3;">Read about yourself
+                        </div>
+                    </div>
+                    <div class="col-md-12 row justify-content-end" *ngIf="generalEdit" style="margin-top: 30px">
+                        <div class="col-md-4 btns-setting"
+                             style="background-color: var(--clickable-orange); color:#ffffff;">
+                            <div style="line-height: 45px;" (click)="onUpdateProfileClick($event)">
+                                Save
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 general-card-desc" *ngIf="!generalEdit" style="margin-bottom: 10px;">
+                        {{user_description}}
+                        <!-- <a style="color: var(--clickable-orange) !important; cursor: pointer;">More</a> -->
+                    </div>
+                    <div class="col-md-12 row no-margin justify-content-start" *ngIf="!generalEdit">
+                        <span style="color: black;border-color:black;" class="badge badge-pill my-skills"
+                              *ngFor="let skill of user_skills">{{skill.value}}</span>
+                    </div>
+                    <!-- <div class="col-md-12 general-card-desc-title">
+                        Education
+                    </div>
+                    <div *ngFor="let education of education" class="col-md-12" style="padding:0px">
+                        <div class="edu-title col-md-12" style="margin-top: 10px;">
+                            {{education.university}} ({{education.title}})
+                        </div>
+                        <div class="edu-date col-md-12">
+                            {{education.country}} {{education.start}} - {{education.end}} ({{education.end - education.start}} years) 
+                        </div>
+                    </div> -->
+                </div>
+                <div class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                    <div class="col-md-12 general-card-desc-title"
+                         style="justify-content: space-between;display: flex;">
+                        Education
+                        <div (click)="editEducations()" *ngIf="editEducation" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !editEducation,'fas fa-times': editEducation}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                        <div (click)="editEducations()" *ngIf="!editEducation" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !editEducation,'fas fa-times': editEducation}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                    </div>
+                    <div *ngIf="education.length == 0 && !editEducation" style="display: flex;justify-content: center;flex-direction: column;
+                    align-content: center;
+                    align-items: center;">
+                        <img src="../../../assets/education.png" id="education"
+                             (click)="editEducations(); addEducationClick();" alt=""
+                             style="cursor: pointer; width: 90px;height: 90px">
+                        <div style="font-size: var(--font-size-13);
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 1.31;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #c3c3c3;">Add your educations
+                        </div>
+                    </div>
+                    <div *ngFor="let education of education" [ngClass]="{'editting': noweditting == education}"
+                         class="col-md-12" style="padding: 5px 0px;">
+                        <div class="general-card-desc col-md-12" style="margin-top: 10px;">
+                            {{education.university}}
+                            <div *ngIf="editEducation" (click)="deleteEducationClick(education);"
+                                 style="cursor: pointer;float:right;">
+                                <i class="fas fa-trash" aria-hidden="true"></i>
+                            </div>
+                            <div *ngIf="editEducation" (click)="editEducationClick(education);"
+                                 style="cursor: pointer;float: right;margin-right: 5px;">
+                                <i class="fa-pencil"
+                                   style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                   aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-12 general-card-desc">
+                            ({{education.title}})
+                        </div>
+                        <div class="general-card-duration col-md-12">
+                            {{education.country}} {{education.start}} - {{education.end}} ({{education.end -
+                            education.start}} years)
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <div class="col-md-12 row" style="margin-top:5px;">
+                            <div class="col-md-6 add-edu" style="margin-top: 10px;"
+                                 *ngIf="editEducation && !editMode && !addMode">
+                                <span style="cursor: pointer;" (click)="addEducationClick()">
+                                    + Add new education
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="editMode || addMode" class="col-md-12 row"
+                         style="margin-top: 30px; padding-right: 0px;">
+                        <div class="col-md-6" *ngIf="editEducation">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                University
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (blur)="uniFlag = true" type="text" [(ngModel)]="eduUniversity"
+                                       placeholder="University">
+                            </div>
+                            <div class="errors" *ngIf="uniFlag && eduUniversity.length<3">University name must contain
+                                atleast 3 characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editEducation">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Title
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (blur)="titleFlag = true" type="text" [(ngModel)]="eduTitle"
+                                       placeholder="Title">
+                            </div>
+                            <div class="errors" *ngIf="titleFlag && eduTitle.length<3">Title must contain atleast 3
+                                characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editEducation">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Country
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <div class="form-group mb-0">
+                                    <select name="country" id="country"
+                                            style="margin-top: 10px;height: 49px;border: solid 1px #c3c3c3;background-color: #ffffff;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                                            class="form-control"
+                                            [(ngModel)]="eduCountry">
+                                        <option *ngFor="let item of countries" [value]="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <!-- <input class="my-input" (blur)="countryFlag = true" type="text" [(ngModel)]="eduCountry" placeholder="Country"> -->
+                            </div>
+                            <div class="errors" *ngIf="countryFlag && eduCountry.length<2">Country must contain atleast
+                                2 characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editEducation">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Start year
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (input)="filterStart($event)" (blur)="startFlag = true"
+                                       type="text" [(ngModel)]="eduStartyear" placeholder="Start year">
+                            </div>
+                            <div class="errors" *ngIf="startFlag && eduStartyear.length<4">Invalid start year.</div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editEducation">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                End year
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (input)="filterEnd($event)" (blur)="endFlag = true" type="text"
+                                       [(ngModel)]="eduEndyear" placeholder="End year">
+                            </div>
+                            <div class="errors" *ngIf="endFlag && eduEndyear.length<4">Invalid end year.</div>
+                            <div class="errors" *ngIf="endFlag && eduEndyear < eduStartyear">End year must be more than
+                                start year.
+                            </div>
+                        </div>
+                        <div class="col-md-12 row" style="margin-top:5px;">
+                            <div class="col-md-6 add-edu" style="margin-top: 10px;" *ngIf="editEducation">
+                                <span style="cursor: pointer;" (click)="changeEducation()">
+                                    {{addEduBtn}}
+                                </span>
+                            </div>
+                            <div class="col-md-4 add-edu" style="margin-top: 10px;" *ngIf="editEducation">
+                                <span style="cursor: pointer;"
+                                      (click)="editMode = false; addMode = false; noweditting = '';">
+                                    Cancel
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                    <div class="col-md-12 general-card-desc-title"
+                         style="justify-content: space-between;display: flex;">
+                        Work experience
+                        <div (click)="editExpriences()" *ngIf="editExprience" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !editExprience,'fas fa-times': editExprience}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                        <div (click)="editExpriences()" *ngIf="!editExprience" style="cursor: pointer;"><i
+                                [ngClass]="{'fas fa-pencil': !editExprience,'fas fa-times': editExprience}"
+                                style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                aria-hidden="true"></i></div>
+                    </div>
+                    <div *ngIf="workexprience.length == 0 && !editExprience" style="display: flex;justify-content: center;flex-direction: column;
+                    align-content: center;
+                    align-items: center;">
+                        <img src="../../../assets/work.png" id="work" (click)="editExpriences();addExprienceClick();"
+                             alt="" style="cursor: pointer;width: 90px;height: 90px">
+                        <div style="font-size: var(--font-size-13);
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 1.31;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #c3c3c3;">Add your work expriences
+                        </div>
+                    </div>
+                    <div *ngFor="let experience of workexprience"
+                         [ngClass]="{'editting': nowedittingexprience == experience}" class="col-md-12"
+                         style="padding: 5px 0px;">
+                        <div class="general-card-desc col-md-12" style="margin-top: 10px;">
+                            {{experience.title}}
+                            <div *ngIf="editExprience" (click)="deleteExprienceClick(experience);"
+                                 style="cursor: pointer;float:right;">
+                                <i class="fas fa-trash" aria-hidden="true"></i>
+                            </div>
+                            <div *ngIf="editExprience" (click)="editExprienceClick(experience);"
+                                 style="cursor: pointer;float: right;margin-right: 5px;">
+                                <i class="fa-pencil"
+                                   style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                                   aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-12 general-card-desc">
+                            ({{experience.company}})
+                        </div>
+                        <div class="general-card-duration col-md-12">
+                            {{experience.country}} {{experience.start}} - {{experience.end}} ({{experience.end -
+                            experience.start}} years)
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <div class="col-md-12 row" style="margin-top:5px;">
+                            <div class="col-md-6 add-edu" style="margin-top: 10px;"
+                                 *ngIf="editExprience && !editModeexprience && !addModeexprience">
+                                <span style="cursor: pointer;" (click)="addExprienceClick()">+ Add new experience</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="editModeexprience || addModeexprience" class="col-md-12 row"
+                         style="margin-top: 30px; padding-right: 0px;">
+                        <div class="col-md-6" *ngIf="editExprience">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Company
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (blur)="excompanyFlag = true" type="text"
+                                       [(ngModel)]="exCompany" placeholder="Company">
+                            </div>
+                            <div class="errors" *ngIf="excompanyFlag && exCompany.length<3">Company name must contain
+                                atleast 3 characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editExprience">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Title
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (blur)="extitleFlag = true" type="text" [(ngModel)]="exTitle"
+                                       placeholder="Title">
+                            </div>
+                            <div class="errors" *ngIf="extitleFlag && exTitle.length<3">Title must contain atleast 3
+                                characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editExprience">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Country
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <div class="form-group mb-0">
+                                    <select name="country" id="country"
+                                            style="margin-top: 10px;height: 49px;border: solid 1px #c3c3c3;background-color: #ffffff;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                                            class="form-control"
+                                            [(ngModel)]="exCountry">
+                                        <option *ngFor="let item of countries" [value]="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <!-- <input class="my-input" (blur)="excountryFlag = true" type="text" [(ngModel)]="exCountry" placeholder="Country"> -->
+                            </div>
+                            <div class="errors" *ngIf="excountryFlag && exCountry.length<2">Country must contain atleast
+                                2 characters
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editExprience">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                Start year
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (input)="filterexStart($event)" (blur)="exstartFlag = true"
+                                       type="text" [(ngModel)]="exStartyear" placeholder="Start year">
+                            </div>
+                            <div class="errors" *ngIf="exstartFlag && exStartyear.length<4">Invalid start year.</div>
+                        </div>
+                        <div class="col-md-6" *ngIf="editExprience">
+                            <div class="col-md-12 setting-title" style="padding: 0px; margin-top: 10px;">
+                                End year
+                            </div>
+                            <div class="col-md-12" style="padding: 0px;">
+                                <input class="my-input" (input)="filterexEnd($event)" (blur)="exendFlag = true"
+                                       type="text" [(ngModel)]="exEndyear" placeholder="End year">
+                            </div>
+                            <div class="errors" *ngIf="exendFlag && exEndyear.length<4">Invalid end year.</div>
+                            <div class="errors" *ngIf="exendFlag && exEndyear < exStartyear">End year must be more than
+                                start year.
+                            </div>
+                        </div>
+                        <div class="col-md-12 row" style="margin-top:5px;">
+                            <div class="col-md-6 add-edu" style="margin-top: 10px;" *ngIf="editExprience">
+                                <span (click)="changeExprience()" style="cursor: pointer;">{{addExBtn}}</span>
+                            </div>
+                            <div class="col-md-4 add-edu" style="margin-top: 10px;" *ngIf="editExprience">
+                                <span (click)="editModeexprience = false; addModeexprience = false; nowedittingexprience = '';"
+                                      style="cursor: pointer;">
+                                    Cancel
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab=='Work Sample'">
+                <div class="row">
+                    <div class="col-md-3 margin-vertical">
+                        <div class='invite min-height line-height-2' (click)="openDialog()">
+                            <i class="fa fa-plus-circle icon-size align-self-center"></i> New Sample
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 copyright">
+                        Make sure you have copyright permissions to any item you add here.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 cards-sample" *ngFor="let work of worksample;let i = index;">
+                        <span class="position-absolute clickable color-red fs-14" (click)="removeWorkSample(work,i)">Remove</span>
+                        <img class="card-image" (click)="openDialogView(work.url,work.title,work.description)"
+                             [src]="'https://node.perfectlancer.com/file/download?filename='+work.url"
+                             onError="this.src='../../assets/notimage.jpg'" alt="">
+                        <div class="card-image-footer">
+                            <div class="card-footer-title">{{work.title}}</div>
+                            <!-- <div class="card-footer-desc">June 16, 2019</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab=='Setting'">
+                <div class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                    <div class="row">
+                        <div class="col-md-6" style="margin-top: 30px">
+                            <div class="col-md-12 setting-title">
+                                Email
+                                <!-- <i [ngClass]="{'fa fa-pencil': !editmail,'fa fa-times': editmail}" style="cursor: pointer; font-family: FontAwesome; font-style: normal;font-weight: normal;" (click)="editEmailClick()" aria-hidden="true"></i> -->
+                            </div>
+                            <div class="col-md-12 row" style="margin: 0px;margin-top: 20px;" *ngIf="!editmail">
+                                <div class="email-txt">{{email}}</div>
+                                <i class="fa fa-check" style="margin-left: 10px; margin-top: 5px;"
+                                   aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-12" *ngIf="editmail">
+                                <input class="my-input" [disabled]="changeEmail" type="text" [(ngModel)]="newemail"
+                                       placeholder="Enter new email">
+                            </div>
+                            <div class="col-md-4 change" *ngIf="editmail && !changeEmail" (click)="changeEmailStatus()">
+                                {{changetxt}}
+                            </div>
+                            <div class="row" style="margin: 0px;" *ngIf="editmail">
+                                <div class="col-md-6" style="min-width: 82px;" *ngIf="changeEmail">
+                                    <input class="my-input" type="text" [(ngModel)]="newcode" placeholder="Code">
+                                </div>
+                                <div class="col-md-3 btns-setting" *ngIf="changeEmail"
+                                     style="min-width: 78px;background-color: var(--clickable-orange); color:#ffffff; margin-top: 8px;">
+                                    <div style="line-height: 45px;" (click)="onUpdateProfileClick($event)">
+                                        Verify code
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6" style="margin: 30px 0px 0px 0px;">
+                            <div class="col-md-12 setting-title" *ngIf="phonenumber.length != 0">
+                                Phone number
+                            </div>
+                            <div *ngIf="phonenumber.length != 0 && !editphone" class="col-md-12 row"
+                                 style="margin: 0px;margin-top: 20px;">
+                                <div class="email-txt">{{phonenumber}}</div>
+                                <i class="fa fa-check" style="margin-left: 10px; margin-top: 5px;"
+                                   aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-3" *ngIf="editphone">
+                                <input class="my-input" disabled type="text" placeholder="&#xf024; +12"
+                                       style="text-align: center; font-family: FontAwesome;">
+                            </div>
+                            <div class="col-md-6" *ngIf="editphone">
+                                <input class="my-input" disabled type="text" placeholder="Phonenumber"
+                                       [(ngModel)]="phonenumber">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-md-12 row" style="margin-top: 30px">
+                        <div class="col-md-12 setting-title">
+                            work hour in the week
+                        </div>
+                        <div class="col-md-3">
+                            <input class="my-input" type="text" placeholder="12 hr">
+                        </div>
+                    </div> -->
+
+                    <div class="col-md-12 row justify-content-end" style="margin-top: 30px">
+                        <div class="col-md-12">
+                        <span class="reset-password" (click)="reset_password=!reset_password">
+                            Reset Password
+                        </span>
+                        </div>
+                        <div class="col-md-4" *ngIf="reset_password">
+                            <input class="my-input" type="password" placeholder="Old password"
+                                   [(ngModel)]="old_password">
+                        </div>
+                        <div class="col-md-4" *ngIf="reset_password">
+                            <input class="my-input" type="password" placeholder="new password"
+                                   [(ngModel)]="new_password">
+                        </div>
+                        <div class="col-md-4" *ngIf="reset_password">
+                            <input class="my-input" type="password" placeholder="confirm password"
+                                   [(ngModel)]="c_new_password">
+                        </div>
+                        <div class="col-md-8 errors"
+                             *ngIf="(this.new_password != this.c_new_password) && reset_password">
+                            new password and confirmation dont match.
+                        </div>
+                        <div class="col-md-8 errors"
+                             *ngIf="(new_password.length != 0)&& !((this.new_password != this.c_new_password) && reset_password) &&this.new_password.length < 6 && reset_password">
+                            new password must be atleast 6 characters.
+                        </div>
+                        <div class="col-md-4">
+                            <div class="btns-setting" *ngIf="reset_password"
+                                 style="margin-top:10px; margin-left: 0px; margin-right: 0px; line-height: 45px;background-color: var(--clickable-orange); color:#ffffff;"
+                                 (click)="changePasswordProfileClick()">Save
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="tab-pane fade row" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="col-md-4">
+            <div class="profile-card">
+                <div class="card-header">
+                Profile Public View
+                <img src="../../assets/arrow-down-white.png" alt="" class="card-header-arrow">
+                </div>
+                <div class="card-body row">
+                <img src="../../assets/1@3x.png" alt="" class="profile-image rounded-circle">
+                <div class="profile-name col-md-12">David Leong</div>
+
+                <div class="profile-location col-md-12 row">
+                    <img src="../assets/maps-and-flags@3x.png" alt="" class="location-icon col-md">
+                    <div class="profile-location-name col-md-10">
+                        United States - Miami
+                    </div>
+                    <div class="tags">
+                        <div class="skill-text">Css3 dsad</div>
+                    </div>
+                    <div class="tags">
+                        <div class="skill-text">Css3 dsad</div>
+                    </div>
+                    <div class="tags">
+                        <div class="skill-text">Css3 dsad</div>
+                    </div>
+                    <div class="tags">
+                        <div class="skill-text">Css3 dsad</div>
+                    </div>
+                </div>
+                <div class="padding-divider col-md-12"></div>
+                <div class="project-no col-md-12">Number of posted job :</div>
+                <div class="project-no col-md-12">Spent in Year :</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="profile-phonenumber col-5">
+                    Phone Number
+                </div>
+                <i class="fa fa-check col-2 check-icon" style="color:#02741c;" aria-hidden="true"></i>&nbsp;
+                <div class="profile-verified col-2">
+                    Verified
+                </div>
+            </div>
+            <div class="row">
+                <div class="profile-phone col-md-2">
+                    <div class="value">+1</div>
+                </div>
+                <div class="profile-phone-num col-md-6">
+                <div class="value-long">
+                    12345678999
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="profile-phonenumber col-5">
+                    Email
+                </div>
+                <div class="check-icon-div col-2"></div>
+                <div class="profile-verified underlined col-2">
+                    Verify
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 emails">
+                    y.heydarzadeh@gmail.com
+                </div>
+            </div>
+            <div class="row">
+                <div class="profile-phonenumber col-5">
+                    LinkedIn
+                </div>
+                <div class="check-icon-div col-2"></div>
+                <div class="profile-verified underlined col-2">
+                    Verify
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 emails">
+                    y.heydarzadeh@gmail.com
+                </div>
+            </div>
+            <div class="row add-new">
+                + Facebook
+            </div>
+            </div>
+            <div class="col-md-8">
+                    <div class="row">
+                    <div class="category-cards col-12">
+                        <div class="card-content-container">
+                            <div class="bidrate-card">
+                                <div class="bidcard-content row">
+                                    <i class="fa fa-plus-circle plus-icon"></i>
+                                    <div class="profile-title-work col-10">
+                                        Add New Sample
+                                    </div>
+                                    <div class="profile-title-work-result col-10">
+                                        Make sure you have copyright permissions to any work you add to this project
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row nomarginright">
+                    <div class="col-sm-12 col-12 col-md-8 worksamplefirst">
+                        <img src="../../assets/categories-1.png" alt="" class="worksample-img">
+                        <div class='category-cards-footer'>
+                            MObile App Design
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-8 worksample">
+                        <img src="../../assets/categories-2.png" alt="" class="worksample-img">
+                        <div class='category-cards-footer'>
+                            MObile App Design
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-8 worksample">
+                        <img src="../../assets/categories-3.png" alt="" class="worksample-img">
+                        <div class='category-cards-footer'>
+                            MObile App Design
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<div class="tab-pane fade row" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+???
+</div>
+<div class="tab-pane fade disable row" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
+    ???
+</div>
+<div class="tab-pane fade row" id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab">
+???
+</div>
+</div> -->
+
+<div *ngIf="user && user.role != 'freelancer'" class="container" id="pills-home" role="tabpanel"
+     aria-labelledby="pills-home-tab" style="margin-top: 30px">
+    <div class="row no-margin" style="padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;">
+        <div class="col-md-4">
+            <div class="profile-card">
+                <div class="card-header">
+                    <div style="width: 0px;overflow: hidden;">
+                        <i style="width: 0px;overflow: hidden;" class="far fa-heart heart-icon overflow-hidden" aria-hidden="true"></i>
+                    </div>
+                    <div style="cursor: pointer" (click)="openSetting()">
+                        <i class="fa fa-cog setting-icon" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card-body row">
+                    <div app-image-cropper-modal
+                        elementId="upload-image-freelancer"
+                        (changes)="onFileAdded($event)">
+                        <img [src]="avatar" alt="" style="cursor: copy" class="profile-image rounded-circle">
+                    </div>
+                    <!-- <input type="file" #file style="display: none" (change)="onFileAdded()"/>
+                    <img [src]="avatar" alt="" style="cursor: copy" (click)="addFile($event)" class="profile-image rounded-circle"> -->
+                    <div class="profile-name col-md-12">{{first_name}} {{last_name}}</div>
+                    <!-- <div class="profile-name col-md-12">$30 USD/hr</div> -->
+                    <div class="profile-name col-md-12">
+                        <i class="fa fa-star" style="color:var(--clickable-orange)" aria-hidden="true"></i>
+                        {{rate}}
+                    </div>
+                    <div class="profile-location col-md-12 row">
+                        <!-- <img src="../assets/maps-and-flags@3x.png" alt="" class="location-icon col-md"> -->
+                        <i class="fas fa-map-marker-alt location-icon" aria-hidden="true"></i>
+                        <div class="profile-location-name">
+                            {{user_country ? user_country : 'not set'}} - {{user_state ? user_state : 'not set'}} |
+                        </div>
+                        <i class="far fa-clock clock-icon"></i>
+                        <div class="profile-location-name">
+                            {{time | date:'h:mm a'}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 row justify-content-center">
+                        <span class="badge badge-pill my-skills" *ngFor="let skill of user_skills">{{skill.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="general-card" style="padding-left: 20px;padding-right: 20px;">
+                <div class="col-md-12 general-card-desc-title" style="justify-content: space-between;display: flex;">
+                    Details
+                    <div *ngIf="generalEdit" (click)="changeGeneralEdit()" style="cursor: pointer;"><i
+                            [ngClass]="{'fas fa-pencil': !generalEdit,'fas fa-times': generalEdit}"
+                            style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                            aria-hidden="true"></i></div>
+                    <div *ngIf="!generalEdit" (click)="changeGeneralEdit()" style="cursor: pointer;"><i
+                            [ngClass]="{'fas fa-pencil': !generalEdit,'fas fa-times': generalEdit}"
+                            style="font-family: FontAwesome; font-style: normal;font-weight: normal;"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="row" *ngIf="generalEdit">
+                    <div class="col-md-6">
+                        <div class="col-md-12 setting-title">
+                            First name
+                        </div>
+                        <div class="col-md-12">
+                            <input class="my-input" type="text" [(ngModel)]="firstname" placeholder="First name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12 setting-title">
+                            Last name
+                        </div>
+                        <div class="col-md-12">
+                            <input class="my-input" type="text" [(ngModel)]="lastname" placeholder="Last name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="generalEdit" style="margin-top: 30px; padding-right: 0px;">
+                    <div class="col-md-6">
+                        <div class="col-md-12 setting-title">
+                            Country
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group mb-0">
+                                    <select name="country" id="country"
+                                            style="margin-top: 10px;height: 49px;border: solid 1px #c3c3c3;background-color: #ffffff;border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                                            class="form-control"
+                                            [(ngModel)]="country"
+                                    >
+                                        <option *ngFor="let item of countries" [value]="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            <!-- <input class="my-input" type="text" [(ngModel)]="country" placeholder="Country"> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12 setting-title">
+                            City
+                        </div>
+                        <div class="col-md-12">
+                            <input class="my-input" type="text" [(ngModel)]="state" placeholder="City">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 row" *ngIf="generalEdit" style="margin-top: 30px; padding-right: 0px;">
+                    <div class="col-md-12 setting-title">
+                        Company
+                    </div>
+                    <div class="col-md-12" style="padding-right: 0px;">
+                        <textarea class="my-input" [(ngModel)]="description"
+                                  style="min-height: 115px; padding-top: 6px; padding-bottom: 6px;"
+                                  placeholder="Company"></textarea>
+                    </div>
+                </div>
+                <div *ngIf="user_description.length == 0 && !generalEdit" style="display: flex;justify-content: center;flex-direction: column;
+                    align-content: center;
+                    align-items: center;">
+                    <img src="../../../assets/description.png" alt="" (click)="changeGeneralEdit()"
+                         style="cursor: pointer;width: 90px;height: 90px">
+                    <div style="font-size: var(--font-size-13);
+                        font-weight: normal;
+                        font-style: normal;
+                        font-stretch: normal;
+                        line-height: 1.31;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #c3c3c3;">Read about your company
+                    </div>
+                </div>
+                <div class="col-md-12 row justify-content-end" *ngIf="generalEdit" style="margin-top: 30px">
+                    <div class="col-md-4 btns-setting"
+                         style="background-color: var(--clickable-orange); color:#ffffff;">
+                        <div style="line-height: 45px;" (click)="onUpdateProfileClick($event)">
+                            Save
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 general-card-desc" *ngIf="!generalEdit" style="margin-bottom: 10px;">
+                    {{user_description}}
+                    <!-- <a style="color: var(--clickable-orange) !important; cursor: pointer;">More</a> -->
+                </div>
+                <!-- <div class="col-md-12 general-card-desc-title">
+                    Education
+                </div>
+                <div *ngFor="let education of education" class="col-md-12" style="padding:0px">
+                    <div class="edu-title col-md-12" style="margin-top: 10px;">
+                        {{education.university}} ({{education.title}})
+                    </div>
+                    <div class="edu-date col-md-12">
+                        {{education.country}} {{education.start}} - {{education.end}} ({{education.end - education.start}} years) 
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

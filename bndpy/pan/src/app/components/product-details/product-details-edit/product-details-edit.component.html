@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="ProductDetailsForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!ProductDetailsForm.valid || !ProductDetailsForm.dirty ">ذخیره</button>&nbsp;
+          <!-- <button type="button" class="btn btn-danger" (click)="onCancel()">clear</button>&nbsp; -->
+          <button type="button" class="btn btn-info" (click)="onBack()">انصراف</button>
+        </div>
+      </div>
+
+      <div class="row margin-c">
+        <div class="col-xs-12">
+          <!-- <button type="button" class="btn btn-info" (click)="pushPDKs()">افزودن</button> -->
+
+          <div class="form-group">
+            <label for="productKind">نوع ویژگی محصول والد</label>
+
+            <select name="productDetailsKind" id="productDetailsKind" class="form-control" formControlName="productDetailsKind">
+
+              <option *ngFor="let k of ProductDetailsKinds" value="{{k._id}}">{{k.title}}</option>
+            </select>
+          </div>
+          
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="desc">جزئیات</label>
+            <input type="text" id="desc" formControlName="desc" class="form-control">
+          </div>
+        </div>
+      </div>
+
+
+
+    </form>
+  </div>
+</div>
+

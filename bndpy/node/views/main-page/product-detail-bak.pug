@@ -1,0 +1,83 @@
+extends ../../public/pug-bootstrap/_bootstrap
+
+block body
+ 
+	include ./layout.pug
+	+layout( settings,products,solutions)
+
+	br
+	.container
+		.row
+			+carousel("myCarousel",banners)
+		 
+		button.accordion1  معرفی نرم افزار #{product.title}
+		.accordin-panel
+			.row
+			-var imgUrl = '../images/'+  product.logo 
+				.col-sm-12.col-lg-8
+					p #{product.LongDesc}
+				.col-sm-12.col-lg-4 
+					img(src=imgUrl, style="height=150px;width:150px;")
+		button.accordion1 امکانات
+		.accordin-panel
+			.container
+				.row
+					.col-xs-8
+						strong گزارشات عمومی
+						p #{product.LongDesc}
+					.col-xs-4 
+						-var imgUrl = '../images/'+  product.logo 
+						img(src=imgUrl, style="height=150px;width:150px;")
+				.row
+					-var imgUrl = '../images/'+  product.logo 
+					.col-xs-4 
+						img(src=imgUrl, style="height=150px;width:150px;")
+					.col-xs-8
+						strong گزارشات مدیریتی
+						p #{product.LongDesc}
+					hr
+				.row
+					-var imgUrl = '../images/'+  product.logo 
+					.col-xs-8
+						strong عملیات
+						p #{product.LongDesc}
+					.col-xs-4 
+						img(src=imgUrl, style="height=150px;width:150px;")
+		button.accordion1 ویژگی ها   
+		.accordin-panel
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		button.accordion1 فناوری های
+		.accordin-panel
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		button.accordion1 منابع آموزشی
+		.accordin-panel
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		button.accordion1 اشخاصی که با این محصول نرم افزاری کار میکنند
+		.accordin-panel
+			p
+				| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+	block script
+		script.
+			var acc = document.getElementsByClassName("accordion1");
+			var i;
+			for (i = 0; i < acc.length; i++) {
+				acc[i].addEventListener("click", function() {
+					this.classList.toggle("active");
+					var panel = this.nextElementSibling;
+					if (panel.style.maxHeight){
+						panel.style.maxHeight = null;
+					} else {
+						panel.style.maxHeight = panel.scrollHeight + "px";
+					}
+				});
+			}
+
+
+ 
+ 
+	

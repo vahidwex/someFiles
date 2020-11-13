@@ -1,0 +1,73 @@
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show': show}" *ngIf="mode=='login'">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-end w-100 color-primary">ورود به حساب کاربری</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="row" [formGroup]="loginForm">
+            <div class="col-6 col-md-12 " include="form-input-select()">
+                <input formControlName="user"  type="text" class="select  text-end" placeholder="نام کاربری" >
+            </div>
+            <div class="col-6 col-md-12 " include="form-input-select()">
+                <input formControlName="pass"  type="text" class="select  text-end" placeholder="رمز عبور" >
+            </div>
+
+            
+
+        </form>
+      </div>
+      <div class="modal-footer mx-3">
+        <div class="buttons row justify-content-end col-12">
+            <button type="button" class="fs8p button-info " data-dismiss="modal" (click)="close()">خروج <i class="fas fa-sign-out-alt"></i></button>
+            <button type="button" class="fs8p button-prime mx-3" data-dismiss="modal" (click)="GotoRegister()">ساخت حساب کاربری <i class="fas fa-user-plus"></i></button>
+            <button type="button" class="fs8p button-success px-4 " data-dismiss="modal" (click)="login()">ورود <i class="fas fa-check-circle"></i></button>
+
+        </div>
+       
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show': show}" *ngIf="mode=='register'">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-end w-100 color-primary"> ساخت حساب کاربری</h4>
+        </div>
+        <div class="modal-body">
+  
+          <form class="row" [formGroup]="registerForm">
+              <div class="col-6 col-md-12 " include="form-input-select()">
+                  <input formControlName="user" type="text" class="select  text-end" placeholder="نام کاربری" >
+              </div>
+              <div class="col-6 col-md-12 " include="form-input-select()">
+                  <input formControlName="pass" type="text" class="select  text-end" placeholder="رمز عبور" >
+              </div>
+  
+              
+  
+          </form>
+        </div>
+        <div class="modal-footer mx-3">
+          <div class="buttons row justify-content-end col-12">
+              <button type="button" class="fs8p button-info " data-dismiss="modal" (click)="close()">خروج <i class="fas fa-sign-out-alt"></i></button>
+              <button type="button" class="fs8p button-prime mx-3" data-dismiss="modal" (click)="GotoLogin()">ورود به حساب <i class="fas fa-sign-in-alt"></i></button>
+              <button type="button" class="fs8p button-success px-4 " data-dismiss="modal" (click)="register()">ساخت حساب <i class="fas fa-check-circle"></i></button>
+          </div>
+         
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  

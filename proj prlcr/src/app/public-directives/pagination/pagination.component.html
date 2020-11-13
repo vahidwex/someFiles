@@ -1,0 +1,5 @@
+<div class="d-flex flex-row-reverse">
+    <div class="p-2 next ml-3" [ngClass]="{'inactive': ( getIndex() + 1 ) * pageSize >= length}" (click)="next()">Next</div>
+    <!-- <div class="p-2">{{getIndex() + 1}}</div> -->
+    <div class="p-2 previous" [ngClass]="{'inactive': getIndex() == 0}" (click)="prev()">Previous</div>
+</div>

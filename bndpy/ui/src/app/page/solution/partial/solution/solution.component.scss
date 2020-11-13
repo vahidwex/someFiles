@@ -1,0 +1,98 @@
+@import "../../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.solution{
+  background-color: rgba($color: $color-light, $alpha: 1);
+}
+.header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .text-end{
+    text-align: end;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .fw-600{
+    font-weight: 600;
+  }
+  .HoverShadow{
+      &:hover{
+          text-shadow: 0px 0px 1px $color-theme-primary;
+
+      }
+  }
+  .default{
+    cursor: default;
+}
+.paragraph{
+  line-height: 30px;
+  font-size: 15px;
+}
+.image{
+    max-height: 300px;
+}
+.pointer{
+    cursor: pointer;
+}
+.svg {
+    height: 60px;
+    font-size: 14px;
+    &:hover{
+      animation: ScaleUp 1s ease 1;
+    }
+  }
+.ProPic{
+    height: 80%;
+}
+.proText{
+    height: 20%;
+}
+.section{
+    border-bottom: solid 0.5px #d9d8d8;
+    width: 100%;
+    
+    
+    &:last-child{
+        border: none;
+    }
+  }
+.figure{
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+    border: solid 1px darken($color-theme-secondary,15);
+  }
+.color-primary{
+    color: $color-theme-primary;
+  }
+
+  @media only screen and (min-width : 480px) {
+    .section{
+      border-bottom: none;
+    }
+  }
+  
+  /* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {
+    .section{
+      border-bottom: none;
+    }
+  }
+  
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width : 992px) {
+    .section{
+      border-bottom: solid 0.5px #d9d8d8;
+    }
+  }
+  
+  /* Large Devices, Wide Screens */
+  @media only screen and (min-width : 1200px) {
+    .section{
+      border-bottom: solid 0.5px #d9d8d8;
+    }
+  }

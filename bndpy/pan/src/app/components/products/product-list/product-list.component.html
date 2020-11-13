@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+
+      <div class="well">
+        <button type="button" class="btn btn-primary" (click)="addNew()">جدید</button>
+        <hr>
+
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="width: 5%">ردیف</th>
+              <th style="width: 25%">عنوان</th>
+              <th style="width: 45%">توضیحات</th>
+              <th style="width: 25%">عملیات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products;let i = index">
+              <td>{{i+1}}</td>
+              <td>{{product.title}}</td>
+              <td>{{product.shortDesc}}</td>
+              <td><a (click)="onEdit(product._id)"><span class="glyphicon  glyphicon-edit"
+                    style="color: green;cursor: pointer;font-size: 18px" alt="155" title="ویرایش"> </span></a>
+                <a (click)="onDelete(product._id)"><span class="glyphicon glyphicon-trash"
+                    style="color: brown;cursor: pointer;font-size: 18px" title="حذف"> </span></a>
+                <a (click)="onDetail(product._id)"><span class="glyphicon glyphicon-info-sign"
+                    style="color: rgba(43, 48, 63, 0.425);cursor: pointer;font-size: 18px" title="جزییات"> </span></a></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+  </div>

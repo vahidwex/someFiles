@@ -1,0 +1,45 @@
+@import "../../../../../../assets/scss/utility/utility.scss";
+.instagram{
+    background-color: $color-light;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header {
+        font-size: 28px;
+        font-weight: 900px;
+        padding: 20px 0;
+      }
+    .container{
+        .section{
+            position: relative;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width:100%;
+            .image{
+              height: 100%;
+              width:100%
+  
+            }
+        }
+    }
+}
+
+  @media only screen and (max-width: 770px){
+    .instagram{
+      .container{
+        .section{
+          .rotate{
+            &:hover{
+              
+              .main{
+                animation: none;
+                visibility: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }

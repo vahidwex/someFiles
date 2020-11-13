@@ -1,0 +1,48 @@
+<div class="well">
+  <div class="row">
+    <div style="width: 400px;">
+      <!-- <a (click)="onNavigate()" class="close" data-dismiss="alert" aria-label="close" style="font-size: 35px;padding-top:0px">&times;</a> -->
+      <h4>منابع اموزشی</h4>
+      <hr>
+      <div class="row">
+          <div class="col-xs-12">
+            <form [formGroup]=" productTechnologyForm" (ngSubmit)="onSubmit()">
+              <div class="col-xs-2">
+                <button class="btn btn-success" type="submit" >تایید</button>
+              </div>
+              <div class="col-sm-10 form-group">
+                  <label for="image">منبع اموزشی مورد نظر را انتخاب کنید</label>
+
+                <select name="kind" id="kind" class="form-control" formControlName="kind">
+
+                  <option *ngFor="let k of kinds" value="{{k._id}}">{{k.title}}</option>
+                </select>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 ">
+      <table class="table  ">
+        <thead>
+          <tr>
+            <th style="width: 5%">ردیف</th>
+            <th style="width: 85%">عنوان</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of  productESes;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{product.title }}</td>
+            <td>  <a (click)="removeProducts(product)"  class="close" data-dismiss="alert" aria-label="close">&times;</a> </td>
+          </tr>
+        </tbody>
+      </table></div></div>
+    </div>
+  </div>
+</div>

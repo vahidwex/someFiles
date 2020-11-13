@@ -1,0 +1,178 @@
+@import "../../../../assets/scss/utility/utility.scss";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.header{
+    background-color:darken($color-light,15);
+    height: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+}
+.HoverShadow{
+    &:hover{
+        text-shadow: 0px 0px 1px $color-theme-primary;
+
+    }
+}
+.basket{
+    background-color: $color-light;
+}
+.prices{
+  align-self: center;
+}
+.h-100{
+    height: 100% !important;
+}
+.color-default{
+    color:darken($color: $color-theme-secondary, $amount: 50)
+  }
+  .text-end{
+    text-align: end;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .pointer{
+    text-decoration:none;
+    cursor: pointer;
+  }
+  .w-fit{
+    width: fit-content;
+  }
+.figure-2{
+    border: solid 1px #8080808c;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 11px 2px rgba(0, 0, 0, 0.11);
+  }
+.figure{
+    background-color:$color-theme-secondary;
+    border-radius: 4px;
+    border: solid 1px darken($color-theme-secondary,15);
+    height: 200px;
+  }
+  .plus,.minus{
+
+    color: darken($color-theme-secondary,45);
+    transition: .8 ease all;
+    &:hover{
+      color: $color-theme-primary;
+    }
+  }
+  .paragraph{
+    line-height: 30px;
+    font-size: 15px;
+  }
+  .plusminus{
+    font-size: 22px;
+  }
+  .fw-600{
+      font-weight: 600;
+  }
+  fw-500{
+    font-weight: 500;
+  }
+  .item{
+      transition: .8s ease all;
+      height: 100%;
+  }
+  .fw-700{
+      font-weight: 700;
+  }
+
+  .darken-primary{
+    color:darken($color-theme-primary,15)
+  }
+.color-primary{
+    color: $color-theme-primary;
+  }
+  .selectedImage{
+    max-height: 210px;
+  }
+  .fs-16{
+    font-size: 16px;
+  }
+
+
+  $demo-gray: #D6D6D6;
+  $demo-placeholder: #C7C7C7;
+  $demo-border: #E6E6E6;
+  
+  $border-width: 3px;
+
+  @mixin form-input-select(){
+  
+    color: $color-theme-primary;
+    display: block;
+    border-radius:7px;
+    box-shadow: none;
+    font-size: 16px;
+    margin-top: 9px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-weight: 700;
+    height:76px;
+    @-moz-document url-prefix() {
+      border-right: $border-width solid $demo-border;
+      
+      &:hover {
+        border-right: $border-width solid $color-theme-primary;
+      }
+    }
+  
+    &:hover {
+  
+      .select {
+        box-shadow: 0 2px 3px rgba($color-theme-primary, 0.1) inset;
+        border-color: $color-theme-primary;
+  
+        // outline is critical but when we are hovering the div has the border already.
+        &:focus {
+          outline-color: transparent;
+        }
+        
+      }
+  
+    }
+  
+    // Make sure you set all padding, borders on this select and not the parent div.
+    // this is mainly for :focus and tabbing.
+  
+    .select {
+      width: 100%;
+      // height:76px;
+      border: $border-width solid $demo-border;
+      border-radius:7px;
+      font-weight: 400;
+      color: inherit;
+      padding: 11px 15px;
+      line-height: normal;
+      transition: border-color 0.2s ease,outline 0.2s ease;
+      font-weight: 700;
+  
+  
+      // we really need this for the tabbers
+      // causes double borders though
+      &:focus {
+        box-shadow: 0 3px 4px rgba($color-theme-primary, 0.3) inset;
+        // outline is critical for usability
+        outline: $border-width solid $color-theme-primary;
+        outline-offset: -#{$border-width}; //offset vs width
+      }
+  
+      &[disabled], &:disabled{
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+  
+      // we use invalid like a placeholder
+      // 2019-03-05 added not selector for firefox and ie
+      &:not(:focus):invalid {
+        color: $demo-placeholder;
+      }
+  
+    }
+  }
+  
+  // Show the function
+  [include*="form-input-select()"] {
+    @include form-input-select();
+  }

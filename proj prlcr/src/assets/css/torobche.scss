@@ -1,0 +1,82 @@
+@import "./base-design";
+@import "~owl.carousel/dist/assets/owl.carousel.min.css";
+@import "~owl.carousel/dist/assets/owl.theme.default.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~ngx-toastr/toastr.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~roboto-fontface/css/roboto/roboto-fontface.css';
+
+// For share buttons
+@import "~ngx-sharebuttons/styles/share-buttons";
+@import "~ngx-sharebuttons/styles/themes/modern/modern-dark-theme";
+
+// Font awesome
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+html, body {
+  font-size: 16px;
+  background: $white;
+  margin: 0;
+  padding: 0;
+  font-variant-numeric: normal;
+}
+%base-typo {
+  margin: 0;
+  // color: $black;
+}
+.ltr {
+  direction: ltr;
+}
+h1 {
+  @extend %base-typo;
+  font-size: 1.5rem;
+}
+h2 {
+  @extend %base-typo;
+  font-size: 1.5rem;
+}
+h3 {
+  @extend %base-typo;
+  font-size: 1rem;
+}
+h4 {
+  @extend %base-typo;
+  font-size: 1rem;
+}
+h5 {
+  @extend %base-typo;
+  font-size: 0.875rem;
+}
+p {
+  @extend %base-typo;
+  // font-size: 0.75rem;
+}
+label {
+  @extend %base-typo;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: $orange;
+  &:hover {
+    color: $red;
+    & > * {
+      color: $red;
+    }
+  }
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: var(--clickable-orange);
+  background-color: var(--clickable-orange);
+}
+.inline-middle {
+  display: inline-block;
+  vertical-align: middle;
+}

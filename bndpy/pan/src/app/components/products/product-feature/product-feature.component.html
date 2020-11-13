@@ -1,0 +1,101 @@
+<div class="well">
+  <div style="width: 80%;" class="row">
+
+   
+
+    <div class="col-12">
+
+      <!-- <a (click)="onNavigate()" class="close" data-dismiss="alert" aria-label="close" style="font-size: 35px;padding-top:0px">&times;</a> -->
+      <h4>شاخصه ها</h4>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12">
+          <form [formGroup]="productFeatureForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="submit" class="btn btn-success"
+                  [disabled]="!productFeatureForm.valid || !productFeatureForm.dirty ">ذخیره</button>&nbsp;
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="productDetail">مشخصه مورد نظر را انتخاب کنید</label>
+
+                  <select id="productDetail" name="productDetail" class="form-control" formControlName="productDetail">
+                    <option *ngFor="let k of kinds" value="{{k._id}}">{{k.desc}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+
+                  <input type="text" id="featureValue" formControlName="featureValue" class="form-control"
+                    placeholder="مقدار را وارد کنید">
+                </div>
+              </div>
+            </div>
+
+            
+            
+
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <!-- <label for="featureKind">نوع شاخصه را انتخاب کنید</label> -->
+
+                <label class="checkbox-inline pull-left"><input type="checkbox" name='isFeature'  formControlName="isFeature"  >به عنوان ویژگی محصول استفاده شود </label>
+                  
+                </div>
+              </div>
+            </div>
+
+            
+            
+
+
+
+          </form>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table  ">
+            <thead>
+              <tr>
+                <th style="width: 5%">ردیف</th>
+                <th style="width: 40%">عنوان</th>
+                <th style="width: 40%">مقدار</th>
+
+                <th style="width: 5%">عملیات</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of  productFeatures;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{product.productDetail.desc}}</td>
+
+                <td>{{product.featureValue }}</td>
+                <td> <a (click)="removeProducts(product._id)"><span class="glyphicon glyphicon-remove"
+                  style="color: red;cursor: pointer;font-size: 18px">
+                </span></a> </td>
+
+                    
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

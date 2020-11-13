@@ -1,0 +1,94 @@
+<div class="animated fadeIn aboutUs">
+    <div class="header row justify-content-center align-items-center">
+        <div class="container row">
+          <div class="HoverShadow default name col-6 fw-600 ">
+            درباره ما
+          </div>
+          <div class="address col-6">
+            <h5 class="textend fw-600"> <span class="HoverShadow pointer" [routerLink]="['/home']">خانه</span> / <span class="HoverShadow pointer" [routerLink]="['/aboutUs']">درباره ما</span> </h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+          <div class="text-center color-primary fw-700 my-2">
+                <h2>{{Settings.companyName}}</h2>
+          </div>
+        <div class="head py-3 row justify-content-center">
+            <p class="text-center w-50 paragraph">
+                {{Settings.abutUsPage}}
+            </p>
+        </div>
+
+        <div class="row col-12 py-3">
+            <div class="col-lg-6 col-md-6  col-xs-12 ConstactUs">
+                <div class="container">
+                    <div class="storeinformation list-items col-12">
+                        <p class="fw-700 color-primary my-3">ارتباط با ما</p>
+                        <div class=" list-item revert row">
+                            <div class=" symbol"><i class="fas fa-map-marker-alt"></i></div> 
+                          <div class="text">{{location}}</div>
+                        </div>
+                        <div class=" list-item revert row">
+                            <div class=" symbol"><i class="fas fa-phone-volume"></i></div>
+                          <div class="text">{{call}}</div>
+                        </div>
+                        <div class=" list-item revert row">
+                          <div class=" symbol"><i class="far fa-envelope"></i></div>
+                          <div class="text">{{mail}}</div>
+                        </div>
+                        <div class=" list-item revert row">
+                          <div class=" symbol"><i class="fas fa-fax"></i></div>
+                          <div class="text">{{fax}}</div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 text-center">
+                <div class="container technologies row justify-content-center">
+                    <p class="fw-700 color-primary my-3 col-12">تکنو لوژی های مورد استفاده {{Settings.companyName}}</p>
+
+                    <div class="col-2 d-flex flex-column justify-content-between" *ngFor="let item of Technologys">
+                        <img class="featureimg" [src]="env.port+'/images/'+item.image" alt="">
+                        <p class="fw-600 text-center textz my-3">{{item.title}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="capabilities row justify-content-center">
+            
+            <div class="container row">
+                <div class="section col-6 col-lg-3" *ngFor="let item of Capabilitys">
+                    <img class="svg col-lg-5" [src]="env.port+'/images/'+item.logo" alt="">
+                        <p class="bigtext">{{item.title}}</p>
+                        <p class="smalltext">{{item.tags}}</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="customers">
+            
+            <div class="headerz">
+                <b>
+                    <p class="m-2 text-center">تعدادی از مشتریان ما</p>
+                </b>
+            </div>
+            <div class="container ">
+            
+                <owl-carousel-o [options]="customOptions">
+                <ng-template  carouselSlide *ngFor="let item of Customers">
+                    <div class="section row justify-content-center">
+                    <img class="image"  [src]="env.port+'/images/'+item.logo" alt="">
+                    
+                    </div>
+                </ng-template>  
+                
+                </owl-carousel-o>
+            </div>
+              
+              
+        </div>
+      </div>
+</div>

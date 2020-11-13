@@ -1,0 +1,27 @@
+<h1 mat-dialog-title class="bt-bold-text">Add a comment on status change.</h1>
+<div style="padding: 20px;">
+    <div class="row justify-content-center">
+        <div class="col-md-10 form-group">
+            <label>Description</label>
+            <textarea [(ngModel)]="status_description" class="form-control milestone-item-desc" rows="1"></textarea>
+        </div>
+        <!-- <div class="col-md-3 form-group">
+            <label for="milestone-amount">Amount</label>
+            <input (input)="numbericInputAmount($event, milestone)" [(ngModel)]="milestone.amount" type="text" class="form-control milestone-item-amount" placeholder="">
+        </div> -->
+        <!-- <div class="col-md-3 form-group">
+            <label for="milestone-duration">Duration</label>
+            <input (input)="numbericInputDuration($event, milestone)" [(ngModel)]="milestone.duration" type="text" class="form-control milestone-item-duration" placeholder="">
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <small class="text-muted form-text"> When the freelancer accepts, you will recieve a notification.</small> -->
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <button class="btn bt-submit-bid-btn" style="align-self: center;justify-content: center;
+        display: flex;
+        flex-direction: column;" (click)="changeStatus(data)">Submit</button>
+    </div>
+</div>

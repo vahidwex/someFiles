@@ -1,0 +1,203 @@
+<div class="container search-page-fl">
+    <div id="top" class="no-height"></div>
+    <div *ngIf="showBanner" class="row search-header banner mx-0 px-0 bg-white py-3 mb-0">
+        <img class="banner-flag h-100 w-auto ml-3" [title]="onlyCountry" [src]="'https://www.countryflags.io/' + onlyCountry + '/shiny/64.png'" [alt]="onlyCountry">
+        <div class="d-flex flex-column justify-content-center ml-3">
+            <div class="title-banner fs-20 normal-txt text-left color-white font-weight-bold">Choose among freelancers in {{countryName}}</div>
+            <div class="subtitle-banner fs-20 normal-txt text-left color-white">Hire top professionals on Perfectlancer and get jobs done smoothly.</div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="row search-header px-0 mx-0 bg-white py-3 br-10">
+        <div class="col-md-6">
+            <input type="text" placeholder="&#xf002;   Search keyword" (ngModelChange)="isEmpty($event)"  (keydown.enter)="skillSearch()" [(ngModel)]="titlesearch" class="my-input br-10 fs-17 py-1 px-3 w-100 mt-2 bg-white text-left normal-txt lh-1-29 text-left color-70 font-awesome mb-1">
+            <div *ngIf="titlesearch.length > 0" class="clickable clickable-orange position-absolute search-icon" (click)="skillSearch()">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="col-md-1 col-sm-4 mt-1 col-4 d-flex justify-content-center clickable">
+            <span [ngClass]="{'active-filter': !cardview,'inactive-filter':cardview}"
+                (click)="toggleFilters()" style="border-radius: 10px;
+            height: 49px;
+            width: 100%;
+            display: flex;
+            min-width: 50px;
+            max-width: 50px;
+            justify-content: center;" class="align-self-center">
+                    <i class="fas fa-filter align-self-center fs-35"></i>
+                    <div class="filter ml-2">Filter</div>
+            </span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-4 mt-2 d-flex justify-content-around p-0 text-nowrap">
+            <label *ngIf="onlyCountry == null" class="switch position-relative d-inline-block"><input class="my-d-none" type="checkbox" [(ngModel)]="usonly" (change)="offset = 0;getProjects();" id="us-only"><div class="slider position-absolute clickable round"><span class="on normal-txt text-center font-weight-bold color-white position-absolute fs-10 my-d-none">ON</span><span class="off normal-txt text-center font-weight-bold color-white position-absolute fs-10">OFF</span></div></label>
+            <label *ngIf="onlyCountry == null" for="us-only" class="position-absolute b-32 no-wrap">US Only</label>
+            <img *ngIf="onlyCountry != null" class="flag" [title]="onlyCountry" [src]="'https://www.countryflags.io/' + onlyCountry + '/flat/64.png'" alt="onlyCountry">
+            <label *ngIf="onlyCountry != null"  class="position-absolute b-32 no-wrap" for="us-only">{{onlyCountry}} Only</label>
+        </div>
+        <div class="col-md-2 py-0 mt-2">
+            <div class="dropdown position-relative d-inline-block w-100">
+                <button type="button" class="btn my-dropdown br-10 bg-white fs-16 normal-txt text-center color-black w-100 dropdown-toggle my-toggle d-flex justify-content-around color-70" data-toggle="dropdown">
+                    <i class="fas fa-sort-amount-down align-self-center" ></i>
+                    <div class="align-self-center sort-by">Sort by</div>
+                    <i class="fas fa-chevron-down align-self-center z-975"></i>
+                </button>
+                <div class="dropdown-menu my-dropdown-menu w-100 text-center z-975 br-b-10">
+                    <option (click)="changeOrder('default')" class="dropdown-item" value="Default">Default</option>
+                    <option (click)="changeOrder('recommended')" class="dropdown-item" value="Recommended">Recommended</option>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bt-portlet mx-0 mb-1 justify-content-center">
+        <div class="col-md-4" *ngIf="!cardview">
+            <div class="back-white br-10 bg-white mb-4 col-md-12 position-sticky t-100">
+                <h2 class="Type fs-17 normal-txt text-left text-weight-bold color-black mt-3 mb-3">
+                    Skills
+                </h2>
+                <h3 class="row m-0 overflow-hidden" *ngFor="let skill of skills; let i = index">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input"
+                               name="check_skill_{{i}}"
+                               (change)="checkboxClick(skill)"
+                               [checked]="skill.check"
+                               id="check-skill-{{i}}">
+                        <label class="custom-control-label" for="check-skill-{{i}}">{{skill.title}}</label>
+                    </div>
+                </h3>
+                <div class="position-relative right-addon">
+                    <div (click)="addSkill()" class="glyphicon position-absolute p-6 clickable">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <input type="text" class="form-control my-input br-10 fs-12 py-1 px-3 w-100 mt-2 bg-white text-left normal-txt lh-1-29 text-left color-70" [(ngModel)]="newSkill" (keydown.enter)="addSkill()" placeholder="Enter other skills" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" id="fullcard">
+            <div>
+                <div (click)="resetFilters()" class="text-center fs-16 clickable-orange clickable mb-3" *ngIf="projects && projects.length < 1 && !onlyCountry">
+                    <i class="fas fa-redo mr-3"></i>Reset filters ?
+                </div>
+                <div class="job-card br-10 bg-white row mb-3 mx-0" (click)="collapse(project.user_id)" [ngClass]="{'hover_hint': firstTime}" [id]="'flcard'+project.user_id" (click)="job-card-select" *ngFor="let project of projects" >
+                    <div class="no-height w-100" [id]="project.user_id" ></div>
+                    <div class="col-md-12">
+                        <div *ngIf="firstTime" class="right-hover no-height bg-black no-width position-absolute my-bookmark justify-content-center d-flex align-self-center clickable lh-2-7 color-white br-t-10 z-970 overflow-hidden fs-15 text-center d-flex justify-content-center align-self-center" aria-hidden="true">
+                            Click card to see details
+                        </div>
+                    </div>
+                    <div class="col-md-12 px-30">
+                        <div class="my-close-holder position-absolute h-100">
+                            <div class="my-close-holder position-absolute h-100 pb-170">
+                                <div class="dropdown position-relative d-inline-block position-sticky t-120 r-0 w-45 h-39 clickable z-971">
+                                    <div class="my-bookmark bookmark-width bg-clickable-orange position-sticky justify-content-center d-flex align-self-center clickable lh-2 fs-20 color-white br-l-10 z-970" (document:click)="closeDropDown(project.user_id)" aria-hidden="true" (click)="$event.stopPropagation(); openDropDown(project.user_id);" data-toggle="dropdown">
+                                        <i class="fa fa-ellipsis-h align-self-center fs-20"></i>
+                                    </div>
+                                    <div class="dropdown-content position-absolute my-d-none bg-f9 overflow-hidden br-b-10 z-970" [id]="'dropdown-content'+project.user_id">
+                                        <a title="Work Samples" [routerLink]="'/profile/'+project.user_id" [queryParams]="{tab: 'Work Sample'}" (click)="$event.stopPropagation()">Work Samples</a>
+                                        <a title="View Profile" [routerLink]="'/profile/'+project.user_id" (click)="$event.stopPropagation()">View Profile</a>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="my-close-holder position-absolute h-100 pt-51 mt-2">
+                            <div *ngIf="isCollapsed(project.user_id)" class="my-close position-sticky justify-content-center d-flex align-self-center lh-2 clickable fs-20 color-white z-970 br-l-10"
+                                (click)="closeAll(project.user_id); $event.stopPropagation();">
+                                <i class="fa fa-times fs-20 align-self-center" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-10">
+                            <div class="row">
+                                <div class="job-card-title fs-17 normal-txt font-weight-bold text-left overflow-hidden color-black col-md-8 p-0">
+                                    <div class="d-flex flex-row">
+                                        <img *ngIf="project.avatar" [id]="'avatar'+project.user_id" [alt]="project.first_name" [src]="'https://auth.perfectlancer.com/storage/' + project.avatar" onError="this.src = '../../../assets/default-avatar.png'" class="rounded-circle d-68 mr-1 fit-down" [title]="project.first_name">
+                                        <img *ngIf="!project.avatar" [id]="'avatar'+project.user_id" [alt]="project.first_name" [src]="'../../../assets/images/default-' + project.user_id%12 + '.png'" class="rounded-circle d-68 mr-1 fit-down" [title]="project.first_name">
+                                        <div class="d-flex flex-column">
+                                            <h3>{{project.first_name}} {{project.last_name}}</h3>
+                                            <h4 class="fs-17 normal-txt color-grey"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>{{project.country | countryFormat}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-title-duration ml-2 col-md-3 p-0 fs-17 normal-txt text-center proposal-color">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 row mb-2 overflow-hidden" [ngClass]="{'description_full': collapsed[project.user_id],'description_hide': !collapsed[project.user_id]}">
+                            <h3 class="job-description fs-17 normal-txt text-left color-black overflow-hidden mt-2">
+                                {{project.description}}
+                            </h3>
+                        </div>
+                        <div class="col-md-12 row skill-margin mb-4 overflow-hidden" [ngClass]="{'skills_full': collapsed[project.user_id],'skills_hide': !collapsed[project.user_id]}">
+                            <h3 [ngClass]="{'single-skill-full': collapsed[project.user_id],'single-skill-hide':!collapsed[project.user_id]}" class="skills mt-2 d-flex flex-row br-7 b-400 fs-16 lh-27" *ngFor="let projectskill of project.skills">
+                                {{projectskill.value}}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="cards">
+                <div (click)="resetFilters()" class="text-center fs-16 clickable-orange clickable mb-3" *ngIf="(projects && projects.length == 0) && (!onlyCountry)">
+                    <i class="fas fa-redo mr-3"></i>Reset filters ?
+                </div>
+                <div class="text-center fs-16 clickable-orange mb-3" *ngIf="(projects && projects.length == 0) && (onlyCountry)">
+                    No result found
+                </div>
+            </div>
+            <owl-carousel style="min-height: 514px !important" *ngIf="cards" [options]="myFlSlideOptions" [items]="projects" [carouselClasses]="['owl-theme', 'sliding']" >
+                    <div class="item mx-4" *ngFor="let freelancer of projects;let i = index;">
+                        <div class="fl-card br-10 bg-white">
+                            <div class="d-flex justify-content-center flex-column">
+                                    <img *ngIf="freelancer.avatar" [alt]="freelancer.first_name" [title]="freelancer.first_name" [src]="'https://auth.perfectlancer.com/storage/' + freelancer.avatar" onError="this.src = '../../../assets/default-avatar.png'" class="my-4 rounded-circle mx-auto fl-img">
+                                    <img *ngIf="!freelancer.avatar" [alt]="freelancer.first_name" [src]="'../../../assets/images/default-' + freelancer.user_id%12 + '.png'" class="my-4 rounded-circle mx-auto fl-img" [title]="freelancer.first_name">
+                                <h3 class="fl-name">
+                                    <a [title]="freelancer.first_name" [routerLink]="'/profile/'+ freelancer.user_id" target="_blank" class="dark-color">
+                                        {{freelancer.first_name}}
+                                    </a>
+                                </h3>
+                                <div class="align-self-center">
+                                    <i class="fa fa-star clickable-orange" aria-hidden="true"></i>
+                                    {{freelancer.rate ? freelancer.rate : 'N/A'}}
+                                </div>
+                                <div (click)="pushProjectsBefore()" *ngIf="beforeCheck(i)" class="position-absolute clickable-orange clickable" style="left:0px;background-color: var(--clickable-orange);color: white;border-radius: 10px;padding: 5px;">
+                                    Before
+                                </div>
+                                <div (click)="pushProjects()" *ngIf="afterCheck(i)" class="position-absolute clickable-orange clickable" style="right:0px;background-color: var(--clickable-orange);color: white;border-radius: 10px;padding: 5px;">
+                                    More
+                                </div>
+                                <div class="justify-content-center mb-2 col-md-12 row mx-0">
+                                    <i class="fas fa-map-marker-alt fs-20 color-8b mx-2" aria-hidden="true"></i>
+                                    <h4 class="profile-location-name fs-15 normal-txt text-center color-8b">
+                                        <!-- {{user_country ? user_country : 'not set'}} - {{user_state ? user_state : 'not set'}} |  -->
+                                        {{freelancer.country}}
+                                    </h4>
+                                </div>
+                                <div class="justify-content-center mb-2 row m-0 mb-4 skill-holder">
+                                    <div class="justify-content-center d-flex mr-1 mt-1" *ngFor="let skill of freelancer.skills">
+                                        <h3 class="skills-result br-5 fs-15 normal-txt text-center px-4 lh-30">
+                                            {{skill.value}}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="justify-content-center mb-2 row m-0 mb-4 clickable-orange view-profile">
+                                    <a [title]="freelancer.first_name" [routerLink]="'/profile/'+ freelancer.user_id" target="_blank" class="view-profile-click">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </owl-carousel>
+            <div class="row bg-paginator rd-t-10 mx-0">
+                <app-pagination class="w-100"
+                [pageSize]="10"
+                [pageIndex]="offset"
+                [length]="projectsLenght"
+                (changes)="offset = $event.data;getProjects('pag');"></app-pagination>
+            </div>
+        </div>
+</div>
+</div>
+<div class="br-10 bg-white" *ngIf="hasSeoText">
+    <div class="container custom-width py-4 mt-4" [innerHTML]="html">
+            
+    </div>
+</div>
